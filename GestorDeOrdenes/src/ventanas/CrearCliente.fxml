@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="381.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.CrearClienteController">
+   <children>
+      <Label fx:id="rutLabel" layoutX="79.0" layoutY="76.0" prefHeight="25.0" prefWidth="116.0" />
+      <TextField fx:id="nameField" layoutX="79.0" layoutY="119.0" />
+      <TextField fx:id="phoneField" layoutX="79.0" layoutY="162.0" promptText="Ej.: 987654321" />
+      <TextField fx:id="emailField" layoutX="79.0" layoutY="205.0" />
+      <RadioButton fx:id="isBusinessButton" layoutX="144.0" layoutY="250.0" mnemonicParsing="false" text="es empresa" />
+      <Button fx:id="createButton" layoutX="206.0" layoutY="319.0" mnemonicParsing="false" onAction="#createButtonAction" text="Crear" />
+      <Button fx:id="cancelButton" layoutX="48.0" layoutY="319.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancelar" />
+      <Text layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cliente:" wrappingWidth="88.99999785423279">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="16.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+      <Text layoutX="29.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:" />
+      <Text layoutX="15.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:" />
+      <Text layoutX="20.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
+      <Text layoutX="235.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text layoutX="235.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text layoutX="133.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9 digitos.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text layoutX="85.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campos con * son obligatorios.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
