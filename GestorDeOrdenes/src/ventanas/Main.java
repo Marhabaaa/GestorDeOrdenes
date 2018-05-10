@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class Main extends Application {
-	//Probando GitKraken 2
+	//Probando GitKraken 3
 	private SST sistema;
 	
 	@Override
