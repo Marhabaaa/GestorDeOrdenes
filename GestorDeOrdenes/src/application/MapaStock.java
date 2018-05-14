@@ -50,9 +50,9 @@ public class MapaStock {
 			return map.get(key);
 		}
 		
-		public SList toSList() {
+		public ListaPiezas toListaPiezas() {
 			Enumeration<Pieza> e = map.elements();
-			SList list = new SList();
+			ListaPiezas list = new ListaPiezas();
 			
 			while(e.hasMoreElements())
 				list.add(e.nextElement());
@@ -79,7 +79,7 @@ public class MapaStock {
 		
 		public String[] getStockDescriptions() {
 			int i = 0;
-			SList list = toSList();
+			ListaPiezas list = toListaPiezas();
 			String[] s = new String[list.size()];
 			
 			while(i < list.size()) {

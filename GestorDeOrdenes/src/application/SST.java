@@ -159,4 +159,8 @@ public class SST {	//Sistema Servicio Tecnico
 		Tecnico aux = techsMap.get(order.getTechNumber());
 		return aux.estimateDateOut(order.getComplex());
 	}
+
+	public ListaPiezas getListaPiezas() {
+		return stockMap.toListaPiezas();
+	}
 }

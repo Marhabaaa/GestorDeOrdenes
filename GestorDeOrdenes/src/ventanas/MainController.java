@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 
 public class MainController {
 	
-	private SST sistema;
-	
 	@FXML private Button nextButton;
 	@FXML private TextField rutField;
 	@FXML private TextField descField;
 	@FXML Label label;
+
+	private SST sistema;
 
 	@FXML
 	private void nextButtonAction() throws Exception {
@@ -41,7 +41,7 @@ public class MainController {
 			return;
 		}
 		
-		System.out.println("WIIIII! AGREGAR PIEZAS!");
+		launchAgregarPieza();
 	}
 	
 	private boolean rutVerifier(String rut) {
@@ -123,4 +123,21 @@ public class MainController {
 		boolean flag = ((CrearClienteController) loader.getController()).getFlag();
 		return flag;
 	}
+
+	private void launchAgregarPieza() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
+        Parent root = loader.load();
+
+        AgregarPiezaController agregarPiezaController = loader.getController();
+        agregarPiezaController.initVariables(sistema);
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(nextButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.show();
+    }
 }
