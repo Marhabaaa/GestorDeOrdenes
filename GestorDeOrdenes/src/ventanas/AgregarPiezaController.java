@@ -13,6 +13,7 @@ public class AgregarPiezaController {
 
     @FXML private ScrollPane scrollPane;
     @FXML private Button addButton;
+    @FXML private Button deleteButton;
     @FXML private Button cancelButton;
     @FXML private Button nextButton;
 
@@ -20,16 +21,12 @@ public class AgregarPiezaController {
 
     @FXML
     private void addButtonAction() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PiezasEnStock.fxml"));
-        Parent root = (Parent) loader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(addButton.getScene().getWindow());
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.resizableProperty().setValue(false);
-        stage.showAndWait();
+
+    }
+
+    @FXML
+    private void deleteButtonAction() throws Exception{
 
     }
 
