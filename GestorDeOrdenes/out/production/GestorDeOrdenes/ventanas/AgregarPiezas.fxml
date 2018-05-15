@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="381.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.AgregarPiezaController">
    <children>
       <Button fx:id="addButton" layoutX="113.0" layoutY="280.0" mnemonicParsing="false" onAction="#addButtonAction" text="Agregar Pieza" />
-      <Button fx:id="addButton1" layoutX="405.0" layoutY="280.0" mnemonicParsing="false" onAction="#addButtonAction" text="Quitar Pieza" />
+      <Button fx:id="deleteButton" layoutX="405.0" layoutY="280.0" mnemonicParsing="false" text="Quitar Pieza" />
       <Button fx:id="cancelButton" layoutX="31.0" layoutY="322.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancelar" />
       <Text layoutX="20.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Piezas:" wrappingWidth="137.87597346305847">
          <font>
@@ -23,11 +23,11 @@
         <content>
           <AnchorPane fx:id="scrollPane">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="254.0">
+                  <TableView fx:id="tableA" prefHeight="200.0" prefWidth="254.0">
                     <columns>
-                      <TableColumn prefWidth="46.0" text="Cod." />
-                      <TableColumn minWidth="0.0" prefWidth="157.0" text="Descripción" />
-                        <TableColumn prefWidth="50.0" text="Cant." />
+                      <TableColumn fx:id="codA" prefWidth="46.0" text="Cod." />
+                      <TableColumn fx:id="descriptionA" minWidth="0.0" prefWidth="157.0" text="Descripción" />
+                        <TableColumn fx:id="cantA" prefWidth="50.0" text="Cant." />
                     </columns>
                   </TableView>
                </children></AnchorPane>

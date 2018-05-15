@@ -55,7 +55,7 @@ public class Pieza {
 	public void setComplex(int complex) {
 		this.complex = complex;
 	}
-	
+
 	public void updateCant(int diferencia) {
 		cant =+ diferencia;
 	}

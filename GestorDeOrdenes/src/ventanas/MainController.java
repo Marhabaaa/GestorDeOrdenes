@@ -126,7 +126,7 @@ public class MainController {
 
 	private void launchAgregarPieza() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
-        Parent root = loader.load();
+        Parent root = (Parent) loader.load();
 
         AgregarPiezaController agregarPiezaController = loader.getController();
         agregarPiezaController.initVariables(sistema);

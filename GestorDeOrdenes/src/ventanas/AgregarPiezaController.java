@@ -10,13 +10,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AgregarPiezaController {
 
-    @FXML private ScrollPane scrollPane;
-    @FXML private TableView stockTable;
+    @FXML private TableView tableA;
+    @FXML private TableColumn<Pieza, Integer> codA;
+    @FXML private TableColumn<Pieza, String> descriptionA;
+    @FXML private TableColumn<Pieza, Integer> cantA;
     @FXML private Button addButton;
     @FXML private Button deleteButton;
     @FXML private Button cancelButton;
@@ -52,7 +55,12 @@ public class AgregarPiezaController {
         this.sistema = sistema;
         partsList = new ListaPiezas();
 
-        //stockTable.setItems(getItems());
+        codA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionA.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+
+        tableA.setItems(getItems());
+        tableA.getColumns().addAll(codA, descriptionA, cantA);
     }
 
     private ObservableList<Pieza> getItems(){
@@ -60,7 +68,7 @@ public class AgregarPiezaController {
         ObservableList<Pieza> piezas = FXCollections.observableArrayList();
         int i = 0;
         while(i < list.size()) {
-            piezas.add(list.get(i));
+            piezas.add(list.get(list.size() - i - 1));
             i++;
         }
 
