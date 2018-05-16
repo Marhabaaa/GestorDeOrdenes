@@ -20,6 +20,7 @@ public class AgregarPiezaController {
     @FXML private TableColumn<Pieza, Integer> codA;
     @FXML private TableColumn<Pieza, String> descriptionA;
     @FXML private TableColumn<Pieza, Integer> cantA;
+    @FXML private TableView tableB;
     @FXML private Button addButton;
     @FXML private Button deleteButton;
     @FXML private Button cancelButton;
@@ -60,7 +61,6 @@ public class AgregarPiezaController {
         cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
         tableA.setItems(getItems());
-        tableA.getColumns().addAll(codA, descriptionA, cantA);
     }
 
     private ObservableList<Pieza> getItems(){

@@ -20,10 +20,10 @@ public class FinalizarOrdenController {
         stage.close();
     }
 
-    public void initVariables(String rut, SST sistema){
-        rutLabel.setText(rut);
-        this.sistema = sistema;
-    }
+    //public void initVariables(String rut, SST sistema){
+    //    rutLabel.setText(rut);
+    //    this.sistema = sistema;
+    //}
 
     //yo me llamo laucho
     //Yo me llamo guaren

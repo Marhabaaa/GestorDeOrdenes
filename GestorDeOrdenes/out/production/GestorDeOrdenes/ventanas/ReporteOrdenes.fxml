@@ -8,12 +8,12 @@
 
 <AnchorPane prefHeight="381.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.MainController">
    <children>
-      <TableView layoutX="130.0" layoutY="91.0" prefHeight="200.0" prefWidth="371.0">
+      <TableView layoutX="58.0" layoutY="75.0" prefHeight="270.0" prefWidth="515.0">
         <columns>
           <TableColumn prefWidth="62.0" text="Número" />
-          <TableColumn prefWidth="148.0" text="Cliente" />
-            <TableColumn minWidth="0.0" prefWidth="63.0" text="Técnico" />
-            <TableColumn maxWidth="200.0" minWidth="-1.0" prefWidth="97.0" text="Ganancia" />
+          <TableColumn prefWidth="238.0" text="Cliente" />
+            <TableColumn minWidth="0.0" prefWidth="82.0" text="Técnico" />
+            <TableColumn maxWidth="241.0" minWidth="-1.0" prefWidth="132.0" text="Ganancia" />
         </columns>
       </TableView>
       <Label layoutX="45.0" layoutY="33.0" text="Ordenes:">

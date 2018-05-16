@@ -16,56 +16,68 @@
         <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1258">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FinalizarOrdenController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FinalizarOrdenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="272">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditarCliente.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ventanas/EditarCliente.fxml">
+      <file leaf-file-name="EditarOrden.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ventanas/EditarOrden.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="AgregarPiezaController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezaController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgregarPiezas.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezas.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableView.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/control/TableView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="625" selection-start-line="625" selection-end-line="625" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+            <state relative-caret-position="1836">
+              <caret line="118" column="56" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FinalizarOrdenRevisada.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenRevisada.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrearCliente.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ventanas/CrearCliente.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="CrearClienteController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/CrearClienteController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="60" column="3" lean-forward="true" selection-start-line="60" selection-start-column="3" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="816">
+              <caret line="60" column="3" selection-start-line="60" selection-start-column="3" selection-end-line="63" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -83,6 +95,7 @@
         <option value="$PROJECT_DIR$/src/ventanas/MainController.java" />
         <option value="$PROJECT_DIR$/src/ventanas/FinalizarOrdenRevisadaController.java" />
         <option value="$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java" />
+        <option value="$PROJECT_DIR$/src/ventanas/AgregarPiezaController.java" />
       </list>
     </option>
   </component>
@@ -97,7 +110,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,8 +138,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,18 +234,19 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32750398" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32838285" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1891892" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Floobits" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22547585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22547585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -245,13 +259,40 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32838285" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/CrearClienteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="60" column="3" lean-forward="true" selection-start-line="60" selection-start-column="3" selection-end-line="63" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
@@ -262,44 +303,61 @@
     <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/CrearCliente.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenRevisada.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/CrearClienteController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="60" column="3" lean-forward="true" selection-start-line="60" selection-start-column="3" selection-end-line="63" selection-end-column="5" />
+        <state relative-caret-position="816">
+          <caret line="60" column="3" selection-start-line="60" selection-start-column="3" selection-end-line="63" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+        <state relative-caret-position="1836">
+          <caret line="118" column="56" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/EditarCliente.fxml">
+    <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/EditarOrden.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/collections/WeakListChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        <state relative-caret-position="230">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/control/TableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="625" selection-start-line="625" selection-end-line="625" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezas.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>

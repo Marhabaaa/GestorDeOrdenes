@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="381.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.CrearClienteController">
    <children>
       <TextField fx:id="nameField" layoutX="79.0" layoutY="119.0" />
-      <TextField fx:id="phoneField" layoutX="79.0" layoutY="162.0" />
+      <TextField fx:id="phoneField" layoutX="79.0" layoutY="162.0" promptText="Ej.: 987654321" />
       <TextField fx:id="emailField" layoutX="79.0" layoutY="205.0" />
       <RadioButton fx:id="isBusinessButton" layoutX="144.0" layoutY="250.0" mnemonicParsing="false" text="es empresa" />
       <Button fx:id="createButton" layoutX="169.0" layoutY="319.0" mnemonicParsing="false" onAction="#createButtonAction" text="Guardar Cambios" />
