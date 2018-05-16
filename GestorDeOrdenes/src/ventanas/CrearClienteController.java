@@ -64,7 +64,7 @@ public class CrearClienteController {
     }
 
 
-    private boolean phoneVerifier() {
+    private boolean phoneVerifier() { //hacerlo una excepcion y pasarlo a persona
         String phone = phoneField.getText().toString();
 
         if(phone.length() != 9) return false;

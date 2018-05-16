@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="381.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.MainController">
+   <children>
+      <TableView layoutX="75.0" layoutY="91.0" prefHeight="200.0" prefWidth="371.0">
+        <columns>
+          <TableColumn prefWidth="60.0" text="Cod." />
+          <TableColumn prefWidth="244.0" text="Descripción" />
+            <TableColumn minWidth="0.0" prefWidth="66.0" text="Cant." />
+        </columns>
+      </TableView>
+      <Label layoutX="45.0" layoutY="33.0" text="Ordenes:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
