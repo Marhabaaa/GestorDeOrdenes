@@ -71,7 +71,7 @@ public class Cliente extends Persona {
         return max;
 	}
 
-	public boolean hasPendingOrders
+	//public boolean hasPendingOrders
 
 	public void toDB(Connection connection) throws SQLException {
 		String insertTableSQL = "INSERT INTO clientes"
