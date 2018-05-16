@@ -18,7 +18,7 @@ public class Cliente extends Persona {
 		this.orders = orders;
 	}
 
-	public Cliente(int rut, String name, int phoneNumber, String eMail, boolean isBusiness) {
+	public Cliente(int rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException {
     	super(rut, name, phoneNumber, eMail);
     	this.setBusiness(isBusiness);
         this.maxOrders = calculateMaxOrders(isBusiness);
@@ -71,31 +71,24 @@ public class Cliente extends Persona {
         return max;
 	}
 
-	public boolean toDB(Connection connection) {
+	public boolean hasPendingOrders
+
+	public void toDB(Connection connection) throws SQLException {
 		String insertTableSQL = "INSERT INTO clientes"
 				+ "(rut, nombre, telefono, eMail, esEmpresa) VALUES"
 				+ "(?,?,?,?,?)";
 
-		try {
-			PreparedStatement statement = connection.prepareStatement(insertTableSQL);
+		PreparedStatement statement = connection.prepareStatement(insertTableSQL);
 
-			statement.setInt(1, rut);
-			statement.setString(2, name);
-			statement.setInt(3, phoneNumber);
-			statement.setString(4, eMail);
-			statement.setBoolean(5, isBusiness);
+		statement.setInt(1, rut);
+		statement.setString(2, name);
+		statement.setInt(3, phoneNumber);
+		statement.setString(4, eMail);
+		statement.setBoolean(5, isBusiness);
 
-			// execute insert SQL stetement
-			statement.executeUpdate();
+		// execute insert SQL stetement
+		statement.executeUpdate();
 
-			System.out.println("Record is inserted into Clientes table!");
-
-			return true;
-
-		} catch (SQLException e) {
-
-			System.out.println(e.getMessage());
-			return false;
-		}
+		System.out.println("Record is inserted into Clientes table!");
 	}
 }

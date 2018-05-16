@@ -8,66 +8,66 @@ import java.util.Hashtable;
 
 public class MapaPiezasDeOrdenes {
 		
-		private Hashtable<Integer, ListaPiezas> map;
-		
-		public MapaPiezasDeOrdenes(Connection connection, MapaStock stockMap) throws SQLException {
-			map = new Hashtable<>();
-			PreparedStatement statement = connection.prepareStatement("SELECT * FROM orderParts");
-			ResultSet data = statement.executeQuery();
+	private Hashtable<Integer, ListaPiezas> map;
 
-			int orderNumber, pieceCode, cant;
+	public MapaPiezasDeOrdenes(Connection connection, MapaStock stockMap) throws SQLException {
+		map = new Hashtable<>();
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM orderParts");
+		ResultSet data = statement.executeQuery();
 
-			while(data.next()) {
-				orderNumber	= Integer.parseInt(data.getObject("orderNumber").toString());
-				pieceCode 	= Integer.parseInt(data.getObject("codPieza").toString());
-				cant 		= Integer.parseInt(data.getObject("cant").toString());
+		int orderNumber, pieceCode, cant;
 
-				if(!contains(orderNumber)) {
-					ListaPiezas partsList = new ListaPiezas();
-					put(orderNumber, partsList);
-				}
+		while(data.next()) {
+			orderNumber	= Integer.parseInt(data.getObject("orderNumber").toString());
+			pieceCode 	= Integer.parseInt(data.getObject("codPieza").toString());
+			cant 		= Integer.parseInt(data.getObject("cant").toString());
+
+			if(!contains(orderNumber)) {
+				ListaPiezas partsList = new ListaPiezas();
+				put(orderNumber, partsList);
+			}
 
 
-				Pieza aux = stockMap.get(pieceCode);
+			Pieza aux = stockMap.get(pieceCode);
 
-				if(aux != null) {
-					aux.setCant(cant);
-					put(orderNumber, aux);
-				}
+			if(aux != null) {
+				aux.setCant(cant);
+				put(orderNumber, aux);
 			}
 		}
-		
-		public boolean contains(int key) {
-			return map.containsKey(key);
-		}
-		
-		public boolean put(int key, ListaPiezas list) {
-			map.put(key, list);
-			return true;
-		}
-		
-		public boolean put(int key, Pieza part) {
-			if(get(key) == null) 
-				return false;
-			get(key).add(part);
-			return true;
-		}
-		
-		public boolean put(Orden order) {
-			map.put(order.getOrderNumber(), order.getPartsList());
-			return true;
-		}
-		
-		public boolean remove(int key) {
-			map.remove(key);
-			return true;
-		}
-		
-		public ListaPiezas get(int key) {
-			return map.get(key);
-		}
-		
-		public int size() {
-			return map.size();
-		}
+	}
+
+	public boolean put(int key, ListaPiezas list) {
+		map.put(key, list);
+		return true;
+	}
+
+	public boolean contains(int key) {
+		return map.containsKey(key);
+	}
+
+	public boolean put(int key, Pieza part) {
+		if(get(key) == null)
+			return false;
+		get(key).add(part);
+		return true;
+	}
+
+	public boolean put(Orden order) {
+		map.put(order.getOrderNumber(), order.getPartsList());
+		return true;
+	}
+
+	public boolean remove(int key) {
+		map.remove(key);
+		return true;
+	}
+
+	public ListaPiezas get(int key) {
+		return map.get(key);
+	}
+
+	public int size() {
+		return map.size();
+	}
 }

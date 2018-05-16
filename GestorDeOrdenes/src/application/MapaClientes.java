@@ -1,5 +1,7 @@
 package application;
 
+import com.mysql.jdbc.StringUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,28 +35,42 @@ public class MapaClientes {
 				orders = new ListaOrdenes();
 			}
 
-			Cliente aux = new Cliente(rut, name, phoneNumber, eMail, isBusiness, orders);
-
-			put(aux);
+			put(rut, name, phoneNumber, eMail, isBusiness, orders);
 		}
 	}
 
-	public boolean contains(int key) {
-		return map.containsKey(key);
-	}
+    private void put(int rut, String name, int phoneNumber, String eMail, boolean isBusiness, ListaOrdenes orders) {
+        Cliente client = new Cliente(rut, name, phoneNumber, eMail, isBusiness, orders);
+        map.put(rut, client);
+    }
 
-	public boolean put(Cliente client) {
-		map.put(client.getRut(), client);
-		return true;
-	}
+	public void put(int rut, String name, String phoneNumber, String eMail, boolean isBusiness, Connection connection) throws TelefonoInvalidoException, SQLException {
+        Cliente client = new Cliente(rut, name, phoneNumber, eMail, isBusiness);
+        client.toDB(connection);
+        map.put(rut, client);
+    }
+
+    public boolean contains(int key) {
+        return map.containsKey(key);
+    }
 
 	public boolean remove(int key) {
 		map.remove(key);
 		return true;
 	}
 
-	public Cliente get(int key) {
-		return map.get(key);
+    public Cliente get(int key) {
+        return map.get(key);
+    }
+
+	public Cliente get(String rut) throws RutInvalidoException {
+        if(rut.length() > 8 || rut.length() < 7)
+            throw new RutInvalidoException();
+
+        if(!StringUtils.isStrictlyNumeric(rut))
+            throw new RutInvalidoException();
+
+        return map.get(Integer.parseInt(rut));
 	}
 
 	public boolean addOrder(Orden order, int rut) {

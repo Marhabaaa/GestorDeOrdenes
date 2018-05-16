@@ -1,5 +1,7 @@
 package ventanas;
 
+import application.RutInvalidoException;
+import application.TelefonoInvalidoException;
 import com.mysql.jdbc.StringUtils;
 import application.SST;
 import javafx.fxml.FXML;
@@ -9,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class CrearClienteController {
 
@@ -29,21 +33,21 @@ public class CrearClienteController {
             launchWarning("WarningCampoNombreVacio.fxml");
             return;
         }
-        if(!phoneVerifier()) {
-            launchWarning("WarningTelefonoInvalido.fxml");
-            return;
-        }
 
-        flag = sistema.addClient(Integer.parseInt(rutLabel.getText()), nameField.getText(), Integer.parseInt(phoneField.getText()), emailField.getText(), isBusinessButton.isSelected());
-
-        if(!flag){
-            launchWarning("WarningClienteNoIngresado.fxml");
-            return;
-        }
-        else {
+        try {
+            sistema.addClient(Integer.parseInt(rutLabel.getText()), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
+            flag = true;
             launchWarning("WarningClienteIngresadoConExito.fxml");
             Stage stage = (Stage) createButton.getScene().getWindow();
             stage.close();
+        }
+        catch(TelefonoInvalidoException e) {
+            launchWarning("WarningTelefonoInvalido.fxml");
+            return;
+        }
+        catch(SQLException e) {
+            launchWarning("WarningClienteNoIngresado.fxml");
+            return;
         }
     }
 
@@ -54,24 +58,13 @@ public class CrearClienteController {
         stage.close();
     }
 
-    public boolean getFlag(){
-        return flag;
-    }
-
     public void initVariables(String rut, SST sistema){
         rutLabel.setText(rut);
         this.sistema = sistema;
     }
 
-
-    private boolean phoneVerifier() {
-        String phone = phoneField.getText().toString();
-
-        if(phone.length() != 9) return false;
-
-        if(!StringUtils.isStrictlyNumeric(phone)) return false;
-
-        return true;
+    public boolean getFlag(){
+        return flag;
     }
 
     private void launchWarning(String fxml) throws Exception {

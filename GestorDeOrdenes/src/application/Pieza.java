@@ -1,5 +1,9 @@
 package application;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Pieza {
 	
 	private int 	code;
@@ -58,6 +62,25 @@ public class Pieza {
 
 	public void updateCant(int diferencia) {
 		cant =+ diferencia;
+	}
+
+	public void toDB(Connection connection) throws SQLException {
+        String insertTableSQL = "INSERT INTO inventario"
+                + "(codPieza, descripcion, cant, precioUnit, complejidad) VALUES"
+                + "(?,?,?,?,?)";
+
+        PreparedStatement statement = connection.prepareStatement(insertTableSQL);
+
+        statement.setInt(1, code);
+        statement.setString(2, description);
+        statement.setInt(3, cant);
+        statement.setInt(4, price);
+        statement.setInt(5, complex);
+
+        // execute insert SQL stetement
+        statement.executeUpdate();
+
+        System.out.println("Record is inserted into Inventario table!");
 	}
 }
 

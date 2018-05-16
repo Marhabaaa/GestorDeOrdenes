@@ -91,17 +91,20 @@ public class SST {	//Sistema Servicio Tecnico
 		return techNumber;
 	}
 	
-	public boolean addPart(int code, String desc, int cant, int price, int complex) {
-		Pieza part = new Pieza(code, desc, cant, price, complex);
-		return stockMap.put(part);
+	public void addPart(int code, String description, int cant, int price, int complex) throws SQLException {
+		stockMap.put(code, description, cant, price, complex, connection);
 	}
+
+	public void updateStock(int code, int cant) {
+	    stockMap.updateStock(code, cant);
+    }
 	
 	public boolean addOrder(int orderNumber, String desc, String dateIn, int clientRut, int techNumber) {
 		Orden order = new Orden(orderNumber, desc, dateIn, clientRut, techNumber);
 		if(!clientsMap.addOrder(order, order.getClientRut()))
 			return false;
 		
-		ordersMap.put(order);
+		//ordersMap.put(order);
 		orderPartsMap.put(order);
 		techsMap.addOrder(order, order.getTechNumber());
 		return true;
@@ -115,13 +118,8 @@ public class SST {	//Sistema Servicio Tecnico
 		return true;
 	}
 	
-	public boolean addClient(int rut, String name, int phoneNumber, String eMail, boolean isBusiness) {
-		if(eMail.length() == 0)
-		    eMail = "null";
-		Cliente client = new Cliente(rut, name, phoneNumber, eMail, isBusiness);
-        if(!client.toDB(connection))
-            return false;
-		return clientsMap.put(client);
+	public void addClient(int rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException, SQLException {
+		clientsMap.put(rut, name, phoneNumber, eMail, isBusiness, connection);
 	}
 
 	public boolean removeClient(int rut) {
@@ -141,7 +139,7 @@ public class SST {	//Sistema Servicio Tecnico
 		return true;
 	}
 	
-	public Cliente getClient(int rut) {
+	public Cliente getClient(String rut) throws RutInvalidoException {
 		return clientsMap.get(rut);
 	}
 	

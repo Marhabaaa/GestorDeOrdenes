@@ -1,6 +1,6 @@
 package ventanas;
 
-import com.mysql.jdbc.StringUtils;
+import application.RutInvalidoException;
 import application.SST;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,35 +21,27 @@ public class MainController {
 
 	@FXML
 	private void nextButtonAction() throws Exception {
-		String rut = rutField.getText().toString();
-		
-		if(!rutVerifier(rut)) {
+		String rut = rutField.getText();
+
+		try {
+			if (sistema.getClient(rut) == null) {
+				if (launchWarningClienteNoExiste()) {
+					if (!launchCrearClienteWindow())
+						return;
+				} else return;
+			}
+		}
+		catch(RutInvalidoException e){
 			launchWarning("WarningRutInvalido.fxml");
 			return;
 		}
-		
-		if(sistema.getClient(Integer.parseInt(rut)) == null) {
-			if(launchWarningClienteNoExiste()) {
-				if(!launchCrearClienteWindow())
-					return;
-			}
-			else return;
-		}
-		
-		if(descField.getText().toString().length() == 0) {
+
+		if (descField.getText().length() == 0) {
 			launchWarning("WarningCampoProblemaVacio.fxml");
 			return;
 		}
-		
+
 		launchAgregarPieza();
-	}
-	
-	private boolean rutVerifier(String rut) {
-		if(rut.length() > 8 || rut.length() < 7) return false;
-		
-		if(!StringUtils.isStrictlyNumeric(rut)) return false;
-		
-		return true;
 	}
 	
 	/*
@@ -71,13 +63,13 @@ public class MainController {
 	}
 	*/
 	
-	public void initVariables(SST sistema) {
+	void initVariables(SST sistema) {
 		this.sistema = sistema;
 	}
 	
 	private void launchWarning(String fxml) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent root = (Parent) loader.load();
+		Parent root = loader.load();
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(nextButton.getScene().getWindow());
@@ -90,7 +82,7 @@ public class MainController {
 	
 	private boolean launchWarningClienteNoExiste() throws Exception  {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("WarningClienteNoExiste.fxml"));
-		Parent root = (Parent) loader.load();
+		Parent root = loader.load();
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(nextButton.getScene().getWindow());
@@ -100,16 +92,15 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 
-		boolean flag = ((WarningClienteNoExisteController) loader.getController()).getFlag();
-		return flag;
+        return ((WarningClienteNoExisteController) loader.getController()).getFlag();
 	}
 	
 	private boolean launchCrearClienteWindow() throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearCliente.fxml"));
-		Parent root = (Parent) loader.load();
+		Parent root = loader.load();
 
-		CrearClienteController crearClienteController = (CrearClienteController) loader.getController();
-		crearClienteController.initVariables(rutField.getText().toString(), sistema);
+		CrearClienteController crearClienteController = loader.getController();
+		crearClienteController.initVariables(rutField.getText(), sistema);
 
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
@@ -120,13 +111,12 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 
-		boolean flag = ((CrearClienteController) loader.getController()).getFlag();
-		return flag;
+        return ((CrearClienteController) loader.getController()).getFlag();
 	}
 
 	private void launchAgregarPieza() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
 
         AgregarPiezaController agregarPiezaController = loader.getController();
         agregarPiezaController.initVariables(sistema);

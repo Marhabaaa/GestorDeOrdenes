@@ -8,85 +8,93 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class MapaStock {
-		
-		private Hashtable<Integer, Pieza> map;
-		
-		public MapaStock(Connection connection) throws SQLException {
-			map = new Hashtable<>();
-			PreparedStatement statement = connection.prepareStatement("SELECT * FROM inventario");
-			ResultSet data = statement.executeQuery();
 
-			int code, cant, price, complex;
-			String description;
+	private Hashtable<Integer, Pieza> map;
 
-			while(data.next()) {
-				code = Integer.parseInt(data.getObject("codPieza").toString());
-				description = data.getObject("descripcion").toString();
-				cant = Integer.parseInt(data.getObject("cant").toString());
-				price = Integer.parseInt(data.getObject("precioUnit").toString());
-				complex = Integer.parseInt(data.getObject("complejidad").toString());
+	public MapaStock(Connection connection) throws SQLException {
+		map = new Hashtable<>();
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM inventario");
+		ResultSet data = statement.executeQuery();
 
-				Pieza aux = new Pieza(code, description, cant, price, complex);
+		int code, cant, price, complex;
+		String description;
 
-				put(aux);
-			}
+		while(data.next()) {
+			code = Integer.parseInt(data.getObject("codPieza").toString());
+			description = data.getObject("descripcion").toString();
+			cant = Integer.parseInt(data.getObject("cant").toString());
+			price = Integer.parseInt(data.getObject("precioUnit").toString());
+			complex = Integer.parseInt(data.getObject("complejidad").toString());
+
+			put(code, description, cant, price, complex);
 		}
-		
-		public boolean contains(int key) {
-			return map.containsKey(key);
+	}
+
+	private void put(int code, String description, int cant, int price, int complex) {
+        Pieza aux = new Pieza(code, description, cant, price, complex);
+        map.put(code, aux);
+    }
+
+    public void put(int code, String description, int cant, int price, int complex, Connection connection) throws SQLException {
+        Pieza aux = new Pieza(code, description, cant, price, complex);
+        aux.toDB(connection);
+        map.put(code, aux);
+    }
+
+    public void updateStock(int code, int cant) {
+	    map.get(code).updateCant(cant);
+    }
+
+	public boolean contains(int key) {
+		return map.containsKey(key);
+	}
+
+	public boolean remove(int key) {
+		map.remove(key);
+		return true;
+	}
+
+	public Pieza get(int key) {
+		return map.get(key);
+	}
+
+	public ListaPiezas toListaPiezas() {
+		Enumeration<Pieza> e = map.elements();
+		ListaPiezas list = new ListaPiezas();
+
+		while(e.hasMoreElements())
+			list.add(e.nextElement());
+
+		return list;
+	}
+
+	public Pieza[] toArray() {
+		Enumeration<Pieza> e = map.elements();
+		Pieza[] aux = new Pieza[map.size()];
+		int i = 0;
+
+		while(e.hasMoreElements()) {
+			aux[i] = e.nextElement();
+			i++;
 		}
-		
-		public boolean put(Pieza part) {
-			map.put(part.getCode(), part);
-			return true;
+
+		return aux;
+	}
+
+	public int size() {
+		return map.size();
+	}
+
+	public String[] getStockDescriptions() {
+		int i = 0;
+		ListaPiezas list = toListaPiezas();
+		String[] s = new String[list.size()];
+
+		while(i < list.size()) {
+			s[i] = ((Pieza) list.get(i)).getDescription() + " " + ((Pieza) list.get(i)).getCode();
+			i++;
 		}
-		
-		public boolean remove(int key) {
-			map.remove(key);
-			return true;
-		}
-		
-		public Pieza get(int key) {
-			return map.get(key);
-		}
-		
-		public ListaPiezas toListaPiezas() {
-			Enumeration<Pieza> e = map.elements();
-			ListaPiezas list = new ListaPiezas();
-			
-			while(e.hasMoreElements())
-				list.add(e.nextElement());
-			
-			return list;
-		}
-		
-		public Pieza[] toArray() {
-			Enumeration<Pieza> e = map.elements();
-			Pieza[] aux = new Pieza[map.size()];
-			int i = 0;
-			
-			while(e.hasMoreElements()) {
-				aux[i] = e.nextElement();
-				i++;
-			}
-		
-			return aux;
-		}
-		
-		public int size() {
-			return map.size();
-		}
-		
-		public String[] getStockDescriptions() {
-			int i = 0;
-			ListaPiezas list = toListaPiezas();
-			String[] s = new String[list.size()];
-			
-			while(i < list.size()) {
-				s[i] = ((Pieza) list.get(i)).getDescription() + " " + ((Pieza) list.get(i)).getCode();
-				i++;
-			}
-			
-			return s;
-		}
+
+		return s;
+	}
 }

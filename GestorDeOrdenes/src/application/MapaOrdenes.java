@@ -38,21 +38,19 @@ public class MapaOrdenes {
 			if(partsList == null)
 				partsList = new ListaPiezas();
 
-			Orden aux = new Orden(orderNumber, description, dateIn, dateOut, clientRut, techNumber, price, partsList, complex, checked, done);
-
-			put(aux);
+			put(orderNumber, description, dateIn, dateOut, clientRut, techNumber, price, partsList, complex, checked, done);
 
 			//setOrderNumber(orderNumber);
 		}
 	}
 
-	public boolean contains(int key) {
-		return map.containsKey(key);
+	private void put(int orderNumber, String description, String dateIn, String dateOut, int clientRut, int techNumber, int price, ListaPiezas partsList, int complex, boolean checked, boolean done) {
+		Orden aux = new Orden(orderNumber, description, dateIn, dateOut, clientRut, techNumber, price, partsList, complex, checked, done);
+		map.put(orderNumber, aux);
 	}
 
-	public boolean put(Orden order) {
-		map.put(order.getOrderNumber(), order);
-		return true;
+	public boolean contains(int key) {
+		return map.containsKey(key);
 	}
 
 	public boolean remove(int key) {
