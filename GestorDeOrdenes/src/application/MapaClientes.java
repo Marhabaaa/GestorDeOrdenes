@@ -81,9 +81,9 @@ public class MapaClientes {
 		return get(order.getClientRut()).removeOrder(order);
 	}
 
-	public SList toSList() {
+	public ListaClientes toListaClientes() {
 		Enumeration<Cliente> e = map.elements();
-		SList list = new SList();
+		ListaClientes list = new ListaClientes();
 
 		while(e.hasMoreElements())
 			list.add(e.nextElement());

@@ -49,9 +49,11 @@ public class MapaTecnicos {
 		return true;
 	}
 
-	public boolean remove(int key) {
-		map.remove(key);
-		return true;
+	public void remove(int key) throws TecnicoOcupadoException{
+		if(map.get(key).getOrders().isEmpty()) {
+			map.remove(key);
+		}
+		throw new TecnicoOcupadoException();
 	}
 
 	public Tecnico get(int key) {
@@ -95,5 +97,15 @@ public class MapaTecnicos {
 		}
 
 		return least;
+	}
+
+	public ListaTecnicos toListaTecnicos() {
+		Enumeration<Tecnico> e = map.elements();
+		ListaTecnicos list = new ListaTecnicos();
+
+		while(e.hasMoreElements())
+			list.add(e.nextElement());
+
+		return list;
 	}
 }

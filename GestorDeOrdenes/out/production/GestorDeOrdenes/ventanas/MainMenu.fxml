@@ -20,7 +20,7 @@
             <content>
               <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="nextButton" layoutX="121.0" layoutY="292.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguente" />
+                        <Button fx:id="nextButton" layoutX="122.0" layoutY="289.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguente" />
                         <TextField fx:id="rutField" layoutX="79.0" layoutY="101.0" promptText="Ej.: 12345678" />
                         <Label fx:id="label" layoutX="170.0" layoutY="63.0" prefHeight="25.0" prefWidth="116.0" />
                         <Text layoutX="35.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar nueva orden:" wrappingWidth="148.9999978542328">
@@ -39,14 +39,14 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Clientes">
+            <Tab onSelectionChanged="#clientsTabAction" text="Clientes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="288.0" prefWidth="304.0">
+                        <TableView fx:id="clientsTable" prefHeight="288.0" prefWidth="304.0">
                           <columns>
-                            <TableColumn prefWidth="96.0" text="Rut" />
-                            <TableColumn prefWidth="207.0" text="Nombre" />
+                            <TableColumn fx:id="rutCliente" prefWidth="96.0" text="Rut" />
+                            <TableColumn fx:id="nombreCliente" prefWidth="207.0" text="Nombre" />
                           </columns>
                         </TableView>
                         <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
@@ -54,19 +54,19 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Técnicos">
+            <Tab onSelectionChanged="#techsTabAction" text="Técnicos">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="-1.0" prefHeight="289.0" prefWidth="304.0">
+                        <TableView fx:id="techsTable" layoutY="-1.0" prefHeight="289.0" prefWidth="304.0">
                           <columns>
-                            <TableColumn prefWidth="81.0" text="Número" />
-                            <TableColumn prefWidth="222.0" text="Nombre" />
+                            <TableColumn fx:id="numeroTecnico" prefWidth="81.0" text="Número" />
+                            <TableColumn fx:id="nombreTecnico" prefWidth="222.0" text="Nombre" />
                           </columns>
                         </TableView>
-                        <Button fx:id="newTechnicianButton" layoutX="22.0" layoutY="303.0" mnemonicParsing="false" text="Nuevo Técnico" />
+                        <Button fx:id="newTechnicianButton" layoutX="22.0" layoutY="303.0" mnemonicParsing="false" onAction="#newTechnicianButtonAction" text="Nuevo Técnico" />
                         <Button fx:id="editTechnicianButton" layoutX="152.0" layoutY="303.0" mnemonicParsing="false" text="Editar" />
-                        <Button fx:id="deleteTecnhicianButton" layoutX="214.0" layoutY="303.0" mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="deleteTecnhicianButton" layoutX="214.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteTechnicianButtonAction" text="Eliminar" />
                      </children></AnchorPane>
               </content>
             </Tab>
