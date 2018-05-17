@@ -61,13 +61,12 @@ public class MainController {
 		}
 
 		try {
-            orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
-            if(launchAgregarPieza())
-            	if(sistema.getOrderListaPiezas(orderNumber).isEmpty())
+			orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
+			if (launchAgregarPieza());
+				if (sistema.getOrderListaPiezas(orderNumber).isEmpty())
 					launchFinalizarOrdenNoRevisada();
-				else
+			else
 					launchFinalizarOrdenRevisada();
-
         }
         catch(SinTecnicosException e) {
             System.out.println(e.getMessage());
@@ -88,8 +87,6 @@ public class MainController {
     private void GenerateReportOrdersButtonAction() throws Exception{
 	    reporte.ganaciasTotales(sistema.getListaOrdenes());
     }
-
-
 
 	void initVariables(SST sistema) {
 		this.sistema = sistema;
@@ -144,7 +141,7 @@ public class MainController {
         return crearClienteController.getFlag();
 	}
 
-	private boolean launchAgregarPieza() throws Exception {
+	private boolean launchAgregarPieza() throws Exception{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
 		Parent root = loader.load();
 
@@ -201,8 +198,8 @@ public class MainController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
 		Parent root = loader.load();
 
-		//FinalizarOrdenController finalizarOrdenController = loader.getController();
-		//finalizarOrdenController.initVariables(sistema, orderNumber);
+		FinalizarOrdenController finalizarOrdenController = loader.getController();
+		finalizarOrdenController.initVariables(sistema);
 
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
@@ -213,6 +210,7 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 
+		System.out.print("Se ha creado la orden correctamente");
 		//return finalizarOrdenController.getFlag();
 	}
 
@@ -220,8 +218,8 @@ public class MainController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
 		Parent root = loader.load();
 
-		//FinalizarOrdenController finalizarOrdenController = loader.getController();
-		//finalizarOrdenController.initVariables(sistema, orderNumber);
+		FinalizarOrdenController finalizarOrdenController = loader.getController();
+		finalizarOrdenController.initVariables(sistema);
 
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
@@ -232,6 +230,7 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 
+		System.out.print("Se ha creado la orden correctamente");
 		//return finalizarOrdenController.getFlag();
 	}
 }

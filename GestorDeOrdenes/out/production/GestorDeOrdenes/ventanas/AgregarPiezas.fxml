@@ -17,7 +17,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="nextButton" layoutX="513.0" layoutY="322.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguiente" />
+      <Button fx:id="nextButton1" layoutX="513.0" layoutY="322.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguiente" />
       <TableView fx:id="tableA" layoutX="18.0" layoutY="85.0" prefHeight="184.0" prefWidth="280.0">
         <columns>
           <TableColumn fx:id="codA" prefWidth="46.0" text="Cod." />

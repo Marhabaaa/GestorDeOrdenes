@@ -71,9 +71,11 @@ public class AgregarPiezasController {
 
     @FXML
     private void nextButtonAction() {
+
         flag = true;
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        Stage stage = (Stage) nextButton.getScene().getWindow();
         stage.close();
+
     }
 
     public void initVariables(SST sistema, int orderNumber) {
@@ -105,5 +107,7 @@ public class AgregarPiezasController {
 
         return piezas;
     }
+
+
 
 }

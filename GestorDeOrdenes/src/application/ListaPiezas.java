@@ -55,6 +55,21 @@ public class ListaPiezas implements Lista{
             list.remove(getIndex(code));
     }
 
+    @Override
+    public boolean add() {
+        return false;
+    }
+
+    @Override
+    public boolean remove() {
+        return false;
+    }
+
+    @Override
+    public Object get() {
+        return null;
+    }
+
     public int size() {
         return list.size();
     }

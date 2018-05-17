@@ -15,6 +15,7 @@ public class FinalizarOrdenController {
     @FXML private Button cancelOrderButton;
 
     private boolean flag;
+    SST sistema;
 
     @FXML
     private void cancelOrderButtonAction(){
@@ -26,10 +27,9 @@ public class FinalizarOrdenController {
         return flag;
     }
 
-    //public void initVariables(String rut, SST sistema){
-    //    rutLabel.setText(rut);
-    //    this.sistema = sistema;
-    //}
+    public void initVariables(SST sistema){
+        this.sistema = sistema;
+    }
 
     //yo me llamo laucho
     //Yo me llamo guaren
