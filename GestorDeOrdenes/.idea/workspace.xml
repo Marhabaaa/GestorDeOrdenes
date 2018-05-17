@@ -90,6 +90,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -124,8 +125,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1004" />
-    <option name="width" value="369" />
+    <option name="x" value="1003" />
+    <option name="width" value="370" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectView">
@@ -651,6 +652,50 @@
             <element signature="imports" expanded="true" />
             <element signature="method#ganaciasTotalesPantalla#0;class#Report#0" />
             <element signature="method#stockPantalla#0;class#Report#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/ListaOrdenes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/MapaClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/SList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
           </folding>
         </state>
       </provider>

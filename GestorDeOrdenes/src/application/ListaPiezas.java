@@ -2,7 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
-public class ListaPiezas {
+public class ListaPiezas implements Lista{
 
     private ArrayList<Pieza> list;
 
@@ -46,6 +46,21 @@ public class ListaPiezas {
                 list.get(getIndex(part.getCode())).updateCant(1);
             else
                 list.add(part);
+    }
+
+    @Override
+    public boolean add() {
+        return false;
+    }
+
+    @Override
+    public boolean remove() {
+        return false;
+    }
+
+    @Override
+    public Object get() {
+        return null;
     }
 
     public int size() {
