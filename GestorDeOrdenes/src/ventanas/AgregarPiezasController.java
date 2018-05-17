@@ -70,7 +70,11 @@ public class AgregarPiezasController {
     }
 
     @FXML
-    private void nextButtonAction() {
+    private void nextButtonAction() throws Exception{
+        if(sistema.getOrderListaPiezas(orderNumber).isEmpty())
+            launchFinalizarOrdenNoRevisada();
+        else
+            launchFinalizarOrdenRevisada();
 
         flag = true;
         Stage stage = (Stage) nextButton.getScene().getWindow();
@@ -108,6 +112,41 @@ public class AgregarPiezasController {
         return piezas;
     }
 
+    private void launchFinalizarOrdenRevisada() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
+        Parent root = loader.load();
 
+        //FinalizarOrdenController finalizarOrdenController = loader.getController();
+        //finalizarOrdenController.initVariables(sistema, orderNumber);
 
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(nextButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+
+        //return finalizarOrdenController.getFlag();
+    }
+
+    private void launchFinalizarOrdenNoRevisada() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
+        Parent root = loader.load();
+
+        //FinalizarOrdenController finalizarOrdenController = loader.getController();
+        //finalizarOrdenController.initVariables(sistema, orderNumber);
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(nextButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+
+        //return finalizarOrdenController.getFlag();
+    }
 }

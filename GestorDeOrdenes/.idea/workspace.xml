@@ -103,6 +103,7 @@
         <option value="$PROJECT_DIR$/src/ventanas/Main.java" />
         <option value="$PROJECT_DIR$/src/application/ListaPiezas.java" />
         <option value="$PROJECT_DIR$/src/ventanas/FinalizarOrdenController.java" />
+        <option value="$PROJECT_DIR$/src/application/ListaPiezas.java" />
         <option value="$PROJECT_DIR$/src/ventanas/AgregarPiezasController.java" />
         <option value="$PROJECT_DIR$/src/ventanas/MainController.java" />
       </list>
@@ -684,6 +685,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Report.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
