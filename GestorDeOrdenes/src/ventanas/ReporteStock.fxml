@@ -6,16 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="381.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.MainController">
+<AnchorPane prefHeight="381.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.ReporteStockController">
    <children>
-      <TableView layoutX="75.0" layoutY="91.0" prefHeight="200.0" prefWidth="371.0">
+      <TableView fx:id="table" layoutX="48.0" layoutY="70.0" prefHeight="258.0" prefWidth="426.0">
         <columns>
-          <TableColumn prefWidth="60.0" text="Cod." />
-          <TableColumn prefWidth="244.0" text="Descripción" />
-            <TableColumn minWidth="0.0" prefWidth="66.0" text="Cant." />
+          <TableColumn fx:id="cod" prefWidth="60.0" text="Cod." />
+          <TableColumn fx:id="descripcion" prefWidth="262.0" text="Descripción" />
+            <TableColumn fx:id="cantidad" minWidth="0.0" prefWidth="48.0" text="Cant." />
+            <TableColumn fx:id="precio" prefWidth="55.0" text="Precio" />
         </columns>
       </TableView>
-      <Label layoutX="45.0" layoutY="33.0" text="Ordenes:">
+      <Label layoutX="45.0" layoutY="33.0" text="Stock:">
          <font>
             <Font size="16.0" />
          </font>
