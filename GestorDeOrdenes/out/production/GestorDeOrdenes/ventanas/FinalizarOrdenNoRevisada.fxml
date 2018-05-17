@@ -15,8 +15,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="64.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo estimado de entrega:" />
+      <Text layoutX="55.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No hay tiempo estimado de entrega:" />
       <Button fx:id="nextButton1" layoutX="64.0" layoutY="245.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Cancelar Orden" />
-      <Text layoutX="132.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="....." />
    </children>
 </AnchorPane>

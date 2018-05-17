@@ -189,12 +189,6 @@
               <item name="GestorDeOrdenes" type="b2602c69:ProjectViewProjectNode" />
               <item name="GestorDeOrdenes" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GestorDeOrdenes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestorDeOrdenes" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ventanas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -212,6 +206,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gonzalo Pauchard\Documents\Git\GestorDeOrdenes\GestorDeOrdenes\src\ventanas" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -317,6 +316,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32750398" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
