@@ -1,5 +1,8 @@
 package application;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Orden {
     
 	private int 		orderNumber;	//numero de orden asignado automaticamente
@@ -30,10 +33,10 @@ public class Orden {
 		this.done 		 = done;
 	}
 
-	public Orden(int orderNumber, String description, String dateIn, int clientRut, int techNumber) {
+	public Orden(int orderNumber, String description, int clientRut, int techNumber) {
     	this.orderNumber = orderNumber;
     	this.description = description;
-    	this.dateIn 	 = dateIn;
+    	this.dateIn 	 = getCurrentDate();
     	this.dateOut 	 = null;
         this.setClientRut(clientRut);
         this.setTechNumber(techNumber);
@@ -166,4 +169,18 @@ public class Orden {
 	public int getProfit() {
 		return calculateComplexity() * 1000;
 	}
+
+	public static String getCurrentDate() {
+		Date now = new Date();
+		SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+		return formateador.format(now);
+	}
+
+	public boolean containsPart(int partCode) {
+	    return partsList.contains(partCode);
+    }
+
+    public void addPart(Pieza part) throws SinStockException {
+	    partsList.add(part);
+    }
 }

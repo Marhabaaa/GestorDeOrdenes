@@ -1,8 +1,6 @@
 package ventanas;
 
-import application.RutInvalidoException;
 import application.TelefonoInvalidoException;
-import com.mysql.jdbc.StringUtils;
 import application.SST;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +14,7 @@ import java.sql.SQLException;
 
 public class CrearClienteController {
 
-    @FXML private Label rutLabel;
+    @FXML private TextField rutField;
     @FXML private TextField nameField;
     @FXML private TextField phoneField;
     @FXML private TextField emailField;
@@ -35,7 +33,7 @@ public class CrearClienteController {
         }
 
         try {
-            sistema.addClient(Integer.parseInt(rutLabel.getText()), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
+            sistema.addClient(Integer.parseInt(rutField.getText()), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
             flag = true;
             launchWarning("WarningClienteIngresadoConExito.fxml");
             Stage stage = (Stage) createButton.getScene().getWindow();
@@ -46,6 +44,7 @@ public class CrearClienteController {
             return;
         }
         catch(SQLException e) {
+            System.out.println(e.getMessage());
             launchWarning("WarningClienteNoIngresado.fxml");
             return;
         }
@@ -58,8 +57,8 @@ public class CrearClienteController {
         stage.close();
     }
 
-    public void initVariables(String rut, SST sistema){
-        rutLabel.setText(rut);
+    public void initVariables(String rut, SST sistema) {
+        rutField.setText(rut);
         this.sistema = sistema;
     }
 
@@ -69,7 +68,7 @@ public class CrearClienteController {
 
     private void launchWarning(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(createButton.getScene().getWindow());

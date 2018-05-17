@@ -2,6 +2,7 @@ package ventanas;
 
 import application.RutInvalidoException;
 import application.SST;
+import application.SinTecnicosException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,7 @@ public class MainController {
 	@FXML Label label;
 
 	private SST sistema;
+	private int orderNumber;
 
 	@FXML
 	private void nextButtonAction() throws Exception {
@@ -43,7 +45,13 @@ public class MainController {
 			return;
 		}
 
-		launchAgregarPieza();
+		try {
+            orderNumber = sistema.createOrder(descField.getText(), Integer.parseInt(rutField.getText()));
+            launchAgregarPieza();
+        }
+        catch(SinTecnicosException e) {
+            System.out.println(e.getMessage());
+        }
 	}
 	
 	/*
@@ -121,7 +129,7 @@ public class MainController {
         Parent root = loader.load();
 
         AgregarPiezaController agregarPiezaController = loader.getController();
-        agregarPiezaController.initVariables(sistema);
+        agregarPiezaController.initVariables(sistema, orderNumber);
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);

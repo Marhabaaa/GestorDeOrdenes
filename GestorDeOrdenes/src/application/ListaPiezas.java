@@ -10,11 +10,6 @@ public class ListaPiezas {
         list = new ArrayList<>();
     }
 
-    public boolean add(Pieza part) {
-        list.add(part);
-        return true;
-    }
-
     public boolean remove(Pieza part) {
         list.remove(part);
         return true;
@@ -22,6 +17,35 @@ public class ListaPiezas {
 
     public Pieza get(int index) {
         return list.get(index);
+    }
+
+    public int getIndex(int code) {
+        int i = 0;
+        while(i < list.size()) {
+            if(list.get(i).getCode() == code)
+                break;
+            i++;
+        }
+
+        return i;
+    }
+
+    public boolean contains(int partCode) {
+        int i = 0;
+        while(i < list.size()) {
+            if(list.get(i).getCode() == partCode)
+                return true;
+            i++;
+        }
+
+        return false;
+    }
+
+    public void add(Pieza part) {
+            if(contains(part.getCode()))
+                list.get(getIndex(part.getCode())).updateCant(1);
+            else
+                list.add(part);
     }
 
     public int size() {

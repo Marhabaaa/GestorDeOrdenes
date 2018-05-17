@@ -95,19 +95,14 @@ public class SST {	//Sistema Servicio Tecnico
 		stockMap.put(code, description, cant, price, complex, connection);
 	}
 
-	public void updateStock(int code, int cant) {
+	public void updateStock(int code, int cant) throws SinStockException {
 	    stockMap.updateStock(code, cant);
     }
-	
-	public boolean addOrder(int orderNumber, String desc, String dateIn, int clientRut, int techNumber) {
-		Orden order = new Orden(orderNumber, desc, dateIn, clientRut, techNumber);
-		if(!clientsMap.addOrder(order, order.getClientRut()))
-			return false;
-		
-		//ordersMap.put(order);
-		orderPartsMap.put(order);
-		techsMap.addOrder(order, order.getTechNumber());
-		return true;
+
+    public int createOrder(String description, int clientRut) throws Exception {
+	    orderNumber = getNewOrderNumber();
+	    ordersMap.createOrder(orderNumber, description, clientRut, techsMap.leastWorkload());
+        return orderNumber;
 	}
 	
 	public boolean removeOrder(int code) {
@@ -161,4 +156,9 @@ public class SST {	//Sistema Servicio Tecnico
 	public ListaPiezas getListaPiezas() {
 		return stockMap.toListaPiezas();
 	}
+
+	public void transferPart(int orderNumber, int codPart) throws SinStockException {
+	    ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());
+	    stockMap.get(codPart).oneLess();
+    }
 }

@@ -47,9 +47,9 @@ public class MapaPiezasDeOrdenes {
 	}
 
 	public boolean put(int key, Pieza part) {
-		if(get(key) == null)
+		if(map.get(key) == null)
 			return false;
-		get(key).add(part);
+		map.get(key).add(part);
 		return true;
 	}
 

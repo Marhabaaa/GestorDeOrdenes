@@ -49,9 +49,22 @@ public class MapaOrdenes {
 		map.put(orderNumber, aux);
 	}
 
+	public void createOrder(int orderNumber, String description, int rutClient, int techNumber){
+		Orden order = new Orden(orderNumber, description, rutClient, techNumber);
+		map.put(orderNumber, order);
+	}
+
 	public boolean contains(int key) {
 		return map.containsKey(key);
 	}
+
+	public boolean containsPart(int orderNumber, int partCode) {
+        return map.get(orderNumber).containsPart(partCode);
+    }
+
+    public void addPart(int orderNumber, Pieza part) throws SinStockException {
+	    map.get(orderNumber).addPart(part);
+    }
 
 	public boolean remove(int key) {
 		map.remove(key);
@@ -70,19 +83,6 @@ public class MapaOrdenes {
 			list.add(e.nextElement());
 
 		return list;
-	}
-
-	public Orden[] toArray() {
-		Enumeration<Orden> e = map.elements();
-		Orden[] aux = new Orden[map.size()];
-		int i = 0;
-
-		while(e.hasMoreElements()) {
-			aux[i] = e.nextElement();
-			i++;
-		}
-
-		return aux;
 	}
 
 	public int size() {

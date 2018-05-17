@@ -3,6 +3,7 @@ package ventanas;
 import application.ListaPiezas;
 import application.Pieza;
 import application.SST;
+import application.SinStockException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,12 +27,12 @@ public class AgregarPiezaController {
     @FXML private Button nextButton;
 
     private SST sistema;
-    private ListaPiezas partsList;
+    private int orderNumber;
 
     @FXML
     private void addButtonAction() throws Exception {
-
-
+        sistema.transferPart(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+        //tableA.refresh();
     }
 
     @FXML
@@ -42,8 +43,14 @@ public class AgregarPiezaController {
     @FXML
     private void cancelButtonAction() {
         //flag = false;
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        //Stage stage = (Stage) cancelButton.getScene().getWindow();
+        //stage.close();
+        try {
+            sistema.transferPart(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+        }
+        catch(SinStockException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -51,19 +58,18 @@ public class AgregarPiezaController {
 
     }
 
-    public void initVariables(SST sistema) {
+    public void initVariables(SST sistema, int orderNumber) {
         this.sistema = sistema;
-        partsList = new ListaPiezas();
+        this.orderNumber = orderNumber;
 
         codA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
         descriptionA.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
         cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
         tableA.setItems(getItems());
-        tableA.getColumns().addAll(codA, descriptionA, cantA);
     }
 
-    private ObservableList<Pieza> getItems(){
+    private ObservableList<Pieza> getItems() {
         ListaPiezas list = sistema.getListaPiezas();
         ObservableList<Pieza> piezas = FXCollections.observableArrayList();
         int i = 0;

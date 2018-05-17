@@ -60,8 +60,14 @@ public class Pieza {
 		this.complex = complex;
 	}
 
+	public void oneLess() throws SinStockException {
+		if(cant == 0)
+			throw new SinStockException();
+		cant =- 1;
+	}
+
 	public void updateCant(int diferencia) {
-		cant =+ diferencia;
+        cant =+ diferencia;
 	}
 
 	public void toDB(Connection connection) throws SQLException {
@@ -81,6 +87,11 @@ public class Pieza {
         statement.executeUpdate();
 
         System.out.println("Record is inserted into Inventario table!");
+	}
+
+	public Pieza clone(){
+    	Pieza aux = new Pieza(code, description, 1, price, complex);
+    	return aux;
 	}
 }
 

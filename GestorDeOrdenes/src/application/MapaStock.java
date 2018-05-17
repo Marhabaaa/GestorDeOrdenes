@@ -41,7 +41,7 @@ public class MapaStock {
         map.put(code, aux);
     }
 
-    public void updateStock(int code, int cant) {
+    public void updateStock(int code, int cant) throws SinStockException {
 	    map.get(code).updateCant(cant);
     }
 
@@ -62,7 +62,7 @@ public class MapaStock {
 		Enumeration<Pieza> e = map.elements();
 		ListaPiezas list = new ListaPiezas();
 
-		while(e.hasMoreElements())
+		while (e.hasMoreElements())
 			list.add(e.nextElement());
 
 		return list;
@@ -83,18 +83,5 @@ public class MapaStock {
 
 	public int size() {
 		return map.size();
-	}
-
-	public String[] getStockDescriptions() {
-		int i = 0;
-		ListaPiezas list = toListaPiezas();
-		String[] s = new String[list.size()];
-
-		while(i < list.size()) {
-			s[i] = ((Pieza) list.get(i)).getDescription() + " " + ((Pieza) list.get(i)).getCode();
-			i++;
-		}
-
-		return s;
 	}
 }

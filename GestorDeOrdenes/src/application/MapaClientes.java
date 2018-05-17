@@ -91,19 +91,6 @@ public class MapaClientes {
 		return list;
 	}
 
-	public Cliente[] toArray() {
-		Enumeration<Cliente> e = map.elements();
-		Cliente[] aux = new Cliente[map.size()];
-		int i = 0;
-
-		while(e.hasMoreElements()) {
-			aux[i] = e.nextElement();
-			i++;
-		}
-
-		return aux;
-	}
-
 	public int size() {
 		return map.size();
 	}
