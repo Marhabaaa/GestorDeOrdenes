@@ -12,7 +12,7 @@ public class Report {
 	 * entrega las ganacias de todas las ordenes ya efectuadas
 	 */
 
-	public void ganaciasTotales(SList ordenes) throws IOException{
+	public void ganaciasTotales(ListaOrdenes ordenes) throws IOException{
 		Orden o;
 		
 		File f= new File ("Reporte.txt");

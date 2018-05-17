@@ -2,7 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
-public class ListaPiezas {
+public class ListaPiezas implements Lista{
 
     private ArrayList<Pieza> list;
 

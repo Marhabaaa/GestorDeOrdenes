@@ -161,6 +161,9 @@ public class SST {	//Sistema Servicio Tecnico
 		return stockMap.toListaPiezas();
 	}
 
+	public ListaOrdenes getListaOrdenes(){
+		return ordersMap.toListaOrdenes();
+	}
 	public void addPartToOrder(int orderNumber, int codPart) throws SinStockException {
 	    stockMap.get(codPart).oneLess();
         ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());
