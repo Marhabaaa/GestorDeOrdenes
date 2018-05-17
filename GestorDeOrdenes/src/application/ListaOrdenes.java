@@ -2,7 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
-public class ListaOrdenes {
+public class ListaOrdenes implements Lista {
 
     private ArrayList<Orden> list;
 
@@ -22,6 +22,21 @@ public class ListaOrdenes {
 
     public Orden get(int index) {
         return list.get(index);
+    }
+
+    @Override
+    public boolean add() {
+        return false;
+    }
+
+    @Override
+    public boolean remove() {
+        return false;
+    }
+
+    @Override
+    public Object get() {
+        return null;
     }
 
     public int size() {

@@ -1,8 +1,9 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SList {
+public class SList implements Lista {
 	private ArrayList<Object> list;
 	
 	public SList() {
@@ -22,7 +23,22 @@ public class SList {
 	public Object get(int index) {
 		return list.get(index);
 	}
-	
+
+	@Override
+	public boolean add() {
+		return false;
+	}
+
+	@Override
+	public boolean remove() {
+		return false;
+	}
+
+	@Override
+	public Object get() {
+		return null;
+	}
+
 	public int size() {
 		return list.size();
 	}
