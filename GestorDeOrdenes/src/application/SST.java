@@ -153,12 +153,21 @@ public class SST {	//Sistema Servicio Tecnico
 		return aux.estimateDateOut(order.getComplex());
 	}
 
+	public ListaPiezas getOrderListaPiezas(int orderNumber) {
+	    return ordersMap.get(orderNumber).getPartsList();
+    }
+
 	public ListaPiezas getListaPiezas() {
 		return stockMap.toListaPiezas();
 	}
 
-	public void transferPart(int orderNumber, int codPart) throws SinStockException {
-	    ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());
+	public void addPartToOrder(int orderNumber, int codPart) throws SinStockException {
 	    stockMap.get(codPart).oneLess();
+        ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());
     }
+
+	public void removePartFromOrder(int orderNumber, int codPart) {
+		ordersMap.removePart(orderNumber, codPart);
+		stockMap.get(codPart).oneMore();
+	}
 }

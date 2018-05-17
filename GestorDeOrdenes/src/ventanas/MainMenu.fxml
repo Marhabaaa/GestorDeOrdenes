@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -22,11 +22,6 @@
                      <children>
                         <Button fx:id="nextButton" layoutX="121.0" layoutY="292.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguente" />
                         <TextField fx:id="rutField" layoutX="79.0" layoutY="101.0" promptText="Ej.: 12345678" />
-                        <TextField fx:id="descField" alignment="TOP_LEFT" layoutX="72.0" layoutY="159.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="88.0" prefWidth="162.0" promptText="Desecripción del problema.">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextField>
                         <Label fx:id="label" layoutX="170.0" layoutY="63.0" prefHeight="25.0" prefWidth="116.0" />
                         <Text layoutX="35.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar nueva orden:" wrappingWidth="148.9999978542328">
                            <font>
@@ -39,6 +34,7 @@
                               <Font size="10.0" />
                            </font>
                         </Text>
+                        <TextArea fx:id="descArea" layoutX="57.0" layoutY="157.0" prefHeight="111.0" prefWidth="190.0" promptText="Descripcion del problema..." wrapText="true" />
                      </children>
                   </AnchorPane>
             </content>

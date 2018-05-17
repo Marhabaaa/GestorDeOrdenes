@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="381.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.AgregarPiezaController">
+<AnchorPane prefHeight="381.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.AgregarPiezasController">
    <children>
       <Button fx:id="addButton" layoutX="113.0" layoutY="213.0" mnemonicParsing="false" onAction="#addButtonAction" text="Agregar Pieza" />
       <Button fx:id="deleteButton" layoutX="417.0" layoutY="213.0" mnemonicParsing="false" text="Quitar Pieza" />

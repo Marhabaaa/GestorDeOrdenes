@@ -183,4 +183,8 @@ public class Orden {
     public void addPart(Pieza part) throws SinStockException {
 	    partsList.add(part);
     }
+
+    public void removePart(int partCode) {
+		partsList.remove(partCode);
+	}
 }

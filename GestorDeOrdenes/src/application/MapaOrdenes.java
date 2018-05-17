@@ -66,6 +66,10 @@ public class MapaOrdenes {
 	    map.get(orderNumber).addPart(part);
     }
 
+    public void removePart(int orderNumber, int partCode) {
+	    map.get(orderNumber).removePart(partCode);
+    }
+
 	public boolean remove(int key) {
 		map.remove(key);
 		return true;

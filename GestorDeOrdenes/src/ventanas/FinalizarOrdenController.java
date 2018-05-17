@@ -14,10 +14,16 @@ public class FinalizarOrdenController {
     @FXML private Button finishButton;
     @FXML private Button cancelOrderButton;
 
+    private boolean flag;
+
     @FXML
     private void cancelOrderButtonAction(){
         Stage stage = (Stage) cancelOrderButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean getFlag() {
+        return flag;
     }
 
     //public void initVariables(String rut, SST sistema){

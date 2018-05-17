@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AgregarPiezaController {
+public class AgregarPiezasController {
 
     @FXML private TableView tableA;
     @FXML private TableColumn<Pieza, Integer> codA;
@@ -34,35 +34,46 @@ public class AgregarPiezaController {
 
     private SST sistema;
     private int orderNumber;
+    private boolean flag;
 
 
     @FXML
-    private void addButtonAction() throws Exception {
-        sistema.transferPart(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
-        //tableA.refresh();
-    }
-
-    @FXML
-    private void deleteButtonAction() throws Exception{
-
-    }
-
-    @FXML
-    private void cancelButtonAction() {
-        //flag = false;
-        //Stage stage = (Stage) cancelButton.getScene().getWindow();
-        //stage.close();
+    private void addButtonAction() throws SinStockException {
         try {
-            sistema.transferPart(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+            sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
         }
         catch(SinStockException e) {
             System.out.println(e.getMessage());
         }
+
+        tableA.refresh();
+        tableB.setItems(getItems(sistema.getOrderListaPiezas(orderNumber)));
+        tableB.refresh();
+    }
+
+    @FXML
+    private void deleteButtonAction() {
+
+        if(tableB.getSelectionModel().getSelectedItem() != null)
+            sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
+
+        tableB.setItems(getItems(sistema.getOrderListaPiezas(orderNumber)));
+        tableA.refresh();
+        tableB.refresh();
+    }
+
+    @FXML
+    private void cancelButtonAction() {
+        flag = false;
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void nextButtonAction() {
-
+        flag = true;
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     public void initVariables(SST sistema, int orderNumber) {
@@ -73,11 +84,18 @@ public class AgregarPiezaController {
         descriptionA.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
         cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
-        tableA.setItems(getItems());
+        codB.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionB.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantB.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+
+        tableA.setItems(getItems(sistema.getListaPiezas()));
     }
 
-    private ObservableList<Pieza> getItems() {
-        ListaPiezas list = sistema.getListaPiezas();
+    public boolean getFlag() {
+        return flag;
+    }
+
+    private ObservableList<Pieza> getItems(ListaPiezas list) {
         ObservableList<Pieza> piezas = FXCollections.observableArrayList();
         int i = 0;
         while(i < list.size()) {

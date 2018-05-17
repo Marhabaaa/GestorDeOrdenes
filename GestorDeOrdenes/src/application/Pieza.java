@@ -63,7 +63,11 @@ public class Pieza {
 	public void oneLess() throws SinStockException {
 		if(cant == 0)
 			throw new SinStockException();
-		cant =- 1;
+		cant--;
+	}
+
+	public  void oneMore() {
+    	cant++;
 	}
 
 	public void updateCant(int diferencia) {

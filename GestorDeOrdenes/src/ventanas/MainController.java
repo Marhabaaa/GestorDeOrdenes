@@ -13,11 +13,9 @@ import javafx.stage.Stage;
 
 public class MainController {
 
-	//dafsfasdf
-
 	@FXML private Button nextButton;
 	@FXML private TextField rutField;
-	@FXML private TextField descField;
+	@FXML private TextArea descArea;
 	@FXML Label label;
 
 	private SST sistema;
@@ -40,14 +38,19 @@ public class MainController {
 			return;
 		}
 
-		if (descField.getText().length() == 0) {
+		if (descArea.getText().length() == 0) {
 			launchWarning("WarningCampoProblemaVacio.fxml");
 			return;
 		}
 
 		try {
-            orderNumber = sistema.createOrder(descField.getText(), Integer.parseInt(rutField.getText()));
-            launchAgregarPieza();
+            orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
+            if(launchAgregarPieza())
+            	if(sistema.getOrderListaPiezas(orderNumber).isEmpty())
+					launchFinalizarOrdenNoRevisada();
+				else
+					launchFinalizarOrdenRevisada();
+
         }
         catch(SinTecnicosException e) {
             System.out.println(e.getMessage());
@@ -121,23 +124,63 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 
-        return ((CrearClienteController) loader.getController()).getFlag();
+        return crearClienteController.getFlag();
 	}
 
-	private void launchAgregarPieza() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
-        Parent root = loader.load();
+	private boolean launchAgregarPieza() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarPiezas.fxml"));
+		Parent root = loader.load();
 
-        AgregarPiezaController agregarPiezaController = loader.getController();
-        agregarPiezaController.initVariables(sistema, orderNumber);
+		AgregarPiezasController agregarPiezasController = loader.getController();
+		agregarPiezasController.initVariables(sistema, orderNumber);
 
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(nextButton.getScene().getWindow());
+		Stage stage = new Stage();
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(nextButton.getScene().getWindow());
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.resizableProperty().setValue(false);
-        stage.show();
-    }
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.resizableProperty().setValue(false);
+		stage.showAndWait();
+
+		return agregarPiezasController.getFlag();
+	}
+
+	private void launchFinalizarOrdenRevisada() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
+		Parent root = loader.load();
+
+		//FinalizarOrdenController finalizarOrdenController = loader.getController();
+		//finalizarOrdenController.initVariables(sistema, orderNumber);
+
+		Stage stage = new Stage();
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(nextButton.getScene().getWindow());
+
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.resizableProperty().setValue(false);
+		stage.showAndWait();
+
+		//return finalizarOrdenController.getFlag();
+	}
+
+	private void launchFinalizarOrdenNoRevisada() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
+		Parent root = loader.load();
+
+		//FinalizarOrdenController finalizarOrdenController = loader.getController();
+		//finalizarOrdenController.initVariables(sistema, orderNumber);
+
+		Stage stage = new Stage();
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(nextButton.getScene().getWindow());
+
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.resizableProperty().setValue(false);
+		stage.showAndWait();
+
+		//return finalizarOrdenController.getFlag();
+	}
 }
