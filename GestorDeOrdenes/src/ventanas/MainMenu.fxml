@@ -43,11 +43,6 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Ordenes">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
             <Tab text="Clientes">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -58,12 +53,52 @@
                             <TableColumn prefWidth="207.0" text="Nombre" />
                           </columns>
                         </TableView>
+                        <Button layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="185.0" layoutY="305.0" mnemonicParsing="false" text="Eliminar" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Tecnicos">
+            <Tab text="Técnicos">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutY="-1.0" prefHeight="289.0" prefWidth="304.0">
+                          <columns>
+                            <TableColumn prefWidth="81.0" text="Número" />
+                            <TableColumn prefWidth="222.0" text="Nombre" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="22.0" layoutY="303.0" mnemonicParsing="false" text="Nuevo Técnico" />
+                        <Button layoutX="152.0" layoutY="303.0" mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="214.0" layoutY="303.0" mnemonicParsing="false" text="Eliminar" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Ordenes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="80.0" layoutY="138.0" mnemonicParsing="false" text="Ver Ordenes">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Piezas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="94.0" layoutY="138.0" mnemonicParsing="false" text="Ver Stock">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
         </tabs>

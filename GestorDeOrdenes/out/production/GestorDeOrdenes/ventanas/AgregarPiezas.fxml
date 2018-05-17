@@ -22,10 +22,10 @@
         <columns>
           <TableColumn fx:id="codA" prefWidth="46.0" text="Cod." />
           <TableColumn fx:id="descriptionA" minWidth="0.0" prefWidth="157.0" text="Descripción" />
-            <TableColumn fx:id="cantA" prefWidth="50.0" text="Cant." />
+            <TableColumn fx:id="cantA" prefWidth="76.0" text="Cant." />
         </columns>
       </TableView>
-      <TableView layoutX="322.0" layoutY="85.0" prefHeight="184.0" prefWidth="269.0">
+      <TableView fx:id="tableB" layoutX="322.0" layoutY="85.0" prefHeight="184.0" prefWidth="269.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Cod." />
           <TableColumn prefWidth="119.0" text="Descripción" />

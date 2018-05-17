@@ -20,14 +20,19 @@ public class AgregarPiezaController {
     @FXML private TableColumn<Pieza, Integer> codA;
     @FXML private TableColumn<Pieza, String> descriptionA;
     @FXML private TableColumn<Pieza, Integer> cantA;
+
     @FXML private TableView tableB;
+    @FXML private TableColumn<Pieza, Integer> codB;
+    @FXML private TableColumn<Pieza, String> descriptionB;
+    @FXML private TableColumn<Pieza, Integer> cantB;
+
     @FXML private Button addButton;
     @FXML private Button deleteButton;
     @FXML private Button cancelButton;
     @FXML private Button nextButton;
 
     private SST sistema;
-    private ListaPiezas partsList;
+
 
     @FXML
     private void addButtonAction() throws Exception {
@@ -54,13 +59,14 @@ public class AgregarPiezaController {
 
     public void initVariables(SST sistema) {
         this.sistema = sistema;
-        partsList = new ListaPiezas();
 
         codA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
         descriptionA.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
         cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
         tableA.setItems(getItems());
+
+        //((Pieza)tableA.getSelectionModel().getSelectedItem()).getCode();
     }
 
     private ObservableList<Pieza> getItems(){
@@ -74,4 +80,6 @@ public class AgregarPiezaController {
 
         return piezas;
     }
+
 }
+

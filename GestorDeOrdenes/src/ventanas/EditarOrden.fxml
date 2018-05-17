@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="381.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.CrearClienteController">
+<AnchorPane prefHeight="381.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.AgregarPiezaController">
    <children>
-      <TextField fx:id="nameField" layoutX="79.0" layoutY="119.0" />
-      <TextField fx:id="phoneField" layoutX="79.0" layoutY="162.0" promptText="Ej.: 987654321" />
-      <TextField fx:id="emailField" layoutX="79.0" layoutY="205.0" />
-      <RadioButton fx:id="isBusinessButton" layoutX="144.0" layoutY="250.0" mnemonicParsing="false" text="es empresa" />
-      <Button fx:id="createButton" layoutX="169.0" layoutY="319.0" mnemonicParsing="false" onAction="#createButtonAction" text="Guardar Cambios" />
-      <Button fx:id="cancelButton" layoutX="48.0" layoutY="319.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancelar" />
-      <Text layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Cliente:" wrappingWidth="88.99999785423279">
+      <Button fx:id="addButton" layoutX="113.0" layoutY="213.0" mnemonicParsing="false" onAction="#addButtonAction" text="Agregar Pieza" />
+      <Button fx:id="deleteButton" layoutX="417.0" layoutY="213.0" mnemonicParsing="false" text="Quitar Pieza" />
+      <Button fx:id="cancelButton" layoutX="31.0" layoutY="322.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancelar" />
+      <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Orden:" wrappingWidth="137.87597346305847">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="16.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
-      <Text layoutX="29.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:" />
-      <Text layoutX="15.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:" />
-      <Text layoutX="20.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
-      <Text layoutX="235.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text layoutX="235.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text layoutX="133.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9 digitos.">
+      <Button fx:id="nextButton" layoutX="474.0" layoutY="322.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Guardar Cambios" />
+      <TableView fx:id="tableA" layoutX="18.0" layoutY="85.0" prefHeight="116.0" prefWidth="280.0">
+        <columns>
+          <TableColumn fx:id="codA" prefWidth="46.0" text="Cod." />
+          <TableColumn fx:id="descriptionA" minWidth="0.0" prefWidth="157.0" text="Descripción" />
+            <TableColumn fx:id="cantA" prefWidth="76.0" text="Cant." />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableB" layoutX="322.0" layoutY="85.0" prefHeight="116.0" prefWidth="269.0">
+        <columns>
+          <TableColumn fx:id="codB" prefWidth="75.0" text="Cod." />
+          <TableColumn fx:id="descriptionB" prefWidth="119.0" text="Descripción" />
+            <TableColumn fx:id="cantB" prefWidth="74.0" text="Cant." />
+        </columns>
+      </TableView>
+      <Text layoutX="23.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Bodega:" wrappingWidth="119.87597603537142">
          <font>
-            <Font size="10.0" />
+            <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="85.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campos con * son obligatorios.">
+      <Text layoutX="322.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piezas Agregadas:" wrappingWidth="119.87597346305847">
          <font>
-            <Font size="10.0" />
+            <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="nameField1" layoutX="79.0" layoutY="76.0" />
+      <Label layoutX="180.0" layoutY="275.0" text="Técnico: " />
+      <TextField fx:id="technicalField" layoutX="235.0" layoutY="271.0" />
    </children>
 </AnchorPane>
