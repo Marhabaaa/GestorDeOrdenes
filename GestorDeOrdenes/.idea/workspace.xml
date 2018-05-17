@@ -15,8 +15,8 @@
       <file leaf-file-name="AgregarPiezaController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="-119">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
             </state>
           </provider>
         </entry>
@@ -24,7 +24,7 @@
       <file leaf-file-name="FXMLLoader.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="26299">
               <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
               <folding>
                 <element signature="e#66921#66922#0" expanded="true" />
@@ -36,7 +36,7 @@
       <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/event/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
+            <state relative-caret-position="2720">
               <caret line="197" selection-start-line="197" selection-end-line="197" />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/Scene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="38590">
               <caret line="2494" selection-start-line="2494" selection-end-line="2494" />
               <folding>
                 <element signature="e#66617#66618#0" expanded="true" />
@@ -58,7 +58,7 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="130509">
               <caret line="8413" selection-start-line="8413" selection-end-line="8413" />
             </state>
           </provider>
@@ -67,7 +67,7 @@
       <file leaf-file-name="Button.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/control/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="2278">
               <caret line="186" selection-start-line="186" selection-end-line="186" />
             </state>
           </provider>
@@ -76,14 +76,8 @@
       <file leaf-file-name="SST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/SST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="357">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#4119#4120#0" expanded="true" />
-                <element signature="e#4167#4168#0" expanded="true" />
-                <element signature="e#4591#4592#0" expanded="true" />
-                <element signature="e#4629#4630#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -91,12 +85,8 @@
       <file leaf-file-name="MapaPiezasDeOrdenes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/MapaPiezasDeOrdenes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-738">
+            <state relative-caret-position="153">
               <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#1576#1577#0" expanded="true" />
-                <element signature="e#1602#1603#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -104,7 +94,7 @@
       <file leaf-file-name="Orden.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/Orden.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="1734">
               <caret line="147" column="41" selection-start-line="147" selection-start-column="41" selection-end-line="147" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,12 +106,8 @@
       <file leaf-file-name="ListaPiezas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/ListaPiezas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
+            <state relative-caret-position="697">
               <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-              <folding>
-                <element signature="e#306#307#0" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -172,7 +158,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,8 +183,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,37 +273,34 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32838285" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32750398" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2640264" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2640264" />
       <window_info anchor="bottom" id="Floobits" order="7" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32838285" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21482602" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39933994" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32750398" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -333,10 +316,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="64" column="77" selection-start-line="64" selection-start-column="77" selection-end-line="64" selection-end-column="77" />
-          <folding>
-            <element signature="e#2224#2225#0" expanded="true" />
-            <element signature="e#2258#2259#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -354,10 +333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#332#333#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -372,10 +347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding>
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -404,12 +375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2533">
           <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
-          <folding>
-            <element signature="e#4119#4120#0" expanded="true" />
-            <element signature="e#4167#4168#0" expanded="true" />
-            <element signature="e#4591#4592#0" expanded="true" />
-            <element signature="e#4629#4630#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -424,10 +389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="64" column="77" selection-start-line="64" selection-start-column="77" selection-end-line="64" selection-end-column="77" />
-          <folding>
-            <element signature="e#2224#2225#0" expanded="true" />
-            <element signature="e#2258#2259#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -483,13 +444,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java" />
     <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -497,13 +452,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java" />
     <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -511,13 +460,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ventanas/PiezasAgregadasFinalizarController.java" />
     <entry file="file://$PROJECT_DIR$/src/ventanas/CrearClienteController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-156">
@@ -599,10 +542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="62" column="51" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
-          <folding>
-            <element signature="e#1302#1303#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -638,10 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding>
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,29 +591,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="86" selection-start-line="86" selection-end-line="86" />
-          <folding>
-            <element signature="e#2224#2225#0" expanded="true" />
-            <element signature="e#2258#2259#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/SST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="357">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#4119#4120#0" expanded="true" />
-            <element signature="e#4167#4168#0" expanded="true" />
-            <element signature="e#4591#4592#0" expanded="true" />
-            <element signature="e#4629#4630#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Orden.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
+        <state relative-caret-position="1734">
           <caret line="147" column="41" selection-start-line="147" selection-start-column="41" selection-end-line="147" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -688,29 +613,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/ListaPiezas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
+        <state relative-caret-position="697">
           <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-          <folding>
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#332#333#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/MapaPiezasDeOrdenes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-738">
+        <state relative-caret-position="153">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1602#1603#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="26299">
           <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
           <folding>
             <element signature="e#66921#66922#0" expanded="true" />
@@ -720,28 +637,28 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="130509">
           <caret line="8413" selection-start-line="8413" selection-end-line="8413" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/control/Button.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="2278">
           <caret line="186" selection-start-line="186" selection-end-line="186" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/event/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="2720">
           <caret line="197" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="38590">
           <caret line="2494" selection-start-line="2494" selection-end-line="2494" />
           <folding>
             <element signature="e#66617#66618#0" expanded="true" />
@@ -752,8 +669,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="-119">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
         </state>
       </provider>
     </entry>
