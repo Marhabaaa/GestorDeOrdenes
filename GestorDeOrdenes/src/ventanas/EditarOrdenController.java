@@ -24,7 +24,7 @@ public class EditarOrdenController {
     @FXML private Button cancelButton;
     @FXML private Button saveButton;
 
-    @FXML private TextField technicalField;
+    @FXML private TextField technicianField;
 
 
 }

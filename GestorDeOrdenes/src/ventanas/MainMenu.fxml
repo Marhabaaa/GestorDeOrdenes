@@ -53,8 +53,8 @@
                             <TableColumn prefWidth="207.0" text="Nombre" />
                           </columns>
                         </TableView>
-                        <Button layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
-                        <Button layoutX="185.0" layoutY="305.0" mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
+                        <Button fx:id="deleteClientButton" layoutX="185.0" layoutY="305.0" mnemonicParsing="false" text="Eliminar" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -68,9 +68,9 @@
                             <TableColumn prefWidth="222.0" text="Nombre" />
                           </columns>
                         </TableView>
-                        <Button layoutX="22.0" layoutY="303.0" mnemonicParsing="false" text="Nuevo Técnico" />
-                        <Button layoutX="152.0" layoutY="303.0" mnemonicParsing="false" text="Editar" />
-                        <Button layoutX="214.0" layoutY="303.0" mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="newTechnicianButton" layoutX="22.0" layoutY="303.0" mnemonicParsing="false" text="Nuevo Técnico" />
+                        <Button fx:id="editTechnicianButton" layoutX="152.0" layoutY="303.0" mnemonicParsing="false" text="Editar" />
+                        <Button fx:id="deleteTecnhicianButton" layoutX="214.0" layoutY="303.0" mnemonicParsing="false" text="Eliminar" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -78,12 +78,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="80.0" layoutY="138.0" mnemonicParsing="false" text="Ver Ordenes">
+                        <Button fx:id="showOrdersButton" layoutX="80.0" layoutY="138.0" mnemonicParsing="false" onAction="#ShowOrdersButtonAction" text="Ver Ordenes">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Button>
-                        <Button layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
+                        <Button fx:id="generateReportOrdersButton" layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -91,12 +91,12 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="94.0" layoutY="138.0" mnemonicParsing="false" text="Ver Stock">
+                        <Button fx:id="showStockButton" layoutX="94.0" layoutY="138.0" mnemonicParsing="false" onAction="#ShowStockButtonAction" text="Ver Stock">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Button>
-                        <Button layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
+                        <Button fx:id="generateReportStockButton" layoutX="100.0" layoutY="183.0" mnemonicParsing="false" onAction="#GenerateReportOrdersButtonAction" text="Generar Reporte" />
                      </children>
                   </AnchorPane>
               </content>
