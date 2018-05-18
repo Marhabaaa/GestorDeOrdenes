@@ -375,5 +375,18 @@ public class MainController {
 		}
 	}
 
+	@FXML
+	private void DeleteClientButtonAction(){
+		if(clientsTable.getSelectionModel().getSelectedItem() != null){
+			try {
+				sistema.removeClient(((Cliente) clientsTable.getSelectionModel().getSelectedItem()).getRut());
+				techsTable.refresh();
+				System.out.println("Se ha eliminado el cliente con exito");
+			} catch(ClienteTieneOrdenesException e){
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
 }
 

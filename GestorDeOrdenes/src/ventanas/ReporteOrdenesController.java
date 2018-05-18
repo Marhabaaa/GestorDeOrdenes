@@ -18,6 +18,7 @@ public class ReporteOrdenesController {
     @FXML private TableColumn<Orden, Integer> cliente;
     @FXML private TableColumn<Orden, Integer> tecnico;
     @FXML private TableColumn<Orden, Integer> ganancia;
+    @FXML private TableColumn<Orden, String> entregada;
     @FXML private Button editButton;
     @FXML private Button deteleButton;
 
@@ -32,6 +33,7 @@ public class ReporteOrdenesController {
         cliente.setCellValueFactory(new PropertyValueFactory<Orden, Integer>("clientRut"));
         tecnico.setCellValueFactory(new PropertyValueFactory<Orden, Integer>("techNumber"));
         ganancia.setCellValueFactory(new PropertyValueFactory<Orden, Integer>("price"));
+        entregada.setCellValueFactory(new PropertyValueFactory<Orden, String>("entregada"));
 
         table.setItems(getItems());
     }
@@ -41,6 +43,7 @@ public class ReporteOrdenesController {
         ListaOrdenes list = sistema.getListaOrdenes();
         ObservableList<Orden> ordenes = FXCollections.observableArrayList();
         int i = 0;
+        String checked;
         while(i < list.size()) {
             ordenes.add(list.get(list.size() - i - 1));
             i++;

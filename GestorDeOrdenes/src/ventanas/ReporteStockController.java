@@ -4,10 +4,15 @@ import application.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ReporteStockController {
 
@@ -18,6 +23,7 @@ public class ReporteStockController {
     @FXML private TableColumn<Pieza, Integer> complejidad;
     @FXML private TableColumn<Pieza, Integer> precio;
 
+    @FXML private Button refreshButton;
     @FXML private Button newPartButton;
     @FXML private Button editButton;
     @FXML private Button deteleButton;
@@ -49,6 +55,37 @@ public class ReporteStockController {
         return piezas;
     }
 
+    @FXML
+    private void refreshButtonAction(){
+        table.refresh();
+    }
 
+    @FXML
+    private void newPartButtonAction() throws Exception {
+        try {
+            launchCrearPieza();
+            table.refresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void launchCrearPieza() throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearPieza.fxml"));
+        Parent root = loader.load();
+
+        NuevaPiezaController nuevaPiezaController = loader.getController();
+        nuevaPiezaController.initVariables(sistema);
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(newPartButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+
+    }
 
 }

@@ -54,9 +54,12 @@ public class MapaClientes {
         return map.containsKey(key);
     }
 
-	public boolean remove(int key) {
-		map.remove(key);
-		return true;
+	public boolean remove(int key) throws ClienteTieneOrdenesException {
+
+		if(map.get(key).getOrders().isEmpty()) {
+			map.remove(key);
+		}
+		throw new ClienteTieneOrdenesException();
 	}
 
     public Cliente get(int key) {
