@@ -50,7 +50,7 @@
                           </columns>
                         </TableView>
                         <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
-                        <Button fx:id="deleteClientButton" layoutX="185.0" layoutY="305.0" mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="deleteClientButton" layoutX="185.0" layoutY="305.0" mnemonicParsing="false" onAction="#DeleteClientButtonAction" text="Eliminar" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -79,7 +79,7 @@
                               <Font size="21.0" />
                            </font>
                         </Button>
-                        <Button fx:id="generateReportOrdersButton" layoutX="100.0" layoutY="183.0" mnemonicParsing="false" text="Generar Reporte" />
+                        <Button fx:id="generateReportOrdersButton" layoutX="100.0" layoutY="183.0" mnemonicParsing="false" onAction="#GenerateReportOrdersButtonAction" text="Generar Reporte" />
                      </children></AnchorPane>
             </content>
           </Tab>

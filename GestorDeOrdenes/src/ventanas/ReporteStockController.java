@@ -65,6 +65,16 @@ public class ReporteStockController {
         }
     }
 
+    @FXML
+    private void deleteButtonAction() throws Exception{
+        if(table.getSelectionModel().getSelectedItem() != null){
+            sistema.removePart(((Pieza) table.getSelectionModel().getSelectedItem()).getCode());
+            table.setItems(getItems());
+            table.refresh();
+            System.out.println("Se ha eliminado la pieza con exito");
+        }
+    }
+
     private void launchCrearPieza() throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearPieza.fxml"));
         Parent root = loader.load();

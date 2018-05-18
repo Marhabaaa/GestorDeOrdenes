@@ -1,12 +1,15 @@
 package application;
 //Importamos clases que se usaran
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.*;
-
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Report {
-	private int suma;
+
 	/*
 	 * creo un archivo
 	 * entrega las ganacias de todas las ordenes ya efectuadas
@@ -14,11 +17,39 @@ public class Report {
 
 	public void ganaciasTotales(ListaOrdenes ordenes) throws IOException{
 		Orden o;
+		int suma;
+
+		FileWriter flwriter = null;
+		try {
+			suma=0;
+			flwriter = new FileWriter("C:\\Users\\");
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			bfwriter.write(" Numero de orden 	    	Tecnico			Ganacia por orden " + "\n");
+			for (int i = 0; i < ordenes.size(); i++) {
+				o = ordenes.get(i);
+				if (o.isDone()) {
+					bfwriter.write(" " + o.getOrderNumber() + "				" + o.getTechNumber() + "				" + o.getProfit() + "\n");
+					suma = suma + o.getProfit();
+				}
+			}
+			bfwriter.close();
+			System.out.println("Archivo Reporte Creado Correctamente");
+		} catch (IOException e){
+			e.printStackTrace();
+		} finally {
+			if (flwriter!=null){
+				try{
+					flwriter.close();
+				} catch (IOException e){
+					e.printStackTrace();
+				}
+			}
+		}
+
 		
-		File f= new File ("Reporte.txt");
+		/*File f= new File ("Reporte.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter("Reporte.txt"));
 		if(f.exists()) {
-
 			bw.write(" Numero de orden 	    	Tecnico			Ganacia por orden ");
 			for (int i=0;i<ordenes.size();i++) {
 				o = (Orden)ordenes.get(i);
@@ -31,36 +62,15 @@ public class Report {
 			bw.newLine();
 			bw.write("el precio total es: "+ suma);
 			bw.close();	
-		}
-		}
-		/*
-		 * muestra por pantalla todas las ordenes ya efectuadas y las ganancias totales
-		 */
-	public void ganaciasTotalesPantalla(SList ordenes) throws IOException {
-		Orden o;
-		
-		System.out.println("    Numero de orden 	    	Tecnico			Ganacia por orden ");
-		for (int i=0;i<ordenes.size();i++) {
-			
-			o = (Orden)ordenes.get(i);
-			if(o.isDone()) {
-			System.out.println(" " + o.getOrderNumber()+"		" + o.getTechNumber()+ "		" + o.getProfit()+"\n");
-			   suma = suma + o.getProfit();
-			}
-			System.out.println("el precio total es: "+ suma);
-		}
+		}*/
 	}
-		/*
-		 * crea un archivo 
-		 * con todo el inventario disponible al momento
-		 */
+
 	
 	public void stock(SList stock) throws IOException {
 		Pieza p;
 		File f= new File ("ReporteStock.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter("ReporteStock.txt"));
 		if(f.exists()) {
-
 			bw.write(" Matarial del inventario \n");
 			bw.write("Codigo           Nombre                       Cantidad \n");
 			for (int i=0;i<stock.size();i++) {
@@ -72,23 +82,8 @@ public class Report {
 			
 			bw.close();	
 		}
-
-		
 	}
-	/*
-	 * muestra por pantalle el inventario disponible al momento
-	 */
-	public void stockPantalla(SList stock) throws IOException {
-		
-		Pieza p;
-			System.out.println("Codigo           Nombre                       Cantidad ");
-			for (int i=0;i<stock.size();i++) {
-				p = (Pieza)stock.get(i);
-				System.out.println(" " +p.getCode()+ "		"+p.getDescription()+"		"+p.getCant() );	
-			}
 
-		
-	}
 }
 
 

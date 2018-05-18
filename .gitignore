@@ -1,2 +1,6 @@
 
 *.class
+
+GestorDeOrdenes/\.idea/workspace\.xml
+
+*.xml

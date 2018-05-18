@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
+
 public class MainController {
 
 	@FXML private Button nextButton;
@@ -93,7 +95,7 @@ public class MainController {
 
 
 	@FXML
-	private void GenerateReportOrdersButtonAction() throws Exception {
+	private void GenerateReportOrdersButtonAction() throws IOException {
 		reporte.ganaciasTotales(sistema.getListaOrdenes());
 		System.out.println("Se ha generado el reporte");
 	}
@@ -320,6 +322,7 @@ public class MainController {
 		if(clientsTable.getSelectionModel().getSelectedItem() != null){
 			try {
 				sistema.removeClient(((Cliente) clientsTable.getSelectionModel().getSelectedItem()).getRut());
+				techsTable.setItems(getTechsItems());
 				techsTable.refresh();
 				System.out.println("Se ha eliminado el cliente con exito");
 			} catch(ClienteTieneOrdenesException e){

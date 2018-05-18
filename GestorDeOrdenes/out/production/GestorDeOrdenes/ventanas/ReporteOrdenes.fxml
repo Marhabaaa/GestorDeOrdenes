@@ -13,7 +13,8 @@
             <TableColumn fx:id="problemaColumn" maxWidth="450.0" minWidth="263.0" prefWidth="263.0" text="Problema" />
           <TableColumn fx:id="clienteColumn" minWidth="0.0" resizable="false" text="Cliente" />
             <TableColumn fx:id="tecnicoColumn" prefWidth="52.0" resizable="false" text="Técnico" />
-            <TableColumn fx:id="gananciaColumn" maxWidth="241.0" prefWidth="64.0" resizable="false" text="Ganancia" />
+            <TableColumn fx:id="gananciaColumn" maxWidth="241.0" prefWidth="89.0" resizable="false" text="Ganancia" />
+            <TableColumn fx:id="entregadaColumn" minWidth="70.0" prefWidth="70.0" text="Entregada" />
         </columns>
       </TableView>
       <Button fx:id="editButton" layoutX="136.0" layoutY="336.0" mnemonicParsing="false" onAction="#editButtonAction" text="Editar" />
