@@ -2,7 +2,7 @@ package application;
 
 import com.mysql.jdbc.StringUtils;
 
-public class Persona {
+public abstract class Persona {
 	
 	protected int 	 rut;
     protected String name;
