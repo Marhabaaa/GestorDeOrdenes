@@ -158,7 +158,11 @@ public class SST {	//Sistema Servicio Tecnico
 	public void removeTechnician(int techNumber) throws TecnicoOcupadoException {
 		techsMap.remove(techNumber);
 	}
-	
+
+	public void removePart(int partNumber){
+		stockMap.remove(partNumber);
+	}
+
 	public Cliente getClient(String rut) throws RutInvalidoException {
 		return clientsMap.get(rut);
 	}

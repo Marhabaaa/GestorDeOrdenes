@@ -31,7 +31,7 @@ public class Orden {
 		this.partsList 	 = partsList;
 		this.complex 	 = complex;
 		this.isChecked 	 = checked;
-		this.isDone = isDone;
+		setIsDone(isDone);
 	}
 
 	public Orden(int orderNumber, String description, int clientRut, int techNumber) {
@@ -46,6 +46,7 @@ public class Orden {
         this.complex 	 = 0;
         this.isChecked 	 = false;
         this.isDone      = false;
+        this.entregada 	 = "No";
     }
     
     public void set() {
@@ -138,8 +139,9 @@ public class Orden {
 		return isDone;
 	}
 
-	public void setDone(boolean done) {
-		this.isDone = done;
+	public void setIsDone(boolean isDone) {
+    	entregada="Si";
+		this.isDone = isDone;
 	}
 	
 	public int calculateComplexity() {	//calcula complejidad sumando la complejidad de cada pieza
@@ -189,11 +191,5 @@ public class Orden {
 		partsList.remove(partCode);
 	}
 
-	private void setEntregada() {
-		if(isDone()){
-			entregada="Si";
-		}else{
-			entregada="No";
-		}
-	}
+
 }
