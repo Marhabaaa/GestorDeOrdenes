@@ -16,54 +16,33 @@ import javafx.collections.ObservableList;
 
 public class MainController {
 
-	//dafsfasdf
-
-	@FXML
-	private Button nextButton;
-	@FXML
-	private TextField rutField;
-	@FXML
-	private TextArea descArea;
+	@FXML private Button nextButton;
+	@FXML private TextField rutField;
+	@FXML private TextArea descArea;
 
 
-	@FXML
-	private Button editClientButton;
-	@FXML
-	private Button deleteClientButton;
+	@FXML private Button editClientButton;
+	@FXML private Button deleteClientButton;
 
-	@FXML
-	private Button newTechnicianButton;
-	@FXML
-	private Button editTechnicianButton;
-	@FXML
-	private Button deleteTecnhicianButton;
+	@FXML private Button newTechnicianButton;
+	@FXML private Button editTechnicianButton;
+	@FXML private Button deleteTecnhicianButton;
 
-	@FXML
-	private Button showOrdersButton;
-	@FXML
-	private Button generateReportOrdersButton;
+	@FXML private Button showOrdersButton;
+	@FXML private Button generateReportOrdersButton;
 
-	@FXML
-	private Button showStockButton;
-	@FXML
-	private Button generateReportStockButton;
+	@FXML private Button showStockButton;
+	@FXML private Button generateReportStockButton;
 
-	@FXML
-	private TableView clientsTable;
-	@FXML
-	private TableColumn<Persona, Integer> rutCliente;
-	@FXML
-	private TableColumn<Persona, String> nombreCliente;
+	@FXML private TableView clientsTable;
+	@FXML private TableColumn<Persona, Integer> rutClienteColumn;
+	@FXML private TableColumn<Persona, String> nombreClienteColumn;
 
-	@FXML
-	private TableView techsTable;
-	@FXML
-	private TableColumn<Tecnico, Integer> numeroTecnico;
-	@FXML
-	private TableColumn<Persona, String> nombreTecnico;
+	@FXML private TableView techsTable;
+	@FXML private TableColumn<Tecnico, Integer> numeroTecnicoColumn;
+	@FXML private TableColumn<Persona, String> nombreTecnicoColumn;
 
-	@FXML
-	Label label;
+	@FXML private Label label;
 
 	private SST sistema;
 	private Report reporte;
@@ -93,11 +72,13 @@ public class MainController {
 
 		try {
 			orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
-			if (launchAgregarPieza()) ;
-			if (sistema.getOrderListaPiezas(orderNumber).isEmpty())
-				launchFinalizarOrdenNoRevisada();
-			else
-				launchFinalizarOrdenRevisada();
+			if (launchAgregarPieza()) {
+			    sistema.addOrder(orderNumber);
+			    launchWarning("WarningOrdenIngresadaConExito.fxml");
+            }
+            else
+                sistema.cancelOrder(orderNumber);
+
 		} catch (SinTecnicosException e) {
 			System.out.println(e.getMessage());
 		}
@@ -243,46 +224,6 @@ public class MainController {
 		stage.show();
 	}
 
-	private void launchFinalizarOrdenRevisada() throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
-		Parent root = loader.load();
-
-		FinalizarOrdenController finalizarOrdenController = loader.getController();
-		finalizarOrdenController.initVariables(sistema);
-
-		Stage stage = new Stage();
-		stage.initModality(Modality.WINDOW_MODAL);
-		stage.initOwner(nextButton.getScene().getWindow());
-
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.resizableProperty().setValue(false);
-		stage.showAndWait();
-
-		System.out.print("Se ha creado la orden correctamente");
-		//return finalizarOrdenController.getFlag();
-	}
-
-	private void launchFinalizarOrdenNoRevisada() throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
-		Parent root = loader.load();
-
-		FinalizarOrdenController finalizarOrdenController = loader.getController();
-		finalizarOrdenController.initVariables(sistema);
-
-		Stage stage = new Stage();
-		stage.initModality(Modality.WINDOW_MODAL);
-		stage.initOwner(nextButton.getScene().getWindow());
-
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.resizableProperty().setValue(false);
-		stage.showAndWait();
-
-		System.out.print("Se ha creado la orden correctamente");
-		//return finalizarOrdenController.getFlag();
-	}
-
 	private void launchCrearTecnico() throws Exception{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearTecnico.fxml"));
 		Parent root = loader.load();
@@ -305,8 +246,8 @@ public class MainController {
 	@FXML
 	private void clientsTabAction() {
 
-		rutCliente.setCellValueFactory(new PropertyValueFactory<Persona, Integer>("rut"));
-		nombreCliente.setCellValueFactory(new PropertyValueFactory<Persona, String>("name"));
+		rutClienteColumn.setCellValueFactory(new PropertyValueFactory<Persona, Integer>("rut"));
+		nombreClienteColumn.setCellValueFactory(new PropertyValueFactory<Persona, String>("name"));
 		clientsTable.setItems(getClientsItems());
 		clientsTable.refresh();
 
@@ -340,8 +281,8 @@ public class MainController {
 
 	@FXML
 	private void techsTabAction() {
-		numeroTecnico.setCellValueFactory(new PropertyValueFactory<Tecnico, Integer>("techNumber"));
-		nombreTecnico.setCellValueFactory(new PropertyValueFactory<Persona, String>("name"));
+		numeroTecnicoColumn.setCellValueFactory(new PropertyValueFactory<Tecnico, Integer>("techNumber"));
+		nombreTecnicoColumn.setCellValueFactory(new PropertyValueFactory<Persona, String>("name"));
 		techsTable.setItems(getTechsItems());
 	}
 

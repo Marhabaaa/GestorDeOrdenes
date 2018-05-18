@@ -15,9 +15,8 @@ public class ListaOrdenes implements Lista {
         return true;
     }
 
-    public boolean remove(Orden order) {
+    public void remove(Orden order) {
         list.remove(order);
-        return true;
     }
 
     public Orden get(int index) {

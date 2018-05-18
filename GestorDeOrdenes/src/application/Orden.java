@@ -14,12 +14,12 @@ public class Orden {
     private int 		price;
     private ListaPiezas partsList;	//lista de piezas a cambiar
     private int 		complex;		//suma de las complejidades de las piezas
-    private boolean 	checked;	//revision hecha
-    private boolean 	done;		//orden lista
+    private boolean 	isChecked;	//revision hecha
+    private boolean     isDone;		//orden lista
 
     
     public Orden(int orderNumber, String description, String dateIn, String dateOut, int clientRut, int techNumber,
-			int price, ListaPiezas partsList, int complex, boolean checked, boolean done) {
+			int price, ListaPiezas partsList, int complex, boolean checked, boolean isDone) {
 		this.orderNumber = orderNumber;
 		this.description = description;
 		this.dateIn 	 = dateIn;
@@ -29,8 +29,8 @@ public class Orden {
 		this.price 		 = price;
 		this.partsList 	 = partsList;
 		this.complex 	 = complex;
-		this.checked 	 = checked;
-		this.done 		 = done;
+		this.isChecked 	 = checked;
+		this.isDone = isDone;
 	}
 
 	public Orden(int orderNumber, String description, int clientRut, int techNumber) {
@@ -43,14 +43,14 @@ public class Orden {
         this.price 		 = 0;
         this.partsList 	 = new ListaPiezas();
         this.complex 	 = 0;
-        this.checked 	 = false;
-        this.done 		 = false;
+        this.isChecked 	 = false;
+        this.isDone      = false;
     }
     
     public void set() {
-    	setChecked(true);
-    	setComplex();
-    	setPrice();
+        setIsChecked(true);
+        setComplex();
+        setPrice();
     }
 
 	public int getOrderNumber() {
@@ -126,26 +126,26 @@ public class Orden {
 	}
 
 	public boolean isChecked() {
-		return checked;
+		return isChecked;
 	}
 
-	public void setChecked(boolean checked) {
-		this.checked = checked;
+	public void setIsChecked(boolean isChecked) {
+		this.isChecked = isChecked;
 	}
 
 	public boolean isDone() {
-		return done;
+		return isDone;
 	}
 
 	public void setDone(boolean done) {
-		this.done = done;
+		this.isDone = done;
 	}
 	
 	public int calculateComplexity() {	//calcula complejidad sumando la complejidad de cada pieza
 		int i = 0, sum = 0;
 		
 		while(i < partsList.size()) {
-			sum += ((Pieza) partsList.get(i)).getComplex();
+			sum += partsList.get(i).getTotalComplex();
 			i++;
 		}
 		
@@ -156,11 +156,11 @@ public class Orden {
 		int i = 0, sum = 0;
 		
 		while(i < partsList.size()) {
-			sum += ((Pieza) partsList.get(i)).getPrice();
+			sum += partsList.get(i).getPrice();
 			i++;
 		}
 		
-		return sum + (calculateComplexity() * 1000);
+		return sum + getProfit();
 	}
 	/*
 	 * getProfit da el valor de que gana la empresa 

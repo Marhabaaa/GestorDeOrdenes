@@ -18,14 +18,14 @@ import javafx.stage.Stage;
 public class AgregarPiezasController {
 
     @FXML private TableView tableA;
-    @FXML private TableColumn<Pieza, Integer> codA;
-    @FXML private TableColumn<Pieza, String> descriptionA;
-    @FXML private TableColumn<Pieza, Integer> cantA;
+    @FXML private TableColumn<Pieza, Integer> codAColumn;
+    @FXML private TableColumn<Pieza, String> descriptionAColumn;
+    @FXML private TableColumn<Pieza, Integer> cantAColumn;
 
     @FXML private TableView tableB;
-    @FXML private TableColumn<Pieza, Integer> codB;
-    @FXML private TableColumn<Pieza, String> descriptionB;
-    @FXML private TableColumn<Pieza, Integer> cantB;
+    @FXML private TableColumn<Pieza, Integer> codBColumn;
+    @FXML private TableColumn<Pieza, String> descriptionBColumn;
+    @FXML private TableColumn<Pieza, Integer> cantBColumn;
 
     @FXML private Button addButton;
     @FXML private Button deleteButton;
@@ -46,8 +46,8 @@ public class AgregarPiezasController {
             System.out.println(e.getMessage());
         }
 
+        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
         tableA.refresh();
-        tableB.setItems(getItems(sistema.getOrderListaPiezas(orderNumber)));
         tableB.refresh();
     }
 
@@ -57,7 +57,7 @@ public class AgregarPiezasController {
         if(tableB.getSelectionModel().getSelectedItem() != null)
             sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
 
-        tableB.setItems(getItems(sistema.getOrderListaPiezas(orderNumber)));
+        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
         tableA.refresh();
         tableB.refresh();
     }
@@ -71,28 +71,31 @@ public class AgregarPiezasController {
 
     @FXML
     private void nextButtonAction() throws Exception{
-        if(sistema.getOrderListaPiezas(orderNumber).isEmpty())
+        if(sistema.getOrder(orderNumber).getPartsList().isEmpty())
             launchFinalizarOrdenNoRevisada();
-        else
+        else {
+            sistema.getOrder(orderNumber).set();
+            sistema.getOrder(orderNumber).setDateOut(sistema.calculateDateOut(orderNumber));
             launchFinalizarOrdenRevisada();
+        }
 
-        flag = true;
-        Stage stage = (Stage) nextButton.getScene().getWindow();
-        stage.close();
-
+        if(flag) {
+            Stage stage = (Stage) nextButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void initVariables(SST sistema, int orderNumber) {
         this.sistema = sistema;
         this.orderNumber = orderNumber;
 
-        codA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
-        descriptionA.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
-        cantA.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+        codAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
-        codB.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
-        descriptionB.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
-        cantB.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+        codBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
         tableA.setItems(getItems(sistema.getListaPiezas()));
     }
@@ -116,8 +119,8 @@ public class AgregarPiezasController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
         Parent root = loader.load();
 
-        //FinalizarOrdenController finalizarOrdenController = loader.getController();
-        //finalizarOrdenController.initVariables(sistema, orderNumber);
+        FinalizarOrdenController finalizarOrdenController = loader.getController();
+        finalizarOrdenController.initVariables(sistema, sistema.getOrder(orderNumber));
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
@@ -128,15 +131,15 @@ public class AgregarPiezasController {
         stage.resizableProperty().setValue(false);
         stage.showAndWait();
 
-        //return finalizarOrdenController.getFlag();
+        flag = finalizarOrdenController.getFlag();
     }
 
     private void launchFinalizarOrdenNoRevisada() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
         Parent root = loader.load();
 
-        //FinalizarOrdenController finalizarOrdenController = loader.getController();
-        //finalizarOrdenController.initVariables(sistema, orderNumber);
+        FinalizarOrdenController finalizarOrdenController = loader.getController();
+        finalizarOrdenController.initVariables(sistema, sistema.getOrder(orderNumber));
 
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
@@ -147,6 +150,6 @@ public class AgregarPiezasController {
         stage.resizableProperty().setValue(false);
         stage.showAndWait();
 
-        //return finalizarOrdenController.getFlag();
+        flag = finalizarOrdenController.getFlag();
     }
 }

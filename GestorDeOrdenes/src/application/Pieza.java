@@ -56,6 +56,10 @@ public class Pieza {
 		return complex;
 	}
 
+	public  int getTotalComplex() {
+    	return complex * cant;
+	}
+
 	public void setComplex(int complex) {
 		this.complex = complex;
 	}
@@ -71,7 +75,7 @@ public class Pieza {
 	}
 
 	public void updateCant(int diferencia) {
-        cant =+ diferencia;
+        cant += diferencia;
 	}
 
 	public void toDB(Connection connection) throws SQLException {
