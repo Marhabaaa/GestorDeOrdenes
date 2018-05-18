@@ -15,7 +15,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2992">
@@ -244,7 +244,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="TecnicoOcupadoException&#9;FILE&#9;file://C:/Users/Gonzalo Pauchard/Documents/Git/GestorDeOrdenes/GestorDeOrdenes/src/application/TecnicoOcupadoException.java&#10;SinStockE&#9;PSI&#9;JAVA://application.SinStockException" />
+    <property name="SearchEverywhereHistoryKey" value="getTechItems&#9;PSI&#9;JAVA://ventanas.MainController#getTechsItems&#10;TecnicoOcupadoException&#9;FILE&#9;file://C:/Users/Gonzalo Pauchard/Documents/Git/GestorDeOrdenes/GestorDeOrdenes/src/application/TecnicoOcupadoException.java&#10;SinStockE&#9;PSI&#9;JAVA://application.SinStockException" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/git-cmd.exe" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -691,7 +691,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezasController.java">
+    <entry file="file://$PROJECT_DIR$/src/ventanas/ReporteStockController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="64" />
