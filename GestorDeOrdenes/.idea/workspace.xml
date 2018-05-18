@@ -18,8 +18,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="372" column="51" selection-start-line="372" selection-start-column="51" selection-end-line="372" selection-end-column="51" />
+            <state relative-caret-position="2992">
+              <caret line="333" selection-start-line="333" selection-end-line="333" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#nextButtonAction#0;class#MainController#0" />
@@ -31,7 +31,6 @@
                 <element signature="method#launchAgregarPieza#0;class#MainController#0" />
                 <element signature="method#launchReporteOrdenes#0;class#MainController#0" />
                 <element signature="method#launchReporteStock#0;class#MainController#0" />
-                <element signature="method#launchFinalizarOrdenRevisada#0;class#MainController#0" />
                 <element signature="method#clientsTabAction#0;class#MainController#0" />
                 <element signature="method#getClientsItems#0;class#MainController#0" />
                 <element signature="method#editClientButtonAction#0;class#MainController#0" />
@@ -45,7 +44,7 @@
       <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
+            <state relative-caret-position="1326">
               <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
               <folding>
                 <element signature="e#1210#1211#0" expanded="true" />
@@ -58,11 +57,11 @@
       <file leaf-file-name="TecnicoOcupadoException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/TecnicoOcupadoException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="51">
               <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
               <folding>
                 <element signature="e#115#116#0" expanded="true" />
-                <element signature="e#135#136#0" expanded="true" />
+                <element signature="e#172#173#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,8 +70,8 @@
       <file leaf-file-name="MapaOrdenes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/MapaOrdenes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="81" column="4" lean-forward="true" selection-start-line="81" selection-start-column="4" selection-end-line="89" selection-end-column="5" />
+            <state relative-caret-position="442">
+              <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="89" selection-end-column="5" />
               <folding>
                 <element signature="method#MapaOrdenes#0;class#MapaOrdenes#0" />
                 <element signature="method#put#0;class#MapaOrdenes#0" />
@@ -87,7 +86,7 @@
       <file leaf-file-name="AgregarPiezasController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezasController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="952">
               <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,20 +101,16 @@
       <file leaf-file-name="MapaClientes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/MapaClientes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
+            <state relative-caret-position="884">
               <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-              <folding>
-                <element signature="e#2372#2373#0" expanded="true" />
-                <element signature="e#2430#2431#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="CrearTecnico.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ventanas/CrearTecnico.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="Tecnico.java" pinned="false" current-in-tab="false">
@@ -127,22 +122,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapaTecnicos.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapaTecnicos.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/MapaTecnicos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+            <state relative-caret-position="-45">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="method#MapaTecnicos#0;class#MapaTecnicos#0" />
-                <element signature="e#1546#1547#0" expanded="true" />
-                <element signature="e#1572#1573#0" expanded="true" />
-                <element signature="e#1629#1630#0" expanded="true" />
-                <element signature="e#1674#1675#0" expanded="true" />
-                <element signature="e#1718#1719#0" expanded="true" />
-                <element signature="e#1777#1778#0" expanded="true" />
-                <element signature="method#toSList#0;class#MapaTecnicos#0" />
-                <element signature="e#1976#1977#0" expanded="true" />
-                <element signature="e#2000#2001#0" expanded="true" />
                 <element signature="method#leastWorkload#0;class#MapaTecnicos#0" />
                 <element signature="method#toListaTecnicos#0;class#MapaTecnicos#0" />
               </folding>
@@ -150,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SST.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SST.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/application/SST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="130" column="81" selection-start-line="130" selection-start-column="81" selection-end-line="130" selection-end-column="81" />
+            <state relative-caret-position="145">
+              <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getClientOrdersMap#0;class#SST#0" />
@@ -224,8 +210,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,9 +241,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,23 +332,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.325887" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32178217" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073206" side_tool="true" weight="0.26391098" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.239159" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.23762377" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Floobits" order="7" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32838285" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.149375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21028744" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -378,7 +361,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3227345" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -395,6 +377,18 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/application/MapaTecnicos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="method#MapaTecnicos#0;class#MapaTecnicos#0" />
+            <element signature="method#leastWorkload#0;class#MapaTecnicos#0" />
+            <element signature="method#toListaTecnicos#0;class#MapaTecnicos#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -407,21 +401,20 @@
         <state relative-caret-position="544">
           <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
           <folding>
-            <element signature="e#730#1250#0" />
-            <element signature="e#1253#1723#0" />
-            <element signature="e#3144#3145#0" expanded="true" />
-            <element signature="e#3162#3163#0" expanded="true" />
-            <element signature="e#3228#3461#0" />
-            <element signature="e#3465#3755#0" />
-            <element signature="e#3887#4057#0" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="73" column="6" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="6" />
+        <state relative-caret-position="1326">
+          <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
+          <folding>
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -630,10 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#252#253#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -641,35 +630,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding>
-            <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/EditarCliente.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/EditarClienteController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="62" column="64" lean-forward="true" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#launchWarning#0;class#EditarClienteController#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/MainMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/CrearTecnico.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarTecnicoController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -698,8 +679,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/MapaOrdenes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="81" column="4" lean-forward="true" selection-start-line="81" selection-start-column="4" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="442">
+          <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="89" selection-end-column="5" />
           <folding>
             <element signature="method#MapaOrdenes#0;class#MapaOrdenes#0" />
             <element signature="method#put#0;class#MapaOrdenes#0" />
@@ -712,7 +693,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/AgregarPiezasController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="952">
           <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -732,8 +713,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ventanas/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="372" column="51" selection-start-line="372" selection-start-column="51" selection-end-line="372" selection-end-column="51" />
+        <state relative-caret-position="2992">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#nextButtonAction#0;class#MainController#0" />
@@ -745,7 +726,6 @@
             <element signature="method#launchAgregarPieza#0;class#MainController#0" />
             <element signature="method#launchReporteOrdenes#0;class#MainController#0" />
             <element signature="method#launchReporteStock#0;class#MainController#0" />
-            <element signature="method#launchFinalizarOrdenRevisada#0;class#MainController#0" />
             <element signature="method#clientsTabAction#0;class#MainController#0" />
             <element signature="method#getClientsItems#0;class#MainController#0" />
             <element signature="method#editClientButtonAction#0;class#MainController#0" />
@@ -764,32 +744,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/MapaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
+        <state relative-caret-position="884">
           <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-          <folding>
-            <element signature="e#2372#2373#0" expanded="true" />
-            <element signature="e#2430#2431#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/MapaTecnicos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+        <state relative-caret-position="-45">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="method#MapaTecnicos#0;class#MapaTecnicos#0" />
-            <element signature="e#1546#1547#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1674#1675#0" expanded="true" />
-            <element signature="e#1718#1719#0" expanded="true" />
-            <element signature="e#1777#1778#0" expanded="true" />
-            <element signature="method#toSList#0;class#MapaTecnicos#0" />
-            <element signature="e#1976#1977#0" expanded="true" />
-            <element signature="e#2000#2001#0" expanded="true" />
             <element signature="method#leastWorkload#0;class#MapaTecnicos#0" />
             <element signature="method#toListaTecnicos#0;class#MapaTecnicos#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/SST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getClientOrdersMap#0;class#SST#0" />
+            <element signature="method#getTechOrdersMap#0;class#SST#0" />
+            <element signature="method#getNewOrderNumber#0;class#SST#0" />
+            <element signature="method#getNewTechNumber#0;class#SST#0" />
+            <element signature="method#addPart#0;class#SST#0" />
+            <element signature="method#removeOrder#0;class#SST#0" />
+            <element signature="method#addClient#0;class#SST#0" />
+            <element signature="method#removeClient#0;class#SST#0" />
+            <element signature="method#addTechnician#0;class#SST#0" />
+            <element signature="method#getClient#0;class#SST#0" />
+            <element signature="method#delayOfReturn#0;class#SST#0" />
           </folding>
         </state>
       </provider>
