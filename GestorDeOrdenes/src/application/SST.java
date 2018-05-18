@@ -128,10 +128,8 @@ public class SST {	//Sistema Servicio Tecnico
 		return techsMap.put(tech);
 	}
 
-	public boolean removeTechnician(int rut) {
-		if(!techsMap.get(rut).getOrders().isEmpty()) return false;
-		techsMap.remove(rut);
-		return true;
+	public void removeTechnician(int techNumber) throws TecnicoOcupadoException {
+		techsMap.remove(techNumber);
 	}
 	
 	public Cliente getClient(String rut) throws RutInvalidoException {
@@ -164,6 +162,13 @@ public class SST {	//Sistema Servicio Tecnico
 	public ListaOrdenes getListaOrdenes(){
 		return ordersMap.toListaOrdenes();
 	}
+
+	public ListaClientes getListaClientes() {return clientsMap.toListaClientes();}
+
+	public ListaTecnicos getListaTecnicos() {return techsMap.toListaTecnicos();}
+
+
+
 	public void addPartToOrder(int orderNumber, int codPart) throws SinStockException {
 	    stockMap.get(codPart).oneLess();
         ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());

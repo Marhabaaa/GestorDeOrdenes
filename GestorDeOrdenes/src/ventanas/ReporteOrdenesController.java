@@ -36,7 +36,8 @@ public class ReporteOrdenesController {
         table.setItems(getItems());
     }
 
-    private ObservableList<Orden> getItems() {
+
+   private ObservableList<Orden> getItems() {
         ListaOrdenes list = sistema.getListaOrdenes();
         ObservableList<Orden> ordenes = FXCollections.observableArrayList();
         int i = 0;
@@ -47,6 +48,5 @@ public class ReporteOrdenesController {
 
         return ordenes;
     }
-
 
 }

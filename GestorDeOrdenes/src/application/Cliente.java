@@ -91,4 +91,8 @@ public class Cliente extends Persona {
 
 		System.out.println("Record is inserted into Clientes table!");
 	}
+
+	public void editClient(){
+
+	}
 }
