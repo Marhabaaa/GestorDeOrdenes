@@ -63,8 +63,8 @@ public class Tecnico extends Persona {
 		return true;
 	}
 	
-	public boolean removeOrder(Orden order) {
-		return orders.remove(order);
+	public void removeOrder(Orden order) {
+    	orders.remove(order);
 	}
 	
 	/*

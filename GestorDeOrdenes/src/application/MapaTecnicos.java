@@ -32,9 +32,7 @@ public class MapaTecnicos {
 				orders = new ListaOrdenes();
 			}
 
-			Tecnico aux = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh, orders);
-
-			put(aux);
+			put(rut, name, phoneNumber, eMail, techNumber, dwh, orders);
 
 			//setTechNumber(techNumber);
 		}
@@ -44,10 +42,17 @@ public class MapaTecnicos {
 		return map.containsKey(key);
 	}
 
-	public boolean put(Tecnico tech) {
-		map.put(tech.getRut(), tech);
+	public boolean put(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh, ListaOrdenes orders) {
+	    Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh, orders);
+		map.put(tech.getTechNumber(), tech);
 		return true;
 	}
+
+    public boolean put(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
+        Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh);
+        map.put(tech.getTechNumber(), tech);
+        return true;
+    }
 
 	public void remove(int key) throws TecnicoOcupadoException{
 		if(map.get(key).getOrders().isEmpty()) {
@@ -60,43 +65,37 @@ public class MapaTecnicos {
 		return map.get(key);
 	}
 
-	public boolean addOrder(Orden order, int techNumber) {
-		return get(techNumber).addOrder(order);
+	public boolean addOrder(Orden order) {
+		return get(order.getTechNumber()).addOrder(order);
 	}
 
-	public boolean removeOrder(Orden order) {
-		return get(order.getTechNumber()).removeOrder(order);
+	public void removeOrder(Orden order) {
+		get(order.getTechNumber()).removeOrder(order);
 	}
 
-	public SList toSList() {
-		Enumeration<Tecnico> e = map.elements();
-		SList list = new SList();
-
-		while(e.hasMoreElements())
-			list.add(e.nextElement());
-
-		return list;
-	}
 
 	public int size() {
 		return map.size();
 	}
 
 	public int leastWorkload() throws SinTecnicosException {
-		SList techsList = toSList();
+		ListaTecnicos techsList = toListaTecnicos();
 		if(techsList.isEmpty())
 			throw new SinTecnicosException();
 
-		int i = 1, least;
-		least = ((Tecnico) techsList.get(0)).getWorkload();
+		int i = 1, least, techNumber;
+		least = techsList.get(0).getWorkload();
+		techNumber = techsList.get(0).getTechNumber();
 
 		while(i < techsList.size()) {
-			if(((Tecnico) techsList.get(i)).getWorkload() < least)
-				least = ((Tecnico) techsList.get(i)).getWorkload();
+			if(techsList.get(i).getWorkload() < least) {
+                least = techsList.get(i).getWorkload();
+                techNumber = techsList.get(i).getTechNumber();
+            }
 			i++;
 		}
 
-		return least;
+		return techNumber;
 	}
 
 	public ListaTecnicos toListaTecnicos() {

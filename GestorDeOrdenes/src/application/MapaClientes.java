@@ -76,12 +76,12 @@ public class MapaClientes {
         return map.get(Integer.parseInt(rut));
 	}
 
-	public boolean addOrder(Orden order, int rut) {
-		return get(rut).addOrder(order);
+	public boolean addOrder(Orden order) {
+		return get(order.getClientRut()).addOrder(order);
 	}
 
-	public boolean removeOrder(Orden order) {
-		return get(order.getClientRut()).removeOrder(order);
+	public void removeOrder(Orden order) {
+		get(order.getClientRut()).removeOrder(order);
 	}
 
 	public ListaClientes toListaClientes() {

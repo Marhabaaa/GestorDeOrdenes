@@ -45,8 +45,8 @@
                      <children>
                         <TableView fx:id="clientsTable" prefHeight="288.0" prefWidth="304.0">
                           <columns>
-                            <TableColumn fx:id="rutCliente" prefWidth="96.0" text="Rut" />
-                            <TableColumn fx:id="nombreCliente" prefWidth="207.0" text="Nombre" />
+                            <TableColumn fx:id="rutClienteColumn" prefWidth="96.0" text="Rut" />
+                            <TableColumn fx:id="nombreClienteColumn" prefWidth="207.0" text="Nombre" />
                           </columns>
                         </TableView>
                         <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
@@ -60,8 +60,8 @@
                      <children>
                         <TableView fx:id="techsTable" layoutY="-1.0" prefHeight="289.0" prefWidth="304.0">
                           <columns>
-                            <TableColumn fx:id="numeroTecnico" prefWidth="81.0" text="Número" />
-                            <TableColumn fx:id="nombreTecnico" prefWidth="222.0" text="Nombre" />
+                            <TableColumn fx:id="numeroTecnicoColumn" prefWidth="81.0" text="Número" />
+                            <TableColumn fx:id="nombreTecnicoColumn" prefWidth="222.0" text="Nombre" />
                           </columns>
                         </TableView>
                         <Button fx:id="newTechnicianButton" layoutX="22.0" layoutY="303.0" mnemonicParsing="false" onAction="#newTechnicianButtonAction" text="Nuevo Técnico" />

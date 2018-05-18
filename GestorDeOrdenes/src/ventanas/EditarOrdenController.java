@@ -1,23 +1,28 @@
 package ventanas;
 
-import application.Pieza;
+import application.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class EditarOrdenController {
 
     @FXML private TableView tableA;
-    @FXML private TableColumn<Pieza, Integer> codA;
-    @FXML private TableColumn<Pieza, String> descriptionA;
-    @FXML private TableColumn<Pieza, Integer> cantA;
+    @FXML private TableColumn<Pieza, Integer> codAColumn;
+    @FXML private TableColumn<Pieza, String> descriptionAColumn;
+    @FXML private TableColumn<Pieza, Integer> cantAColumn;
 
     @FXML private TableView tableB;
-    @FXML private TableColumn<Pieza, Integer> codB;
-    @FXML private TableColumn<Pieza, String> descriptionB;
-    @FXML private TableColumn<Pieza, Integer> cantB;
+    @FXML private TableColumn<Pieza, Integer> codBColumn;
+    @FXML private TableColumn<Pieza, String> descriptionBColumn;
+    @FXML private TableColumn<Pieza, Integer> cantBColumn;
 
     @FXML private Button addButton;
     @FXML private Button deleteButton;
@@ -25,6 +30,125 @@ public class EditarOrdenController {
     @FXML private Button saveButton;
 
     @FXML private TextField technicianField;
+    @FXML private TextArea descriptionArea;
 
+    private SST sistema;
+    private Orden order;
+    private int orderNumber;
+    private boolean flag;
 
+    public void initVariables(SST sistema, Orden order) {
+        this.sistema = sistema;
+        this.order = order;
+        orderNumber = order.getOrderNumber();
+
+        descriptionArea.setText(order.getDescription());
+
+        codAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantAColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+
+        codBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("code"));
+        descriptionBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, String>("description"));
+        cantBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
+
+        tableA.setItems(getItems(sistema.getListaPiezas()));
+        tableB.setItems(getItems(order.getPartsList()));
+    }
+
+    @FXML
+    private void addButtonAction() {
+        try {
+            sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+        }
+        catch(SinStockException e) {
+            System.out.println(e.getMessage());
+        }
+
+        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+        tableA.refresh();
+        tableB.refresh();
+    }
+
+    @FXML
+    private void deleteButtonAction() {
+
+        if(tableB.getSelectionModel().getSelectedItem() != null)
+            sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
+
+        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+        tableA.refresh();
+        tableB.refresh();
+    }
+
+    @FXML
+    private void saveButtonAction() throws Exception {
+        if(sistema.getOrder(orderNumber).getPartsList().isEmpty())
+            launchFinalizarOrdenNoRevisada();
+        else {
+            sistema.getOrder(orderNumber).set();
+            sistema.getOrder(orderNumber).setDateOut(sistema.calculateDateOut(orderNumber));
+            launchFinalizarOrdenRevisada();
+        }
+
+        if(flag) {
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
+        }
+    }
+
+    @FXML
+    private void cancelButtonAction() {
+        Stage stage = (Stage) saveButton.getScene().getWindow();
+        stage.close();
+    }
+
+    private ObservableList<Pieza> getItems(ListaPiezas list) {
+        ObservableList<Pieza> piezas = FXCollections.observableArrayList();
+        int i = 0;
+        while(i < list.size()) {
+            piezas.add(list.get(list.size() - i - 1));
+            i++;
+        }
+
+        return piezas;
+    }
+
+    private void launchFinalizarOrdenRevisada() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenRevisada.fxml"));
+        Parent root = loader.load();
+
+        FinalizarOrdenController finalizarOrdenController = loader.getController();
+        finalizarOrdenController.initVariables(sistema, sistema.getOrder(orderNumber));
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(saveButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+
+        flag = finalizarOrdenController.getFlag();
+    }
+
+    private void launchFinalizarOrdenNoRevisada() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalizarOrdenNoRevisada.fxml"));
+        Parent root = loader.load();
+
+        FinalizarOrdenController finalizarOrdenController = loader.getController();
+        finalizarOrdenController.initVariables(sistema, sistema.getOrder(orderNumber));
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(saveButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+
+        flag = finalizarOrdenController.getFlag();
+    }
 }

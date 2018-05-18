@@ -13,14 +13,16 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="orderNumber" layoutX="122.0" layoutY="52.0" prefHeight="25.0" prefWidth="116.0" />
-      <Text layoutX="56.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo estimado de entrega:" />
-      <Label fx:id="estimatedTime" layoutX="55.0" layoutY="115.0" prefHeight="25.0" prefWidth="116.0" />
-      <Button fx:id="cancelOrderButton" layoutX="64.0" layoutY="294.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Cancelar Orden" />
-      <Button fx:id="finishButton" layoutX="169.0" layoutY="294.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Finalizar" />
-      <Text layoutX="56.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para:" />
-      <Label fx:id="orderNumber1" layoutX="94.0" layoutY="151.0" prefHeight="25.0" prefWidth="116.0" />
-      <Text layoutX="56.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo:" />
-      <Label fx:id="orderNumber11" layoutX="94.0" layoutY="217.0" prefHeight="25.0" prefWidth="116.0" />
+      <Label fx:id="orderNumberLabel" layoutX="122.0" layoutY="52.0" prefHeight="25.0" prefWidth="116.0" />
+      <Text layoutX="16.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de entrega estimada:" />
+      <Label fx:id="estimatedDateLabel" layoutX="171.0" layoutY="102.0" prefHeight="25.0" prefWidth="116.0" />
+      <Button fx:id="cancelOrderButton" layoutX="64.0" layoutY="294.0" mnemonicParsing="false" onAction="#cancelOrderButtonAction" text="Cancelar" />
+      <Button layoutX="180.0" layoutY="294.0" mnemonicParsing="false" onAction="#finishButtonAction" text="Finalizar" />
+      <Text layoutX="60.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para:" />
+      <Label fx:id="clientLabel" layoutX="94.0" layoutY="151.0" prefHeight="25.0" prefWidth="116.0" />
+      <Text layoutX="51.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:" />
+      <Label fx:id="priceLabel" layoutX="94.0" layoutY="217.0" prefHeight="25.0" prefWidth="116.0" />
+      <Text layoutX="25.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asignado a:" />
+      <Label fx:id="techLabel" layoutX="94.0" layoutY="184.0" prefHeight="25.0" prefWidth="116.0" />
    </children>
 </AnchorPane>

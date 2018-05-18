@@ -2,6 +2,8 @@ package application;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import DBconnector.MySQLconnection;
 
@@ -99,17 +101,45 @@ public class SST {	//Sistema Servicio Tecnico
 	    stockMap.updateStock(code, cant);
     }
 
+    public Orden getOrder(int orderNumber) {
+	    return ordersMap.get(orderNumber);
+    }
+
     public int createOrder(String description, int clientRut) throws Exception {
 	    orderNumber = getNewOrderNumber();
 	    ordersMap.createOrder(orderNumber, description, clientRut, techsMap.leastWorkload());
         return orderNumber;
 	}
+
+	public void addOrder(int orderNumber) {
+	    clientsMap.addOrder(ordersMap.get(orderNumber));
+	    techsMap.addOrder(ordersMap.get(orderNumber));
+	    orderPartsMap.put(ordersMap.get(orderNumber));
+    }
+
+    public void cancelOrder(int orderNumber) {
+	    recoverParts(ordersMap.get(orderNumber));
+	    ordersMap.remove(orderNumber);
+	    this.orderNumber--;
+    }
+
+    private void recoverParts(Orden order) {
+	    int i = 0;
+	    while(i < order.getPartsList().size()) {
+            recoverPart(order.getPartsList().get(i));
+            i++;
+        }
+    }
+
+    private void recoverPart(Pieza part) {
+	    stockMap.get(part.getCode()).updateCant(part.getCant());
+    }
 	
-	public boolean removeOrder(int code) {
-		techsMap.removeOrder(ordersMap.get(code));
-		clientsMap.removeOrder(ordersMap.get(code));
-		orderPartsMap.remove(code);
-		ordersMap.remove(code);
+	public boolean removeOrder(int orderNumber) {
+		techsMap.removeOrder(ordersMap.get(orderNumber));
+		clientsMap.removeOrder(ordersMap.get(orderNumber));
+		orderPartsMap.remove(orderNumber);
+		ordersMap.remove(orderNumber);
 		return true;
 	}
 	
@@ -122,8 +152,7 @@ public class SST {	//Sistema Servicio Tecnico
 	}
 
 	public boolean addTechnician(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
-		Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh);
-		return techsMap.put(tech);
+		return techsMap.put(rut, name, phoneNumber, eMail, techNumber, dwh);
 	}
 
 	public void removeTechnician(int techNumber) throws TecnicoOcupadoException {
@@ -133,7 +162,15 @@ public class SST {	//Sistema Servicio Tecnico
 	public Cliente getClient(String rut) throws RutInvalidoException {
 		return clientsMap.get(rut);
 	}
-	
+
+    public Cliente getClient(int rut) {
+        return clientsMap.get(rut);
+    }
+
+    public Tecnico getTechnician(int techNumber) {
+	    return techsMap.get(techNumber);
+    }
+
 	public boolean exist(Cliente client) {
 		return clientsMap.contains(client.getRut());
 	}
@@ -142,16 +179,17 @@ public class SST {	//Sistema Servicio Tecnico
 		stockMap.get(code).updateCant(difference);
 	}
 	
-	//public String calculateDateOut(Orden order)	//calcula la fecha estimada de entrega del pedido
-	
-	public int delayOfReturn(Orden order) {	//calcula cuantos dias despues de la fecha de ingreso de la orden, podr� �sta, ser entregada
-		Tecnico aux = techsMap.get(order.getTechNumber());
-		return aux.estimateDateOut(order.getComplex());
-	}
+	public String calculateDateOut(int orderNumber) { //calcula la fecha estimada de entrega del pedido
+	    SimpleDateFormat dateOut = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, delayOfReturn(ordersMap.get(orderNumber)));
 
-	public ListaPiezas getOrderListaPiezas(int orderNumber) {
-	    return ordersMap.get(orderNumber).getPartsList();
+        return dateOut.format(calendar.getTime());
     }
+	
+	private int delayOfReturn(Orden order) {	//calcula cuantos dias despues se estima la entrega si es que se ingresara hoy
+		return techsMap.get(order.getTechNumber()).estimateDateOut(order.getComplex());
+	}
 
 	public ListaPiezas getListaPiezas() {
 		return stockMap.toListaPiezas();
