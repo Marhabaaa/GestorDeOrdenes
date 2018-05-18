@@ -1,6 +1,9 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
+import exceptions.ClienteTieneOrdenesException;
+import exceptions.RutInvalidoException;
+import exceptions.TelefonoInvalidoException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

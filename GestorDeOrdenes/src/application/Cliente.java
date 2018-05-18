@@ -1,5 +1,7 @@
 package application;
 
+import exceptions.TelefonoInvalidoException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

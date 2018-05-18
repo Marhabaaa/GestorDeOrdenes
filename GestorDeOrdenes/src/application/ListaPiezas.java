@@ -1,5 +1,7 @@
 package application;
 
+import exceptions.SinStockException;
+
 import java.util.ArrayList;
 
 public class ListaPiezas implements Lista{

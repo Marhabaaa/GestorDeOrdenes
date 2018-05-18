@@ -25,8 +25,8 @@ public class MySQLconnection {
 	private static final String user = "natural1";
 	private static final String pass = "ssk2Qw580Q";
 	
-	public MySQLconnection() {
-		
+	public MySQLconnection() throws SQLException {
+
 		try {
 			Class.forName(driver);
 			
@@ -37,10 +37,6 @@ public class MySQLconnection {
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al cargar el Driver");
-			e.printStackTrace();
-			
-		} catch (SQLException e) {
-			System.out.println("ERROR -> No se pudo establecer conexion");
 			e.printStackTrace();
 		}
 	}

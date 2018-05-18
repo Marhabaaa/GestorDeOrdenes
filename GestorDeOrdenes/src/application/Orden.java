@@ -1,5 +1,7 @@
 package application;
 
+import exceptions.SinStockException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

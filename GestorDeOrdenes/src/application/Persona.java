@@ -1,6 +1,7 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
+import exceptions.TelefonoInvalidoException;
 
 public abstract class Persona {
 	

@@ -1,5 +1,7 @@
 package application;
 
+import exceptions.SinStockException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,12 +14,12 @@ public class MapaStock {
 	private Hashtable<Integer, Pieza> map;
 
 	public MapaStock(Connection connection) throws SQLException {
-		map = new Hashtable<>();
-		PreparedStatement statement = connection.prepareStatement("SELECT * FROM inventario");
+	    PreparedStatement statement = connection.prepareStatement("SELECT * FROM inventario");
 		ResultSet data = statement.executeQuery();
 
 		int code, cant, price, complex;
 		String description;
+		map = new Hashtable<>();
 
 		while(data.next()) {
 			code = Integer.parseInt(data.getObject("codPieza").toString());

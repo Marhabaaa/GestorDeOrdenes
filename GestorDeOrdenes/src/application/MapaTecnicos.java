@@ -1,5 +1,8 @@
 package application;
 
+import exceptions.SinTecnicosException;
+import exceptions.TecnicoOcupadoException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,7 +57,7 @@ public class MapaTecnicos {
         return true;
     }
 
-	public void remove(int key) throws TecnicoOcupadoException{
+	public void remove(int key) throws TecnicoOcupadoException {
 		if(map.get(key).getOrders().isEmpty()) {
 			map.remove(key);
 		}
