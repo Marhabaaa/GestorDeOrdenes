@@ -117,6 +117,7 @@ public class MainController {
 	@FXML
 	private void GenerateReportOrdersButtonAction() throws Exception {
 		reporte.ganaciasTotales(sistema.getListaOrdenes());
+		System.out.println("Se ha generado el reporte");
 	}
 
 
@@ -359,6 +360,7 @@ public class MainController {
 	@FXML
 	private void newTechnicianButtonAction() throws Exception{
 		launchCrearTecnico();
+		techsTable.setItems(getTechsItems());
 		techsTable.refresh();
 	}
 

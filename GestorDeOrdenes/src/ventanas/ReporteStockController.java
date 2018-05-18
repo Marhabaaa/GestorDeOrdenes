@@ -23,7 +23,6 @@ public class ReporteStockController {
     @FXML private TableColumn<Pieza, Integer> complejidad;
     @FXML private TableColumn<Pieza, Integer> precio;
 
-    @FXML private Button refreshButton;
     @FXML private Button newPartButton;
     @FXML private Button editButton;
     @FXML private Button deteleButton;
@@ -56,14 +55,10 @@ public class ReporteStockController {
     }
 
     @FXML
-    private void refreshButtonAction(){
-        table.refresh();
-    }
-
-    @FXML
     private void newPartButtonAction() throws Exception {
         try {
             launchCrearPieza();
+            table.setItems(getItems());
             table.refresh();
         } catch (Exception e) {
             e.printStackTrace();
