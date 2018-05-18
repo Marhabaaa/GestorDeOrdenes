@@ -63,22 +63,9 @@ public class MapaStock {
 		ListaPiezas list = new ListaPiezas();
 
 		while (e.hasMoreElements())
-			list.add(e.nextElement());
+			list.copyPart(e.nextElement());
 
 		return list;
-	}
-
-	public Pieza[] toArray() {
-		Enumeration<Pieza> e = map.elements();
-		Pieza[] aux = new Pieza[map.size()];
-		int i = 0;
-
-		while(e.hasMoreElements()) {
-			aux[i] = e.nextElement();
-			i++;
-		}
-
-		return aux;
 	}
 
 	public int size() {

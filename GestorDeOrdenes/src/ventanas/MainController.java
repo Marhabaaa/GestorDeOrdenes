@@ -76,9 +76,6 @@ public class MainController {
 			    sistema.addOrder(orderNumber);
 			    launchWarning("WarningOrdenIngresadaConExito.fxml");
             }
-            else
-                sistema.cancelOrder(orderNumber);
-
 		} catch (SinTecnicosException e) {
 			System.out.println(e.getMessage());
 		}

@@ -101,6 +101,9 @@ public class SST {	//Sistema Servicio Tecnico
 	    stockMap.updateStock(code, cant);
     }
 
+    public Pieza getPart(int code) {
+	    return stockMap.get(code);
+    }
     public Orden getOrder(int orderNumber) {
 	    return ordersMap.get(orderNumber);
     }
@@ -118,15 +121,15 @@ public class SST {	//Sistema Servicio Tecnico
     }
 
     public void cancelOrder(int orderNumber) {
-	    recoverParts(ordersMap.get(orderNumber));
+	    recoverParts(ordersMap.get(orderNumber).getPartsList());
 	    ordersMap.remove(orderNumber);
 	    this.orderNumber--;
     }
 
-    private void recoverParts(Orden order) {
+    public void recoverParts(ListaPiezas partsList) {
 	    int i = 0;
-	    while(i < order.getPartsList().size()) {
-            recoverPart(order.getPartsList().get(i));
+	    while(i < partsList.size()) {
+            recoverPart(partsList.get(i));
             i++;
         }
     }
@@ -134,8 +137,20 @@ public class SST {	//Sistema Servicio Tecnico
     private void recoverPart(Pieza part) {
 	    stockMap.get(part.getCode()).updateCant(part.getCant());
     }
-	
-	public boolean removeOrder(int orderNumber) {
+
+    public void returnParts(ListaPiezas partsList) {
+        int i = 0;
+        while(i < partsList.size()) {
+            returnPart(partsList.get(i));
+            i++;
+        }
+    }
+
+    private void returnPart(Pieza part) {
+        stockMap.get(part.getCode()).updateCant((-1) * part.getCant());
+    }
+
+    public boolean removeOrder(int orderNumber) {
 		techsMap.removeOrder(ordersMap.get(orderNumber));
 		clientsMap.removeOrder(ordersMap.get(orderNumber));
 		orderPartsMap.remove(orderNumber);
@@ -207,7 +222,7 @@ public class SST {	//Sistema Servicio Tecnico
 
 	public void addPartToOrder(int orderNumber, int codPart) throws SinStockException {
 	    stockMap.get(codPart).oneLess();
-        ordersMap.addPart(orderNumber, stockMap.get(codPart).clone());
+        ordersMap.addPart(orderNumber, stockMap.get(codPart));
     }
 
 	public void removePartFromOrder(int orderNumber, int codPart) {

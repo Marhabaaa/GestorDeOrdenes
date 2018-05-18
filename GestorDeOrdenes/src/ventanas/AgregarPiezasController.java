@@ -38,33 +38,36 @@ public class AgregarPiezasController {
 
 
     @FXML
-    private void addButtonAction() throws SinStockException {
-        try {
-            sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
-        }
-        catch(SinStockException e) {
-            System.out.println(e.getMessage());
-        }
+    private void addButtonAction() {
+        if(tableA.getSelectionModel().getSelectedItem() != null) {
+            try {
+                sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+            } catch (SinStockException e) {
+                System.out.println(e.getMessage());
+            }
 
-        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
-        tableA.refresh();
-        tableB.refresh();
+            tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+            tableA.refresh();
+            tableB.refresh();
+        }
     }
 
     @FXML
     private void deleteButtonAction() {
 
-        if(tableB.getSelectionModel().getSelectedItem() != null)
+        if(tableB.getSelectionModel().getSelectedItem() != null) {
             sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
 
-        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
-        tableA.refresh();
-        tableB.refresh();
+            tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+            tableA.refresh();
+            tableB.refresh();
+        }
     }
 
     @FXML
     private void cancelButtonAction() {
         flag = false;
+        sistema.cancelOrder(orderNumber);
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }

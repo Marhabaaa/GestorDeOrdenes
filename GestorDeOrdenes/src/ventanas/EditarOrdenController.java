@@ -34,6 +34,8 @@ public class EditarOrdenController {
 
     private SST sistema;
     private Orden order;
+    private ListaPiezas addedParts;
+    private ListaPiezas removedParts;
     private int orderNumber;
     private boolean flag;
 
@@ -41,6 +43,8 @@ public class EditarOrdenController {
         this.sistema = sistema;
         this.order = order;
         orderNumber = order.getOrderNumber();
+        addedParts = new ListaPiezas();
+        removedParts = new ListaPiezas();
 
         descriptionArea.setText(order.getDescription());
 
@@ -58,33 +62,40 @@ public class EditarOrdenController {
 
     @FXML
     private void addButtonAction() {
-        try {
-            sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
-        }
-        catch(SinStockException e) {
-            System.out.println(e.getMessage());
-        }
+        if(tableA.getSelectionModel().getSelectedItem() != null) {
+            try {
+                sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
+                addedParts.add((Pieza) tableA.getSelectionModel().getSelectedItem());
+            } catch (SinStockException e) {
+                System.out.println(e.getMessage());
+            }
 
-        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
-        tableA.refresh();
-        tableB.refresh();
+            tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+            tableA.refresh();
+            tableB.refresh();
+        }
     }
 
     @FXML
     private void deleteButtonAction() {
 
-        if(tableB.getSelectionModel().getSelectedItem() != null)
+        if(tableB.getSelectionModel().getSelectedItem() != null) {
             sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
+            removedParts.add((Pieza) tableB.getSelectionModel().getSelectedItem());
 
-        tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
-        tableA.refresh();
-        tableB.refresh();
+            tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
+            tableA.refresh();
+            tableB.refresh();
+        }
     }
 
     @FXML
     private void saveButtonAction() throws Exception {
-        if(sistema.getOrder(orderNumber).getPartsList().isEmpty())
+        order.setDescription(descriptionArea.getText());
+        if(sistema.getOrder(orderNumber).getPartsList().isEmpty()) {
+            order.setIsChecked(false);
             launchFinalizarOrdenNoRevisada();
+        }
         else {
             sistema.getOrder(orderNumber).set();
             sistema.getOrder(orderNumber).setDateOut(sistema.calculateDateOut(orderNumber));
@@ -99,6 +110,9 @@ public class EditarOrdenController {
 
     @FXML
     private void cancelButtonAction() {
+        sistema.recoverParts(addedParts);
+        sistema.returnParts(removedParts);
+        order.recoverPartsList();
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
     }

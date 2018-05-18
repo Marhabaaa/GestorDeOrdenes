@@ -97,9 +97,14 @@ public class Pieza {
         System.out.println("Record is inserted into Inventario table!");
 	}
 
-	public Pieza clone(){
+	public Pieza newPartClone(){
     	Pieza aux = new Pieza(code, description, 1, price, complex);
     	return aux;
+	}
+
+	public Pieza clone(){
+		Pieza aux = new Pieza(code, description, cant, price, complex);
+		return aux;
 	}
 }
 

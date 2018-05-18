@@ -37,10 +37,14 @@ public class ListaPiezas implements Lista{
     }
 
     public void add(Pieza part) {
-            if(contains(part.getCode()))
-                list.get(getIndex(part.getCode())).oneMore();
-            else
-                list.add(part);
+        if(contains(part.getCode()))
+            list.get(getIndex(part.getCode())).oneMore();
+        else
+            list.add(part.newPartClone());
+    }
+
+    public void copyPart(Pieza part) {
+        list.add(part);
     }
 
     public void remove(int code) {
@@ -76,5 +80,17 @@ public class ListaPiezas implements Lista{
 
     public boolean isEmpty() {
         return list.isEmpty();
+    }
+
+    public ListaPiezas clone() {
+        int i = 0;
+        ListaPiezas partsList = new ListaPiezas();
+
+        while(i < size()) {
+            partsList.copyPart(list.get(i).clone());
+            i++;
+        }
+
+        return partsList;
     }
 }
