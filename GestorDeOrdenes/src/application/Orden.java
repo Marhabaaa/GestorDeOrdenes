@@ -16,6 +16,7 @@ public class Orden {
     private int 		complex;		//suma de las complejidades de las piezas
     private boolean 	isChecked;	//revision hecha
     private boolean     isDone;		//orden lista
+	private String		entregada;
 
     
     public Orden(int orderNumber, String description, String dateIn, String dateOut, int clientRut, int techNumber,
@@ -186,5 +187,13 @@ public class Orden {
 
     public void removePart(int partCode) {
 		partsList.remove(partCode);
+	}
+
+	private void setEntregada() {
+		if(isDone()){
+			entregada="Si";
+		}else{
+			entregada="No";
+		}
 	}
 }

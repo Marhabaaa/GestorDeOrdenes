@@ -25,6 +25,7 @@
       </Label>
       <Button fx:id="editButton" layoutX="237.0" layoutY="342.0" mnemonicParsing="false" text="Editar" />
       <Button fx:id="deteleButton" layoutX="386.0" layoutY="342.0" mnemonicParsing="false" text="Eliminar" />
-      <Button fx:id="newPartButton" layoutX="62.0" layoutY="342.0" mnemonicParsing="false" text="Agregar Pieza" />
+      <Button fx:id="newPartButton" layoutX="62.0" layoutY="342.0" mnemonicParsing="false" onAction="#newPartButtonAction" text="Agregar Pieza" />
+      <Button fx:id="refreshButton" layoutX="432.0" layoutY="46.0" mnemonicParsing="false" onAction="#refreshButtonAction" text="Actualizar" />
    </children>
 </AnchorPane>

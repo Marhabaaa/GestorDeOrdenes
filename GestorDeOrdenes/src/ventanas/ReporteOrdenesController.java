@@ -61,6 +61,7 @@ public class ReporteOrdenesController {
         ListaOrdenes list = sistema.getListaOrdenes();
         ObservableList<Orden> ordenes = FXCollections.observableArrayList();
         int i = 0;
+        String checked;
         while(i < list.size()) {
             ordenes.add(list.get(list.size() - i - 1));
             i++;

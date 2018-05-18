@@ -147,10 +147,8 @@ public class SST {	//Sistema Servicio Tecnico
 		clientsMap.put(rut, name, phoneNumber, eMail, isBusiness, connection);
 	}
 
-	public boolean removeClient(int rut) {
-		if(!clientsMap.get(rut).getOrders().isEmpty()) return false;
+	public void removeClient(int rut) throws ClienteTieneOrdenesException {
 		clientsMap.remove(rut);
-		return true;
 	}
 
 	public boolean addTechnician(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
