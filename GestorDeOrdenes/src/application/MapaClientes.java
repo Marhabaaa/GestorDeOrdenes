@@ -1,9 +1,9 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
-import exceptions.ClienteTieneOrdenesException;
 import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
+import exceptions.TieneOrdenesException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,12 +57,11 @@ public class MapaClientes {
         return map.containsKey(key);
     }
 
-	public boolean remove(int key) throws ClienteTieneOrdenesException {
+	public void remove(int key) throws TieneOrdenesException {
 
-		if(map.get(key).getOrders().isEmpty()) {
-			map.remove(key);
-		}
-		throw new ClienteTieneOrdenesException();
+		if(!map.get(key).getOrders().isEmpty())
+			throw new TieneOrdenesException();
+		map.remove(key);
 	}
 
     public Cliente get(int key) {

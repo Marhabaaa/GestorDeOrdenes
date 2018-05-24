@@ -15,7 +15,7 @@ public class Orden {
     private int 		techNumber;	//numero del tecnico a quien fue asignada
     private int 		price;
     private ListaPiezas partsList;	//lista de piezas a cambiar
-    private ListaPiezas auxPartsList;
+    private ListaPiezas partsListBackUp;
     private int 		complex;		//suma de las complejidades de las piezas
     private boolean 	isChecked;	//revision hecha
     private boolean     isDone;		//orden lista
@@ -24,17 +24,17 @@ public class Orden {
     
     public Orden(int orderNumber, String description, String dateIn, String dateOut, int clientRut, int techNumber,
 			int price, ListaPiezas partsList, int complex, boolean checked, boolean isDone) {
-		this.orderNumber = orderNumber;
-		this.description = description;
-		this.dateIn 	 = dateIn;
-		this.dateOut 	 = dateOut;
-		this.clientRut 	 = clientRut;
-		this.techNumber  = techNumber;
-		this.price 		 = price;
-		this.partsList 	 = partsList;
-		this.auxPartsList = partsList.clone();
-		this.complex 	 = complex;
-		this.isChecked 	 = checked;
+		this.orderNumber	 = orderNumber;
+		this.description 	 = description;
+		this.dateIn 	 	 = dateIn;
+		this.dateOut 	 	 = dateOut;
+		this.clientRut 	 	 = clientRut;
+		this.techNumber  	 = techNumber;
+		this.price			 = price;
+		this.partsListBackUp = partsList;
+		this.partsList 	 	 = partsList.clone();
+		this.complex 	 	 = complex;
+		this.isChecked 	 	 = checked;
 		setIsDone(isDone);
 	}
 
@@ -125,7 +125,7 @@ public class Orden {
 	}
 
 	public void setAuxPartsList() {
-        auxPartsList = partsList.clone();
+        partsListBackUp = partsList.clone();
     }
 	
 	public int getComplex() {
@@ -201,7 +201,7 @@ public class Orden {
 	}
 
 	public void recoverPartsList() {
-	    partsList = auxPartsList.clone();
+	    partsList = partsListBackUp.clone();
     }
 
 	private void setEntregada() {

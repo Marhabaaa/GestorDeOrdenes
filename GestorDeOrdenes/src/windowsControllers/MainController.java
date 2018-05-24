@@ -1,10 +1,9 @@
 package windowsControllers;
 
 import application.*;
-import exceptions.ClienteTieneOrdenesException;
 import exceptions.RutInvalidoException;
 import exceptions.SinTecnicosException;
-import exceptions.TecnicoOcupadoException;
+import exceptions.TieneOrdenesException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -276,14 +275,6 @@ public class MainController {
 	}
 
 	@FXML
-	private void deleteClientButtonAction() throws Exception{
-		if(clientsTable.getSelectionModel().getSelectedItem() != null && (((Cliente) clientsTable.getSelectionModel().getSelectedItem()).getOrders().isEmpty())){
-			sistema.removeClient(((Cliente)clientsTable.getSelectionModel().getSelectedItem()).getRut());
-		}
-	}
-
-
-	@FXML
 	private void techsTabAction() {
 		numeroTecnicoColumn.setCellValueFactory(new PropertyValueFactory<Tecnico, Integer>("techNumber"));
 		nombreTecnicoColumn.setCellValueFactory(new PropertyValueFactory<Persona, String>("name"));
@@ -313,27 +304,27 @@ public class MainController {
 		if(techsTable.getSelectionModel().getSelectedItem() != null){
 			try {
 				sistema.removeTechnician(((Tecnico) techsTable.getSelectionModel().getSelectedItem()).getTechNumber());
+				techsTable.setItems(getTechsItems());
 				techsTable.refresh();
 				System.out.println("Se ha eliminado el tecnico con exito");
-			} catch(TecnicoOcupadoException e){
+			} catch(TieneOrdenesException e){
 				System.out.println(e.getMessage());
 			}
 		}
 	}
 
 	@FXML
-	private void DeleteClientButtonAction(){
+	private void deleteClientButtonAction() {
 		if(clientsTable.getSelectionModel().getSelectedItem() != null){
 			try {
 				sistema.removeClient(((Cliente) clientsTable.getSelectionModel().getSelectedItem()).getRut());
-				techsTable.setItems(getTechsItems());
-				techsTable.refresh();
+				clientsTable.setItems(getClientsItems());
+				clientsTable.refresh();
 				System.out.println("Se ha eliminado el cliente con exito");
-			} catch(ClienteTieneOrdenesException e){
+			} catch(TieneOrdenesException e){
 				System.out.println(e.getMessage());
 			}
 		}
 	}
-
 }
 

@@ -93,7 +93,7 @@ public class SST {	//Sistema Servicio Tecnico
 		techNumber++;
 		return techNumber;
 	}
-	
+
 	public void addPart(int code, String description, int cant, int price, int complex) throws SQLException {
 		stockMap.put(code, description, cant, price, complex, connection);
 	}
@@ -105,6 +105,7 @@ public class SST {	//Sistema Servicio Tecnico
     public Pieza getPart(int code) {
 	    return stockMap.get(code);
     }
+
     public Orden getOrder(int orderNumber) {
 	    return ordersMap.get(orderNumber);
     }
@@ -163,16 +164,16 @@ public class SST {	//Sistema Servicio Tecnico
 		clientsMap.put(rut, name, phoneNumber, eMail, isBusiness, connection);
 	}
 
-	public void removeClient(int rut) throws ClienteTieneOrdenesException {
+	public void removeClient(int rut) throws TieneOrdenesException {
 		clientsMap.remove(rut);
+	}
+
+	public void removeTechnician(int techNumber) throws TieneOrdenesException {
+		techsMap.remove(techNumber);
 	}
 
 	public boolean addTechnician(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
 		return techsMap.put(rut, name, phoneNumber, eMail, techNumber, dwh);
-	}
-
-	public void removeTechnician(int techNumber) throws TecnicoOcupadoException {
-		techsMap.remove(techNumber);
 	}
 
 	public void removePart(int partNumber){
@@ -190,14 +191,6 @@ public class SST {	//Sistema Servicio Tecnico
     public Tecnico getTechnician(int techNumber) {
 	    return techsMap.get(techNumber);
     }
-
-	public boolean exist(Cliente client) {
-		return clientsMap.contains(client.getRut());
-	}
-	
-	public void updatePartCant(int code, int difference) {
-		stockMap.get(code).updateCant(difference);
-	}
 	
 	public String calculateDateOut(int orderNumber) { //calcula la fecha estimada de entrega del pedido
 	    SimpleDateFormat dateOut = new SimpleDateFormat("dd-MM-yyyy");
@@ -219,11 +212,13 @@ public class SST {	//Sistema Servicio Tecnico
 		return ordersMap.toListaOrdenes();
 	}
 
-	public ListaClientes getListaClientes() {return clientsMap.toListaClientes();}
+	public ListaClientes getListaClientes() {
+	    return clientsMap.toListaClientes();
+	}
 
-	public ListaTecnicos getListaTecnicos() {return techsMap.toListaTecnicos();}
-
-
+	public ListaTecnicos getListaTecnicos() {
+	    return techsMap.toListaTecnicos();
+	}
 
 	public void addPartToOrder(int orderNumber, int codPart) throws SinStockException {
 	    stockMap.get(codPart).oneLess();
