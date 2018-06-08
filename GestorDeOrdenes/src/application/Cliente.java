@@ -1,5 +1,7 @@
 package application;
 
+import exceptions.MaxOrdenesSobrepasadoException;
+import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
 
 import java.sql.Connection;
@@ -30,35 +32,20 @@ public class Cliente extends Persona {
     public boolean isBusiness() {
 		return isBusiness;
 	}
+
 	public void setBusiness(boolean isBusiness) {
 		this.isBusiness = isBusiness;
-	}
-	
-	public int getMaxOrders() {
-		return maxOrders;
-	}
-
-	public void setMaxOrders(int maxOrders) {
-		this.maxOrders = maxOrders;
 	}
 
 	public ListaOrdenes getOrders() {
 		return orders;
 	}
-
-	public void setOrders(ListaOrdenes orders) {
-		this.orders = orders;
-	}
-	/*
-	 *entrega la cantidad maxima de ordenes que se pueden efectuar
-	 */
 	
-	public boolean addOrder(Orden order) {
+	public void addOrder(Orden order) throws MaxOrdenesSobrepasadoException {
 		if(maxOrders >= orders.size())
-			return false;
+			throw new MaxOrdenesSobrepasadoException();
 		
 		orders.add(order);
-		return true;
 	}
 	
 	public void removeOrder(Orden order) {
@@ -88,13 +75,38 @@ public class Cliente extends Persona {
 		statement.setString(4, eMail);
 		statement.setBoolean(5, isBusiness);
 
-		// execute insert SQL stetement
 		statement.executeUpdate();
 
-		System.out.println("Record is inserted into Clientes table!");
+		System.out.println("Cliente insertado exitosamente a tabla clientes.");
 	}
 
-	public void editClient(){
+    public void updateDB(Connection connection) throws SQLException {
+	    String insertTableSQL = "UPDATE clientes"
+                + " SET rut = ?, nombre = ?, telefono = ?, eMail = ?, esEmpresa = ?"
+                + " WHERE rut = ?";
 
+        PreparedStatement statement = connection.prepareStatement(insertTableSQL);
+
+        statement.setInt(1, rut);
+        statement.setString(2, name);
+        statement.setInt(3, phoneNumber);
+        statement.setString(4, eMail);
+        statement.setBoolean(5, isBusiness);
+        statement.setInt(6, rut);
+
+        statement.executeUpdate();
+        statement.close();
+
+        System.out.println("Cliente actualizado exitosamente.");
+    }
+
+	public void update(Connection connection, String rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws RutInvalidoException, TelefonoInvalidoException, SQLException {
+	    setRut(rut);
+	    this.name = name;
+	    setPhoneNumber(phoneNumber);
+	    seteMail(eMail);
+	    this.isBusiness = isBusiness;
+
+	    updateDB(connection);
 	}
 }

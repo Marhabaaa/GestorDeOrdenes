@@ -1,6 +1,8 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
+import exceptions.MaxOrdenesSobrepasadoException;
+import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
 
 public abstract class Persona {
@@ -28,8 +30,14 @@ public abstract class Persona {
 		return rut;
 	}
 
-	public void setRut(int rut) {
-        this.rut = rut;
+	public void setRut(String rut) throws RutInvalidoException {
+		if(rut.length() > 8 || rut.length() < 7)
+			throw new RutInvalidoException();
+
+		if(!StringUtils.isStrictlyNumeric(rut))
+			throw new RutInvalidoException();
+
+		this.rut = Integer.parseInt(rut);
 	}
 	
 	public String getName() {
@@ -62,4 +70,10 @@ public abstract class Persona {
 
 		this.eMail = eMail;
 	}
+
+	public abstract void addOrder(Orden order) throws MaxOrdenesSobrepasadoException;
+
+    public abstract void removeOrder(Orden order);
+
+    public abstract ListaOrdenes getOrders();
 }

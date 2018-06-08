@@ -1,6 +1,7 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
+import exceptions.MaxOrdenesSobrepasadoException;
 import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
 import exceptions.TieneOrdenesException;
@@ -78,8 +79,8 @@ public class MapaClientes {
         return map.get(Integer.parseInt(rut));
 	}
 
-	public boolean addOrder(Orden order) {
-		return get(order.getClientRut()).addOrder(order);
+	public void addOrder(Orden order) throws MaxOrdenesSobrepasadoException {
+		get(order.getClientRut()).addOrder(order);
 	}
 
 	public void removeOrder(Orden order) {

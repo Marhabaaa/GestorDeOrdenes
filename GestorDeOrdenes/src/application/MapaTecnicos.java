@@ -67,8 +67,8 @@ public class MapaTecnicos {
 		return map.get(key);
 	}
 
-	public boolean addOrder(Orden order) {
-		return get(order.getTechNumber()).addOrder(order);
+	public void addOrder(Orden order) {
+		get(order.getTechNumber()).addOrder(order);
 	}
 
 	public void removeOrder(Orden order) {

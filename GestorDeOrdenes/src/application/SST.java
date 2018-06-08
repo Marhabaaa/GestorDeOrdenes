@@ -116,10 +116,10 @@ public class SST {	//Sistema Servicio Tecnico
         return orderNumber;
 	}
 
-	public void addOrder(int orderNumber) {
+	public void addOrder(int orderNumber) throws SQLException, MaxOrdenesSobrepasadoException {
 	    clientsMap.addOrder(ordersMap.get(orderNumber));
 	    techsMap.addOrder(ordersMap.get(orderNumber));
-	    orderPartsMap.put(ordersMap.get(orderNumber));
+	    ordersMap.get(orderNumber).toDB(connection);
     }
 
     public void cancelOrder(int orderNumber) {

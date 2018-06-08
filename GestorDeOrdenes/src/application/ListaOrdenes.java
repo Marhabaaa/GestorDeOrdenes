@@ -1,5 +1,7 @@
 package application;
 
+import interfaces.Lista;
+
 import java.util.ArrayList;
 
 public class ListaOrdenes implements Lista {
@@ -21,21 +23,6 @@ public class ListaOrdenes implements Lista {
 
     public Orden get(int index) {
         return list.get(index);
-    }
-
-    @Override
-    public boolean add() {
-        return false;
-    }
-
-    @Override
-    public boolean remove() {
-        return false;
-    }
-
-    @Override
-    public Object get() {
-        return null;
     }
 
     public int size() {

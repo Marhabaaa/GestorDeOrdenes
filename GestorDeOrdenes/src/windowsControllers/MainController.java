@@ -1,6 +1,7 @@
 package windowsControllers;
 
 import application.*;
+import exceptions.MaxOrdenesSobrepasadoException;
 import exceptions.RutInvalidoException;
 import exceptions.SinTecnicosException;
 import exceptions.TieneOrdenesException;
@@ -18,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainController {
 
@@ -78,10 +80,20 @@ public class MainController {
 		try {
 			orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
 			if (launchAgregarPieza()) {
-			    sistema.addOrder(orderNumber);
-			    launchWarning("/windows/WarningOrdenIngresadaConExito.fxml");
-            }
-		} catch (SinTecnicosException e) {
+			    try {
+                    sistema.addOrder(orderNumber);
+                    launchWarning("/windows/WarningOrdenIngresadaConExito.fxml");
+                }
+                catch (MaxOrdenesSobrepasadoException e) {
+                    System.out.println(e.getMessage());
+                    launchWarning("/windows/WarningOrdenNoIngresada.fxml");
+                }
+			}
+		}
+		catch (SinTecnicosException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}

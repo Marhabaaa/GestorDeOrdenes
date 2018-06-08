@@ -93,10 +93,9 @@ public class Pieza {
         statement.setInt(4, price);
         statement.setInt(5, complex);
 
-        // execute insert SQL stetement
         statement.executeUpdate();
 
-        System.out.println("Record is inserted into Inventario table!");
+        System.out.println("Pieza ingresada exitosamente a tabla inventario.");
 	}
 
 	public Pieza newPartClone(){

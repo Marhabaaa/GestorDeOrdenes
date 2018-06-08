@@ -2,6 +2,9 @@ package application;
 
 import exceptions.SinStockException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -210,5 +213,50 @@ public class Orden {
 		}else{
 			entregada="No";
 		}
+	}
+
+	public void toDB(Connection connection) throws SQLException {
+
+        String insertTableSQL;
+        PreparedStatement statement;
+
+		insertTableSQL = "INSERT INTO ordenes"
+				+ "(orderNumber, descripcion, dateIn, dateOut, clientRut, techNumber, precio, complejidad, revisada, terminada) VALUES"
+				+ "(?,?,?,?,?,?,?,?,?,?)";
+
+		statement = connection.prepareStatement(insertTableSQL);
+
+		statement.setInt(1, orderNumber);
+		statement.setString(2, description);
+		statement.setString(3, dateIn);
+		statement.setString(4, dateOut);
+		statement.setInt(5, clientRut);
+		statement.setInt(6, techNumber);
+		statement.setInt(7, price);
+		statement.setInt(8, complex);
+		statement.setBoolean(9, isChecked);
+		statement.setBoolean(10, isDone);
+
+		statement.executeUpdate();
+
+
+        insertTableSQL = "INSERT INTO orderParts"
+                + "(orderNumber, codPieza, cant) VALUES"
+                + "(?,?,?)";
+
+        statement = connection.prepareStatement(insertTableSQL);
+
+        int i = 0;
+        while(i < partsList.size()) {
+            statement.setInt(1, orderNumber);
+            statement.setInt(2, partsList.get(i).getCode());
+            statement.setInt(3, partsList.get(i).getCant());
+
+            statement.executeUpdate();
+
+            i++;
+        }
+
+		System.out.println("Orden insertada exitosamente a tabla ordenes.");
 	}
 }
