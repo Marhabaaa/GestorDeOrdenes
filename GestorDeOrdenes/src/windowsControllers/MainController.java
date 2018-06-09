@@ -68,7 +68,7 @@ public class MainController {
 				} else return;
 			}
 		} catch (RutInvalidoException e) {
-			launchWarning("/windows/WarningRutInvalido.fxml");
+            launchWarning("/windows/WarningRutInvalido.fxml");
 			return;
 		}
 
@@ -174,7 +174,24 @@ public class MainController {
 		Parent root = loader.load();
 
 		EditarClienteController editarClienteController = loader.getController();
-		editarClienteController.initVariables((Cliente)clientsTable.getSelectionModel().getSelectedItem(), sistema);
+		editarClienteController.initVariables((Cliente) clientsTable.getSelectionModel().getSelectedItem(), sistema);
+
+		Stage stage = new Stage();
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(editClientButton.getScene().getWindow());
+
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.resizableProperty().setValue(false);
+		stage.showAndWait();
+	}
+
+	private void launchEditarTecnico() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/EditarTecnico.fxml"));
+		Parent root = loader.load();
+
+		EditarTecnicoController editarTecnicoController = loader.getController();
+		editarTecnicoController.initVariables((Tecnico) techsTable.getSelectionModel().getSelectedItem(), sistema);
 
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
@@ -281,9 +298,14 @@ public class MainController {
 
 	@FXML
 	private void editClientButtonAction() throws Exception {
-		if(clientsTable.getSelectionModel().getSelectedItem() != null){
+		if(clientsTable.getSelectionModel().getSelectedItem() != null)
 			launchEditarCliente();
-		}
+	}
+
+	@FXML
+	private void editTechnicianButtonAction() throws Exception {
+		if(techsTable.getSelectionModel().getSelectedItem() != null)
+			launchEditarTecnico();
 	}
 
 	@FXML
@@ -319,7 +341,11 @@ public class MainController {
 				techsTable.setItems(getTechsItems());
 				techsTable.refresh();
 				System.out.println("Se ha eliminado el tecnico con exito");
-			} catch(TieneOrdenesException e){
+			}
+			catch(TieneOrdenesException e){
+				System.out.println(e.getMessage());
+			}
+			catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
@@ -333,9 +359,13 @@ public class MainController {
 				clientsTable.setItems(getClientsItems());
 				clientsTable.refresh();
 				System.out.println("Se ha eliminado el cliente con exito");
-			} catch(TieneOrdenesException e){
+			}
+			catch (TieneOrdenesException e) {
 				System.out.println(e.getMessage());
 			}
+			catch (SQLException e) {
+			    System.out.println(e.getMessage());
+            }
 		}
 	}
 }

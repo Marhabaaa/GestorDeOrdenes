@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class Main extends Application {
 
-	private SST sistema;
+    private SST sistema;
 	
 	@Override
 	public void start(Stage mainStage) throws IOException {
@@ -32,7 +32,7 @@ public class Main extends Application {
             mainStage.resizableProperty().setValue(false);
             mainStage.show();
 
-            mainStage.setOnCloseRequest(e -> Platform.exit());
+            //mainStage.setOnCloseRequest(e -> Platform.exit());
 		}
 		catch (SQLException e){
 			System.out.println(e.getMessage());
@@ -40,7 +40,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		launch(args);
 	}
 }

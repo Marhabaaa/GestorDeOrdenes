@@ -19,8 +19,8 @@ public abstract class Persona {
         this.eMail 		 = eMail;
     }
 
-    public Persona(int rut, String name, String phoneNumber, String eMail) throws TelefonoInvalidoException {
-        this.rut         = rut;
+    public Persona(String rut, String name, String phoneNumber, String eMail) throws TelefonoInvalidoException, RutInvalidoException {
+        setRut(rut);
         this.name 		 = name;
         setPhoneNumber(phoneNumber);
         seteMail(eMail);

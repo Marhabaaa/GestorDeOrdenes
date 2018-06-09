@@ -104,6 +104,7 @@ public class EditarOrdenController {
         }
 
         if(flag) {
+            sistema.updateOrder(orderNumber);
             Stage stage = (Stage) saveButton.getScene().getWindow();
             stage.close();
         }

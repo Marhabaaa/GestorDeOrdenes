@@ -1,6 +1,7 @@
 package application;
 
 import exceptions.SinStockException;
+import interfaces.ManejaBaseDeDatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Orden {
+public class Orden implements ManejaBaseDeDatos {
     
 	private int 		orderNumber;	//numero de orden asignado automaticamente
 	private String 		description; //descripcion del problema del aparato
@@ -216,7 +217,6 @@ public class Orden {
 	}
 
 	public void toDB(Connection connection) throws SQLException {
-
         String insertTableSQL;
         PreparedStatement statement;
 
@@ -259,4 +259,34 @@ public class Orden {
 
 		System.out.println("Orden insertada exitosamente a tabla ordenes.");
 	}
+
+	public void deleteFromDB(Connection connection) throws SQLException {
+		String deleteTableSQL;
+		PreparedStatement statement;
+
+		deleteTableSQL = "DELETE FROM orderParts"
+				+ " WHERE orderNumber = ?";
+
+		statement = connection.prepareStatement(deleteTableSQL);
+
+		statement.setInt(1, orderNumber);
+		statement.executeUpdate();
+
+
+		deleteTableSQL = "DELETE FROM ordenes"
+				+ " WHERE orderNumber = ?";
+
+		statement = connection.prepareStatement(deleteTableSQL);
+
+		statement.setInt(1, orderNumber);
+		statement.executeUpdate();
+
+        System.out.println("Orden eliminada exitosamente de la base de datos.");
+	}
+
+	public void updateDB(Connection connection) throws SQLException {
+	    deleteFromDB(connection);
+	    toDB(connection);
+        System.out.println("Orden actualizada exitosamente");
+    }
 }

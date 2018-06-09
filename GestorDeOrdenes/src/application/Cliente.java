@@ -3,12 +3,13 @@ package application;
 import exceptions.MaxOrdenesSobrepasadoException;
 import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
+import interfaces.ManejaBaseDeDatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements ManejaBaseDeDatos {
     
     private boolean 		isBusiness;
     private int 			maxOrders;	//maximo numero de ordenes permitidas por cliente segun tipo de cliente
@@ -22,7 +23,7 @@ public class Cliente extends Persona {
 		this.orders = orders;
 	}
 
-	public Cliente(int rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException {
+	public Cliente(String rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException, RutInvalidoException {
     	super(rut, name, phoneNumber, eMail);
     	this.setBusiness(isBusiness);
         this.maxOrders = calculateMaxOrders(isBusiness);
@@ -42,12 +43,12 @@ public class Cliente extends Persona {
 	}
 	
 	public void addOrder(Orden order) throws MaxOrdenesSobrepasadoException {
-		if(maxOrders >= orders.size())
+		if(orders.size() >= maxOrders)
 			throw new MaxOrdenesSobrepasadoException();
-		
-		orders.add(order);
+		else
+			orders.add(order);
 	}
-	
+
 	public void removeOrder(Orden order) {
 		orders.remove(order);
 	}
@@ -59,8 +60,6 @@ public class Cliente extends Persona {
         
         return max;
 	}
-
-	//public boolean hasPendingOrders
 
 	public void toDB(Connection connection) throws SQLException {
 		String insertTableSQL = "INSERT INTO clientes"
@@ -80,12 +79,24 @@ public class Cliente extends Persona {
 		System.out.println("Cliente insertado exitosamente a tabla clientes.");
 	}
 
+	public void deleteFromDB(Connection connection) throws SQLException {
+		String deleteTableSQL = "DELETE FROM clientes"
+				+ " WHERE rut = ?";
+
+		PreparedStatement statement = connection.prepareStatement(deleteTableSQL);
+
+		statement.setInt(1, rut);
+		statement.executeUpdate();
+
+		System.out.println("Cliente eliminado exitosamente de la base de datos.");
+	}
+
     public void updateDB(Connection connection) throws SQLException {
-	    String insertTableSQL = "UPDATE clientes"
+	    String updateTableSQL = "UPDATE clientes"
                 + " SET rut = ?, nombre = ?, telefono = ?, eMail = ?, esEmpresa = ?"
                 + " WHERE rut = ?";
 
-        PreparedStatement statement = connection.prepareStatement(insertTableSQL);
+        PreparedStatement statement = connection.prepareStatement(updateTableSQL);
 
         statement.setInt(1, rut);
         statement.setString(2, name);

@@ -2,12 +2,13 @@ package application;
 
 import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
+import interfaces.ManejaBaseDeDatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Tecnico extends Persona {
+public class Tecnico extends Persona implements ManejaBaseDeDatos {
 	
     private int 			techNumber;
     private int 			dwh;		//daily working hours; horas de trabajo diario de tecnico segun contrato
@@ -23,7 +24,7 @@ public class Tecnico extends Persona {
 		this.workload 	= calculateWorkload();
 	}
 
-	public Tecnico(int rut, String name, int phoneNumber, String eMail, int tecNumber, int dwh) {
+	public Tecnico(String rut, String name, String phoneNumber, String eMail, int tecNumber, int dwh) throws TelefonoInvalidoException, RutInvalidoException {
 		super(rut, name, phoneNumber, eMail);
 		this.techNumber = tecNumber;
 		this.dwh 		= dwh;
@@ -33,6 +34,10 @@ public class Tecnico extends Persona {
     
 	public int getTechNumber() {
 		return techNumber;
+	}
+
+	public int getDwh() {
+    	return dwh;
 	}
 
 	public int getWorkload() {
@@ -81,7 +86,7 @@ public class Tecnico extends Persona {
 
 	public void toDB(Connection connection) throws SQLException {
 		String insertTableSQL = "INSERT INTO tecnicos"
-				+ "(rut, nombre, telefono, eMail, esEmpresa, tecNumber, dwh) VALUES"
+				+ "(rut, nombre, telefono, eMail, tecNumber, dwh) VALUES"
 				+ "(?,?,?,?,?,?)";
 
 		PreparedStatement statement = connection.prepareStatement(insertTableSQL);
@@ -98,12 +103,24 @@ public class Tecnico extends Persona {
 		System.out.println("Tecnico nsertado exitosamente a tabla tecnicos.");
 	}
 
+	public void deleteFromDB(Connection connection) throws SQLException {
+		String deleteTableSQL = "DELETE FROM tecnicos"
+				+ " WHERE tecNumber = ?";
+
+		PreparedStatement statement = connection.prepareStatement(deleteTableSQL);
+
+		statement.setInt(1, techNumber);
+		statement.executeUpdate();
+
+		System.out.println("Tecnico eliminado exitosamente de la base de datos.");
+	}
+
     public void updateDB(Connection connection) throws SQLException {
-        String insertTableSQL = "UPDATE tecnicos"
+        String updateTableSQL = "UPDATE tecnicos"
                 + " SET rut = ?, nombre = ?, telefono = ?, eMail = ?, tecNumber = ?, dwh = ?"
                 + " WHERE tecNumber = ?";
 
-        PreparedStatement statement = connection.prepareStatement(insertTableSQL);
+        PreparedStatement statement = connection.prepareStatement(updateTableSQL);
 
         statement.setInt(1, rut);
         statement.setString(2, name);

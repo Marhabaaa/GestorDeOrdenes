@@ -49,7 +49,7 @@
                             <TableColumn fx:id="nombreClienteColumn" prefWidth="207.0" text="Nombre" />
                           </columns>
                         </TableView>
-                        <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
+                        <Button fx:id="editClientButton" layoutX="62.0" layoutY="305.0" mnemonicParsing="false" onAction="#editClientButtonAction" text="Editar" />
                         <Button fx:id="deleteClientButton" layoutX="185.0" layoutY="305.0" mnemonicParsing="false" onAction="#deleteClientButtonAction" text="Eliminar" />
                      </children></AnchorPane>
               </content>
@@ -65,7 +65,7 @@
                           </columns>
                         </TableView>
                         <Button fx:id="newTechnicianButton" layoutX="22.0" layoutY="303.0" mnemonicParsing="false" onAction="#newTechnicianButtonAction" text="Nuevo Técnico" />
-                        <Button fx:id="editTechnicianButton" layoutX="152.0" layoutY="303.0" mnemonicParsing="false" text="Editar" />
+                        <Button fx:id="editTechnicianButton" layoutX="152.0" layoutY="303.0" mnemonicParsing="false" onAction="#editTechnicianButtonAction" text="Editar" />
                         <Button fx:id="deleteTecnhicianButton" layoutX="214.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteTechnicianButtonAction" text="Eliminar" />
                      </children></AnchorPane>
               </content>

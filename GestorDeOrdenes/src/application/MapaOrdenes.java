@@ -12,12 +12,14 @@ import java.util.Hashtable;
 public class MapaOrdenes {
 		
 	private Hashtable<Integer, Orden> map;
+	private int lastOrderNumber;
 
 	public MapaOrdenes(Connection connection, MapaPiezasDeOrdenes orderPartsMap) throws SQLException {
 		map = new Hashtable<>();
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM ordenes");
 		ResultSet data = statement.executeQuery();
 
+		lastOrderNumber = -1;
 		int orderNumber, clientRut, techNumber, price, complex;
 		String description, dateIn, dateOut;
 		boolean checked, done;
@@ -42,7 +44,8 @@ public class MapaOrdenes {
 
 			put(orderNumber, description, dateIn, dateOut, clientRut, techNumber, price, partsList, complex, checked, done);
 
-			//setOrderNumber(orderNumber);
+			if(orderNumber > lastOrderNumber)
+			    lastOrderNumber = orderNumber;
 		}
 	}
 
@@ -51,9 +54,10 @@ public class MapaOrdenes {
 		map.put(orderNumber, aux);
 	}
 
-	public void createOrder(int orderNumber, String description, int rutClient, int techNumber){
-		Orden order = new Orden(orderNumber, description, rutClient, techNumber);
-		map.put(orderNumber, order);
+	public int createOrder(String description, int rutClient, int techNumber){
+		Orden order = new Orden(getNewOrderNumber(), description, rutClient, techNumber);
+		map.put(lastOrderNumber, order);
+		return lastOrderNumber;
 	}
 
 	public boolean contains(int key) {
@@ -72,9 +76,13 @@ public class MapaOrdenes {
 	    map.get(orderNumber).removePart(partCode);
     }
 
-	public boolean remove(int key) {
+	public void remove(int key) {
 		map.remove(key);
-		return true;
+	}
+
+	public void remove(int key, Connection connection) throws SQLException {
+		map.get(key).deleteFromDB(connection);
+		map.remove(key);
 	}
 
 	public Orden get(int key) {
@@ -105,5 +113,10 @@ public class MapaOrdenes {
 		}
 
 		return sum;
+	}
+
+	private int getNewOrderNumber() {
+		lastOrderNumber++;
+		return lastOrderNumber;
 	}
 }
