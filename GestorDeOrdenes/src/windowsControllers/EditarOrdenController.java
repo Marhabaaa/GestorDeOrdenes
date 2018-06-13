@@ -66,7 +66,7 @@ public class EditarOrdenController {
         if(tableA.getSelectionModel().getSelectedItem() != null) {
             try {
                 sistema.addPartToOrder(orderNumber, ((Pieza) tableA.getSelectionModel().getSelectedItem()).getCode());
-                addedParts.add((Pieza) tableA.getSelectionModel().getSelectedItem());
+                addedParts.addOne((Pieza) tableA.getSelectionModel().getSelectedItem());
             } catch (SinStockException e) {
                 System.out.println(e.getMessage());
             }
@@ -82,7 +82,7 @@ public class EditarOrdenController {
 
         if(tableB.getSelectionModel().getSelectedItem() != null) {
             sistema.removePartFromOrder(orderNumber, ((Pieza) tableB.getSelectionModel().getSelectedItem()).getCode());
-            removedParts.add((Pieza) tableB.getSelectionModel().getSelectedItem());
+            removedParts.addOne((Pieza) tableB.getSelectionModel().getSelectedItem());
 
             tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
             tableA.refresh();

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class Main extends Application {
 
-    private SST sistema;
+    private static SST sistema;
 	
 	@Override
 	public void start(Stage mainStage) throws IOException {
@@ -42,5 +42,6 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception {
 		launch(args);
+		sistema.updateStock();
 	}
 }

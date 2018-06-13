@@ -217,8 +217,8 @@ public class SST {	//Sistema Servicio Tecnico
 		getOrder(orderNumber).updateDB(connection);
 	}
 
-	public void updateStock(ListaPiezas partsList) throws SQLException {
-	    //ListaPiezas partsList = stockMap.toListaPiezas();
+	public void updateStock() throws SQLException {
+	    ListaPiezas partsList = stockMap.toListaPiezas();
 
 	    int i = 0;
 	    while(i < partsList.size()) {

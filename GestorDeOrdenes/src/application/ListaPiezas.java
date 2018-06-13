@@ -40,6 +40,10 @@ public class ListaPiezas implements Lista {
     }
 
     public void add(Pieza part) {
+        list.add(part);
+    }
+
+    public void addOne(Pieza part) {
         if(contains(part.getCode()))
             list.get(getIndex(part.getCode())).oneMore();
         else

@@ -197,7 +197,7 @@ public class Orden implements ManejaBaseDeDatos {
     }
 
     public void addPart(Pieza part) throws SinStockException {
-	    partsList.add(part);
+	    partsList.addOne(part);
     }
 
     public void removePart(int partCode) {
