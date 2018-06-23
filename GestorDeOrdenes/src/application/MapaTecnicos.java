@@ -1,8 +1,6 @@
 package application;
 
-import exceptions.RutInvalidoException;
 import exceptions.SinTecnicosException;
-import exceptions.TelefonoInvalidoException;
 import exceptions.TieneOrdenesException;
 
 import java.sql.Connection;
@@ -15,14 +13,12 @@ import java.util.Hashtable;
 public class MapaTecnicos {
 		
 	private Hashtable<Integer, Tecnico> map;
-	private int lastTechNumber;
 
 	public MapaTecnicos(Connection connection, SMap techOrdersMap) throws SQLException {
 		map = new Hashtable<>();
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM tecnicos");
 		ResultSet data = statement.executeQuery();
 
-		lastTechNumber = -1;
 		int rut, phoneNumber, techNumber, dwh;
 		String name, eMail;
 
@@ -41,8 +37,7 @@ public class MapaTecnicos {
 
 			put(rut, name, phoneNumber, eMail, techNumber, dwh, orders);
 
-			if(techNumber > lastTechNumber)
-				lastTechNumber = techNumber;
+			//setTechNumber(techNumber);
 		}
 	}
 
@@ -50,21 +45,21 @@ public class MapaTecnicos {
 		return map.containsKey(key);
 	}
 
-	public void put(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh, ListaOrdenes orders) {
+	public boolean put(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh, ListaOrdenes orders) {
 	    Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh, orders);
 		map.put(tech.getTechNumber(), tech);
+		return true;
 	}
 
-    public void put(String rut, String name, String phoneNumber, String eMail, int dwh, Connection connection) throws SQLException, TelefonoInvalidoException, RutInvalidoException {
-        Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, getNewTechNumber(), dwh);
-        tech.toDB(connection);
+    public boolean put(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
+        Tecnico tech = new Tecnico(rut, name, phoneNumber, eMail, techNumber, dwh);
         map.put(tech.getTechNumber(), tech);
+        return true;
     }
 
-	public void remove(int key, Connection connection) throws TieneOrdenesException, SQLException {
+	public void remove(int key) throws TieneOrdenesException {
 		if(!map.get(key).getOrders().isEmpty())
 			throw new TieneOrdenesException();
-		map.get(key).deleteFromDB(connection);
 		map.remove(key);
 	}
 
@@ -72,8 +67,8 @@ public class MapaTecnicos {
 		return map.get(key);
 	}
 
-	public void addOrder(Orden order) {
-		get(order.getTechNumber()).addOrder(order);
+	public boolean addOrder(Orden order) {
+		return get(order.getTechNumber()).addOrder(order);
 	}
 
 	public void removeOrder(Orden order) {
@@ -103,11 +98,6 @@ public class MapaTecnicos {
 		}
 
 		return techNumber;
-	}
-
-	private int getNewTechNumber() {
-		lastTechNumber++;
-		return lastTechNumber;
 	}
 
 	public ListaTecnicos toListaTecnicos() {

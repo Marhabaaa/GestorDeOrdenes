@@ -1,13 +1,12 @@
 package application;
 
 import exceptions.SinStockException;
-import interfaces.ManejaBaseDeDatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Pieza implements ManejaBaseDeDatos {
+public class Pieza {
 	
 	private int 	code;
     private String  description;
@@ -94,52 +93,11 @@ public class Pieza implements ManejaBaseDeDatos {
         statement.setInt(4, price);
         statement.setInt(5, complex);
 
+        // execute insert SQL stetement
         statement.executeUpdate();
 
-        System.out.println("Pieza ingresada exitosamente a tabla inventario.");
+        System.out.println("Record is inserted into Inventario table!");
 	}
-
-	public void deleteFromDB(Connection connection) throws SQLException {
-		String deleteTableSQL = "DELETE FROM inventario"
-				+ " WHERE codPieza = ?";
-
-		PreparedStatement statement = connection.prepareStatement(deleteTableSQL);
-
-		statement.setInt(1, code);
-		statement.executeUpdate();
-
-		System.out.println("Pieza eliminada exitosamente de la base de datos.");
-	}
-
-	public void updateDB(Connection connection) throws SQLException {
-        String updateTableSQL = "UPDATE inventario"
-                + " SET codPieza = ?, descripcion = ?, cant = ?, precioUnit = ?, complejidad = ?"
-                + " WHERE codPieza = ?";
-
-        PreparedStatement statement = connection.prepareStatement(updateTableSQL);
-
-        statement.setInt(1, code);
-        statement.setString(2, description);
-        statement.setInt(3, cant);
-        statement.setInt(4, price);
-        statement.setInt(5, complex);
-        statement.setInt(6, code);
-
-        statement.executeUpdate();
-        statement.close();
-
-        System.out.println("Pieza actualizada exitosamente.");
-    }
-
-    public void update(Connection connection, int code, String description, int cant, int price, int complex) throws SQLException {
-        this.code = code;
-        this.description = description;
-        this.cant = cant;
-        this.price = price;
-        this.complex = complex;
-
-        updateDB(connection);
-    }
 
 	public Pieza newPartClone(){
     	Pieza aux = new Pieza(code, description, 1, price, complex);
@@ -151,3 +109,4 @@ public class Pieza implements ManejaBaseDeDatos {
 		return aux;
 	}
 }
+

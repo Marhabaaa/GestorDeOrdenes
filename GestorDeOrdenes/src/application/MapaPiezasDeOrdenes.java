@@ -31,7 +31,6 @@ public class MapaPiezasDeOrdenes {
 			Pieza aux = stockMap.get(pieceCode);
 
 			if(aux != null) {
-			    aux = aux.newPartClone();
 				aux.setCant(cant);
 				put(orderNumber, aux);
 			}
@@ -47,8 +46,11 @@ public class MapaPiezasDeOrdenes {
 		return map.containsKey(key);
 	}
 
-	public void put(int key, Pieza part) {
+	public boolean put(int key, Pieza part) {
+		if(map.get(key) == null)
+			return false;
 		map.get(key).add(part);
+		return true;
 	}
 
 	public boolean put(Orden order) {

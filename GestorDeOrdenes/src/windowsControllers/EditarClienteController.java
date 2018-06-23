@@ -27,47 +27,39 @@ public class EditarClienteController {
     @FXML private Button cancelButton;
 
     private SST sistema;
-
-    public void initVariables(Cliente cliente, SST sistema) throws RutInvalidoException {
-        this.sistema = sistema;
-        rutField.setText(String.valueOf(cliente.getRut()));
-        nameField.setText(cliente.getName());
-        phoneField.setText(String.valueOf(cliente.getPhoneNumber()));
-        emailField.setText(cliente.geteMail());
-        isBusinessButton.setSelected(cliente.isBusiness());
-    }
+    private boolean flag;
 
     @FXML
-    private void saveButtonAction() throws Exception {
+    private void createButtonAction() throws Exception {
         if(nameField.getText().length() == 0) {
             launchWarning("/windows/WarningCampoNombreVacio.fxml");
             return;
         }
 
         try {
-            sistema.updateClient(rutField.getText(), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
-            System.out.println("Cliente actualizado correctamente");
+            sistema.addClient(Integer.parseInt(rutField.getText()), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
+            flag = true;
             launchWarning("/windows/WarningClienteIngresadoConExito.fxml");
             Stage stage = (Stage) saveButton.getScene().getWindow();
             stage.close();
         }
         catch(TelefonoInvalidoException e) {
             launchWarning("/windows/WarningTelefonoInvalido.fxml");
+            return;
         }
         catch(SQLException e) {
             System.out.println(e.getMessage());
             launchWarning("/windows/WarningClienteNoIngresado.fxml");
-        }
-        catch (RutInvalidoException e) {
-            System.out.println(e.getMessage());
-            launchWarning("/windows/WarningRutInvalido.fxml");
+            return;
         }
     }
 
-    @FXML
-    private void cancelButtonAction() {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+    public void initVariables(Cliente cliente, SST sistema) throws RutInvalidoException {
+        sistema.getClient(String.valueOf(cliente.getRut())).setName("juanito");
+        this.sistema = sistema;
+        Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
+
     }
 
     private void launchWarning(String fxml) throws Exception {
@@ -75,7 +67,7 @@ public class EditarClienteController {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(saveButton.getScene().getWindow());
+       // stage.initOwner(createButton.getScene().getWindow());
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

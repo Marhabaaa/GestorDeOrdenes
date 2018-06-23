@@ -51,9 +51,9 @@ public class MapaStock {
 		return map.containsKey(key);
 	}
 
-	public void remove(int key, Connection connection) throws SQLException {
-		map.get(key).deleteFromDB(connection);
+	public boolean remove(int key) {
 		map.remove(key);
+		return true;
 	}
 
 	public Pieza get(int key) {

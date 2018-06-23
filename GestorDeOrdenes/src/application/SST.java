@@ -17,6 +17,8 @@ public class SST {	//Sistema Servicio Tecnico
 	private MapaOrdenes ordersMap;
 	private MapaClientes clientsMap;
 	private MapaTecnicos techsMap;
+	private int  orderNumber;	//variable para asignacion de numero de orden
+	private int  techNumber;	//variable para asignacion de numero de tecnico
 	
 	public SST() throws SQLException {
 		conn  = new MySQLconnection();
@@ -29,6 +31,15 @@ public class SST {	//Sistema Servicio Tecnico
 		SMap techOrdersMap 	 = getTechOrdersMap();
 		clientsMap 			 = new MapaClientes(connection, clientOrdersMap);
 		techsMap 			 = new MapaTecnicos(connection, techOrdersMap);
+	}
+	
+	private void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+
+	private void setTechNumber(int techNumber) {
+		this.techNumber = techNumber;
 	}
 	
 	private SMap getClientOrdersMap() {
@@ -72,6 +83,20 @@ public class SST {	//Sistema Servicio Tecnico
 		
 		return techOrdersMap;
 	}
+	
+	public int getNewOrderNumber() {
+		orderNumber++;
+		return orderNumber;
+	}
+	
+	public int getNewTechNumber() {
+		techNumber++;
+		return techNumber;
+	}
+
+	public void addPart(int code, String description, int cant, int price, int complex) throws SQLException {
+		stockMap.put(code, description, cant, price, complex, connection);
+	}
 
 	public void updateStock(int code, int cant) throws SinStockException {
 	    stockMap.updateStock(code, cant);
@@ -83,6 +108,24 @@ public class SST {	//Sistema Servicio Tecnico
 
     public Orden getOrder(int orderNumber) {
 	    return ordersMap.get(orderNumber);
+    }
+
+    public int createOrder(String description, int clientRut) throws Exception {
+	    orderNumber = getNewOrderNumber();
+	    ordersMap.createOrder(orderNumber, description, clientRut, techsMap.leastWorkload());
+        return orderNumber;
+	}
+
+	public void addOrder(int orderNumber) {
+	    clientsMap.addOrder(ordersMap.get(orderNumber));
+	    techsMap.addOrder(ordersMap.get(orderNumber));
+	    orderPartsMap.put(ordersMap.get(orderNumber));
+    }
+
+    public void cancelOrder(int orderNumber) {
+	    recoverParts(ordersMap.get(orderNumber).getPartsList());
+	    ordersMap.remove(orderNumber);
+	    this.orderNumber--;
     }
 
     public void recoverParts(ListaPiezas partsList) {
@@ -109,58 +152,32 @@ public class SST {	//Sistema Servicio Tecnico
         stockMap.get(part.getCode()).updateCant((-1) * part.getCant());
     }
 
-    public int createOrder(String description, int clientRut) throws Exception {
-        return ordersMap.createOrder(description, clientRut, techsMap.leastWorkload());
-    }
-
-    public void addOrder(int orderNumber) throws SQLException, MaxOrdenesSobrepasadoException {
-        clientsMap.addOrder(ordersMap.get(orderNumber));
-        techsMap.addOrder(ordersMap.get(orderNumber));
-        ordersMap.get(orderNumber).toDB(connection);
-        //updateStock(ordersMap.get(orderNumber).getPartsList());
-    }
-
-    public void cancelOrder(int orderNumber) {
-        recoverParts(ordersMap.get(orderNumber).getPartsList());
-        ordersMap.remove(orderNumber);
-    }
-
-    public void removeOrder(int orderNumber) throws SQLException {
+    public boolean removeOrder(int orderNumber) {
 		techsMap.removeOrder(ordersMap.get(orderNumber));
 		clientsMap.removeOrder(ordersMap.get(orderNumber));
-		ordersMap.remove(orderNumber, connection);
+		orderPartsMap.remove(orderNumber);
+		ordersMap.remove(orderNumber);
+		return true;
 	}
 	
-	public void addClient(String rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException, SQLException, RutInvalidoException {
+	public void addClient(int rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws TelefonoInvalidoException, SQLException {
 		clientsMap.put(rut, name, phoneNumber, eMail, isBusiness, connection);
 	}
 
-	public void removeClient(int rut) throws TieneOrdenesException, SQLException {
-		clientsMap.remove(rut, connection);
+	public void removeClient(int rut) throws TieneOrdenesException {
+		clientsMap.remove(rut);
 	}
 
-	public void updateClient(String rut, String name, String phoneNumber, String eMail, boolean isBusiness) throws RutInvalidoException, TelefonoInvalidoException, SQLException {
-	    clientsMap.get(rut).update(connection, rut, name, phoneNumber, eMail, isBusiness);
-    }
-
-	public void addTechnician(String rut, String name, String phoneNumber, String eMail, int dwh) throws SQLException, TelefonoInvalidoException, RutInvalidoException {
-		techsMap.put(rut, name, phoneNumber, eMail, dwh, connection);
+	public void removeTechnician(int techNumber) throws TieneOrdenesException {
+		techsMap.remove(techNumber);
 	}
 
-	public void removeTechnician(int techNumber) throws TieneOrdenesException, SQLException {
-		techsMap.remove(techNumber, connection);
+	public boolean addTechnician(int rut, String name, int phoneNumber, String eMail, int techNumber, int dwh) {
+		return techsMap.put(rut, name, phoneNumber, eMail, techNumber, dwh);
 	}
 
-	public void updateTechnician(int techNumber, String rut, String name, String phoneNumber, String eMail, int dwh) throws SQLException, TelefonoInvalidoException, RutInvalidoException {
-		techsMap.get(techNumber).update(connection, rut, name, phoneNumber, eMail, dwh);
-	}
-
-    public void addPart(int code, String description, int cant, int price, int complex) throws SQLException {
-        stockMap.put(code, description, cant, price, complex, connection);
-    }
-
-    public void removePart(int partNumber) throws SQLException {
-		stockMap.remove(partNumber, connection);
+	public void removePart(int partNumber){
+		stockMap.remove(partNumber);
 	}
 
 	public Cliente getClient(String rut) throws RutInvalidoException {
@@ -212,18 +229,4 @@ public class SST {	//Sistema Servicio Tecnico
 		ordersMap.removePart(orderNumber, codPart);
 		stockMap.get(codPart).oneMore();
 	}
-
-	public void updateOrder(int orderNumber) throws SQLException {
-		getOrder(orderNumber).updateDB(connection);
-	}
-
-	public void updateStock() throws SQLException {
-	    ListaPiezas partsList = stockMap.toListaPiezas();
-
-	    int i = 0;
-	    while(i < partsList.size()) {
-	        stockMap.get(partsList.get(i).getCode()).updateDB(connection);
-	        i++;
-        }
-    }
 }

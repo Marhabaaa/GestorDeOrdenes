@@ -14,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
-
 
 public class ReporteOrdenesController {
 
@@ -33,13 +31,8 @@ public class ReporteOrdenesController {
 
     @FXML
     private void deleteButtonAction() {
-        if(table.getSelectionModel().getSelectedItem() != null) {
-            try {
-                sistema.removeOrder(((Orden) table.getSelectionModel().getSelectedItem()).getOrderNumber());
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        if(table.getSelectionModel().getSelectedItem() != null)
+            sistema.removeOrder(((Orden) table.getSelectionModel().getSelectedItem()).getOrderNumber());
         table.setItems(getItems());
         table.refresh();
     }

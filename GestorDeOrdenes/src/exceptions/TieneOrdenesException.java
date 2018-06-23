@@ -2,6 +2,6 @@ package exceptions;
 
 public class TieneOrdenesException extends Exception {
     public TieneOrdenesException(){
-        super("Tiene ordenes pendientes.");
+        super("Tecnico tiene trabajo pendiente.");
     }
 }

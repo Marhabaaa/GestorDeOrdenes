@@ -1,11 +1,10 @@
 package application;
 
 import exceptions.SinStockException;
-import interfaces.Lista;
 
 import java.util.ArrayList;
 
-public class ListaPiezas implements Lista {
+public class ListaPiezas implements Lista{
 
     private ArrayList<Pieza> list;
 
@@ -40,10 +39,6 @@ public class ListaPiezas implements Lista {
     }
 
     public void add(Pieza part) {
-        list.add(part);
-    }
-
-    public void addOne(Pieza part) {
         if(contains(part.getCode()))
             list.get(getIndex(part.getCode())).oneMore();
         else
@@ -64,6 +59,21 @@ public class ListaPiezas implements Lista {
             }
         else
             list.remove(getIndex(code));
+    }
+
+    @Override
+    public boolean add() {
+        return false;
+    }
+
+    @Override
+    public boolean remove() {
+        return false;
+    }
+
+    @Override
+    public Object get() {
+        return null;
     }
 
     public int size() {

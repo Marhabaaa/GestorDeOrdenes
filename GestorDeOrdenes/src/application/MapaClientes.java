@@ -1,7 +1,6 @@
 package application;
 
 import com.mysql.jdbc.StringUtils;
-import exceptions.MaxOrdenesSobrepasadoException;
 import exceptions.RutInvalidoException;
 import exceptions.TelefonoInvalidoException;
 import exceptions.TieneOrdenesException;
@@ -48,21 +47,20 @@ public class MapaClientes {
         map.put(rut, client);
     }
 
-	public void put(String rut, String name, String phoneNumber, String eMail, boolean isBusiness, Connection connection) throws TelefonoInvalidoException, SQLException, RutInvalidoException {
+	public void put(int rut, String name, String phoneNumber, String eMail, boolean isBusiness, Connection connection) throws TelefonoInvalidoException, SQLException {
         Cliente client = new Cliente(rut, name, phoneNumber, eMail, isBusiness);
         client.toDB(connection);
-        map.put(Integer.parseInt(rut), client);
+        map.put(rut, client);
     }
 
     public boolean contains(int key) {
         return map.containsKey(key);
     }
 
-	public void remove(int key, Connection connection) throws TieneOrdenesException, SQLException {
+	public void remove(int key) throws TieneOrdenesException {
 
 		if(!map.get(key).getOrders().isEmpty())
 			throw new TieneOrdenesException();
-		map.get(key).deleteFromDB(connection);
 		map.remove(key);
 	}
 
@@ -80,8 +78,8 @@ public class MapaClientes {
         return map.get(Integer.parseInt(rut));
 	}
 
-	public void addOrder(Orden order) throws MaxOrdenesSobrepasadoException {
-		get(order.getClientRut()).addOrder(order);
+	public boolean addOrder(Orden order) {
+		return get(order.getClientRut()).addOrder(order);
 	}
 
 	public void removeOrder(Orden order) {
