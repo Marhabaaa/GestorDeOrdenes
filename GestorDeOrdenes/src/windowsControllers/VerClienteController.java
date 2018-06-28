@@ -29,12 +29,10 @@ public class VerClienteController {
     @FXML private Label isEmpressLabel;
     @FXML private Button backButton;
 
-    private boolean flag;
 
     @FXML
 
     private void backButtonAction(){
-        flag = true;
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
     }
@@ -51,9 +49,5 @@ public class VerClienteController {
         }else{
             isEmpressLabel.setText("No");
         }
-
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
-
     }
 }

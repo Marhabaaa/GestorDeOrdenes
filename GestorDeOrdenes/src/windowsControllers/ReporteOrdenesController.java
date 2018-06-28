@@ -26,8 +26,16 @@ public class ReporteOrdenesController {
     @FXML private TableColumn<Orden, String> entregadaColumn;
     @FXML private Button editButton;
     @FXML private Button deteleButton;
+    @FXML private Button showButton;
 
     private SST sistema;
+
+    @FXML
+    private void showButtonAction() throws Exception {
+        if(table.getSelectionModel().getSelectedItem() != null){
+            launchVerOrden();
+        }
+    }
 
     @FXML
     private void deleteButtonAction() {
@@ -81,6 +89,24 @@ public class ReporteOrdenesController {
         Stage stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(editButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+    }
+
+    private void launchVerOrden() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerOrden.fxml"));
+        Parent root = loader.load();
+
+        VerOrdenController verOrdenController = loader.getController();
+        //verOrdenController.initVariables((Cliente)(table.getSelectionModel().getSelectedItem()));
+        verOrdenController.initVariables(sistema,(Orden)(table.getSelectionModel().getSelectedItem()));
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(showButton.getScene().getWindow());
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

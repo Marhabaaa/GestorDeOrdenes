@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="430.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowsControllers.VerOrdenController">
+   <children>
+      <Button fx:id="backButton" layoutX="279.0" layoutY="391.0" mnemonicParsing="false" onAction="#backButtonAction" text="Volver" />
+      <Text layoutX="9.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre cliente:" wrappingWidth="108.00001534819603">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tableA" layoutX="331.0" layoutY="98.0" prefHeight="157.0" prefWidth="269.0">
+        <columns>
+          <TableColumn fx:id="codAColumn" prefWidth="75.0" text="Cod." />
+          <TableColumn fx:id="descriptionAColumn" prefWidth="119.0" text="Descripción" />
+            <TableColumn fx:id="cantAColumn" prefWidth="74.0" text="Cant." />
+        </columns>
+      </TableView>
+      <Text layoutX="336.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piezas Agregadas:" wrappingWidth="119.87597346305847">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="60.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion:" wrappingWidth="89.99999126791954">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo total:" wrappingWidth="108.00001534819603">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrega estimada:" wrappingWidth="119.87597257643938">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="9.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Técnico asignado:" wrappingWidth="119.87597272056155">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="clientLabel" layoutX="129.0" layoutY="128.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="totalLabel" layoutX="129.0" layoutY="148.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="dateLabel" layoutX="129.0" layoutY="168.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="techLabel" layoutX="129.0" layoutY="188.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="problemLabel" layoutX="157.0" layoutY="269.0" prefHeight="17.0" prefWidth="391.0" />
+   </children>
+</AnchorPane>

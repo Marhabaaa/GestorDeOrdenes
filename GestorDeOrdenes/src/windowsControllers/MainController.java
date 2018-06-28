@@ -158,7 +158,7 @@ public class MainController {
 		return crearClienteController.getFlag();
 	}
 
-	private void launchVerCliente() throws Exception {
+/*	private void launchVerCliente() throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerCliente.fxml"));
 		Parent root = loader.load();
 
@@ -174,6 +174,7 @@ public class MainController {
 		stage.resizableProperty().setValue(false);
 		stage.showAndWait();
 	}
+*/
 
 	private void launchEditarCliente() throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/EditarCliente.fxml"));
@@ -284,6 +285,23 @@ public class MainController {
 		}
 		return clientes;
 	}
+
+    private void launchVerCliente() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerCliente.fxml"));
+        Parent root = loader.load();
+
+        VerClienteController verClienteController = loader.getController();
+        verClienteController.initVariables((Cliente)(clientsTable.getSelectionModel().getSelectedItem()));
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(showClientButton.getScene().getWindow());
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+    }
 
 	@FXML
 	private void showClientButtonAction() throws  Exception{
