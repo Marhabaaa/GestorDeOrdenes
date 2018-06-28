@@ -11,7 +11,7 @@
       <Text layoutX="54.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
       <Text layoutX="67.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rut:" />
       <Text layoutX="53.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:" />
-      <Text layoutX="58.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
+      <Text layoutX="48.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
       <Label fx:id="rutLabel" layoutX="122.0" layoutY="80.0" prefHeight="17.0" prefWidth="130.0" />
       <Label fx:id="nameLabel" layoutX="123.0" layoutY="123.0" prefHeight="17.0" prefWidth="150.0" />
       <Label fx:id="phoneLabel" layoutX="123.0" layoutY="166.0" prefHeight="17.0" prefWidth="150.0" />

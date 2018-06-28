@@ -1,6 +1,7 @@
 package windowsControllers;
 
 import application.*;
+import exceptions.MaxOrdenesSobrepasadoException;
 import exceptions.RutInvalidoException;
 import exceptions.SinTecnicosException;
 import exceptions.TieneOrdenesException;
@@ -17,8 +18,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 
-import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainController {
 
@@ -26,7 +27,7 @@ public class MainController {
 	@FXML private TextField rutField;
 	@FXML private TextArea descArea;
 
-	@FXML private Button showClientButton;
+    @FXML private Button showClientButton;
 	@FXML private Button editClientButton;
 	@FXML private Button deleteClientButton;
 
@@ -67,7 +68,7 @@ public class MainController {
 				} else return;
 			}
 		} catch (RutInvalidoException e) {
-			launchWarning("/windows/WarningRutInvalido.fxml");
+            launchWarning("/windows/WarningRutInvalido.fxml");
 			return;
 		}
 
@@ -79,10 +80,20 @@ public class MainController {
 		try {
 			orderNumber = sistema.createOrder(descArea.getText(), Integer.parseInt(rutField.getText()));
 			if (launchAgregarPieza()) {
-			    sistema.addOrder(orderNumber);
-			    launchWarning("/windows/WarningOrdenIngresadaConExito.fxml");
-            }
-		} catch (SinTecnicosException e) {
+			    try {
+                    sistema.addOrder(orderNumber);
+                    launchWarning("/windows/WarningOrdenIngresadaConExito.fxml");
+                }
+                catch (MaxOrdenesSobrepasadoException e) {
+                    System.out.println(e.getMessage());
+                    launchWarning("/windows/WarningOrdenNoIngresada.fxml");
+                }
+			}
+		}
+		catch (SinTecnicosException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -99,9 +110,9 @@ public class MainController {
 
 
 	@FXML
-	private void GenerateReportOrdersButtonAction(){
-		reporte.ganaciasTotales();
-		//System.out.println("Se ha generado el reporte");
+	private void GenerateReportOrdersButtonAction() throws IOException {
+		reporte.ganaciasTotales(sistema.getListaOrdenes());
+		System.out.println("Se ha generado el reporte");
 	}
 
 
@@ -139,49 +150,62 @@ public class MainController {
 	}
 
 
-	private boolean launchCrearClienteWindow() throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/CrearCliente.fxml"));
-		Parent root = loader.load();
+private boolean launchCrearClienteWindow() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/CrearCliente.fxml"));
+        Parent root = loader.load();
 
-		CrearClienteController crearClienteController = loader.getController();
-		crearClienteController.initVariables(rutField.getText(), sistema);
+        CrearClienteController crearClienteController = loader.getController();
+        crearClienteController.initVariables(rutField.getText(), sistema);
 
-		Stage stage = new Stage();
-		stage.initModality(Modality.WINDOW_MODAL);
-		stage.initOwner(nextButton.getScene().getWindow());
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(nextButton.getScene().getWindow());
 
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.resizableProperty().setValue(false);
-		stage.showAndWait();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
 
-		return crearClienteController.getFlag();
-	}
+        return crearClienteController.getFlag();
+    }
 
-/*	private void launchVerCliente() throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerCliente.fxml"));
-		Parent root = loader.load();
-
-		VerClienteController verClienteController = loader.getController();
-		verClienteController.initVariables((Cliente)clientsTable.getSelectionModel().getSelectedItem());
-
-		Stage stage = new Stage();
-		stage.initModality(Modality.WINDOW_MODAL);
-		stage.initOwner(showClientButton.getScene().getWindow());
-
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.resizableProperty().setValue(false);
-		stage.showAndWait();
-	}
-*/
+    private void launchVerCliente() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerCliente.fxml"));
+        Parent root = loader.load();
+        VerClienteController verClienteController = loader.getController();
+        verClienteController.initVariables((Cliente)clientsTable.getSelectionModel().getSelectedItem());
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(showClientButton.getScene().getWindow());
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.resizableProperty().setValue(false);
+        stage.showAndWait();
+    }
 
 	private void launchEditarCliente() throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/EditarCliente.fxml"));
 		Parent root = loader.load();
 
 		EditarClienteController editarClienteController = loader.getController();
-		editarClienteController.initVariables((Cliente)clientsTable.getSelectionModel().getSelectedItem(), sistema);
+		editarClienteController.initVariables((Cliente) clientsTable.getSelectionModel().getSelectedItem(), sistema);
+
+		Stage stage = new Stage();
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(editClientButton.getScene().getWindow());
+
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.resizableProperty().setValue(false);
+		stage.showAndWait();
+	}
+
+	private void launchEditarTecnico() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/EditarTecnico.fxml"));
+		Parent root = loader.load();
+
+		EditarTecnicoController editarTecnicoController = loader.getController();
+		editarTecnicoController.initVariables((Tecnico) techsTable.getSelectionModel().getSelectedItem(), sistema);
 
 		Stage stage = new Stage();
 		stage.initModality(Modality.WINDOW_MODAL);
@@ -286,35 +310,24 @@ public class MainController {
 		return clientes;
 	}
 
-    private void launchVerCliente() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/windows/VerCliente.fxml"));
-        Parent root = loader.load();
 
-        VerClienteController verClienteController = loader.getController();
-        verClienteController.initVariables((Cliente)(clientsTable.getSelectionModel().getSelectedItem()));
-
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(showClientButton.getScene().getWindow());
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.resizableProperty().setValue(false);
-        stage.showAndWait();
+    @FXML
+    private void showClientButtonAction() throws  Exception{
+        if(clientsTable.getSelectionModel().getSelectedItem() != null){
+            launchVerCliente();
+        }
     }
 
 	@FXML
-	private void showClientButtonAction() throws  Exception{
-		if(clientsTable.getSelectionModel().getSelectedItem() != null){
-			launchVerCliente();
-		}
+	private void editClientButtonAction() throws Exception {
+		if(clientsTable.getSelectionModel().getSelectedItem() != null)
+			launchEditarCliente();
 	}
 
 	@FXML
-	private void editClientButtonAction() throws Exception {
-		if(clientsTable.getSelectionModel().getSelectedItem() != null){
-			launchEditarCliente();
-		}
+	private void editTechnicianButtonAction() throws Exception {
+		if(techsTable.getSelectionModel().getSelectedItem() != null)
+			launchEditarTecnico();
 	}
 
 	@FXML
@@ -350,7 +363,11 @@ public class MainController {
 				techsTable.setItems(getTechsItems());
 				techsTable.refresh();
 				System.out.println("Se ha eliminado el tecnico con exito");
-			} catch(TieneOrdenesException e){
+			}
+			catch(TieneOrdenesException e){
+				System.out.println(e.getMessage());
+			}
+			catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
@@ -364,11 +381,13 @@ public class MainController {
 				clientsTable.setItems(getClientsItems());
 				clientsTable.refresh();
 				System.out.println("Se ha eliminado el cliente con exito");
-			} catch(TieneOrdenesException e){
+			}
+			catch (TieneOrdenesException e) {
 				System.out.println(e.getMessage());
 			}
+			catch (SQLException e) {
+			    System.out.println(e.getMessage());
+            }
 		}
 	}
 }
-
-

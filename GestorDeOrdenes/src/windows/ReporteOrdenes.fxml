@@ -22,4 +22,3 @@
       <Button fx:id="showButton" layoutX="120.0" layoutY="336.0" mnemonicParsing="false" onAction="#showButtonAction" text="Ver" />
    </children>
 </AnchorPane>
-

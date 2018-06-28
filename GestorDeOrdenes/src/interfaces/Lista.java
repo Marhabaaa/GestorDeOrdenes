@@ -6,3 +6,4 @@ public interface Lista {
     int size();
     boolean isEmpty();
 }
+

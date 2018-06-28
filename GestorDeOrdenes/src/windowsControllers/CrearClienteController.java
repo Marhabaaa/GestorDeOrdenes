@@ -33,7 +33,7 @@ public class CrearClienteController {
         }
 
         try {
-            sistema.addClient(Integer.parseInt(rutField.getText()), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
+            sistema.addClient(rutField.getText(), nameField.getText(), phoneField.getText(), emailField.getText(), isBusinessButton.isSelected());
             flag = true;
             launchWarning("/windows/WarningClienteIngresadoConExito.fxml");
             Stage stage = (Stage) createButton.getScene().getWindow();

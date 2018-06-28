@@ -17,11 +17,11 @@
          </font>
       </Text>
       <TableView fx:id="tableA" layoutX="331.0" layoutY="98.0" prefHeight="157.0" prefWidth="269.0">
-        <columns>
-          <TableColumn fx:id="codAColumn" prefWidth="75.0" text="Cod." />
-          <TableColumn fx:id="descriptionAColumn" prefWidth="119.0" text="Descripción" />
+         <columns>
+            <TableColumn fx:id="codAColumn" prefWidth="75.0" text="Cod." />
+            <TableColumn fx:id="descriptionAColumn" prefWidth="119.0" text="Descripción" />
             <TableColumn fx:id="cantAColumn" prefWidth="74.0" text="Cant." />
-        </columns>
+         </columns>
       </TableView>
       <Text layoutX="336.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piezas Agregadas:" wrappingWidth="119.87597346305847">
          <font>

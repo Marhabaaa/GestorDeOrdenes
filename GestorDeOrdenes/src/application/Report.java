@@ -14,23 +14,39 @@ public class Report {
 	 * creo un archivo
 	 * entrega las ganacias de todas las ordenes ya efectuadas
 	 */
-    public void gananciasTotales(){
-	//public void ganaciasTotales(ListaOrdenes ordenes){
+
+	public void ganaciasTotales(ListaOrdenes ordenes) throws IOException{
 		Orden o;
 		int suma;
 
-		File archivo;
+		FileWriter flwriter = null;
 		try {
-			archivo = new File("C:\\Reporte Ganancia.txt");
-			if (archivo.createNewFile()) {
-				System.out.println("Se ha creado el archivo");
+			suma=0;
+			flwriter = new FileWriter("C:\\Users\\");
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			bfwriter.write(" Numero de orden 	    	Tecnico			Ganacia por orden " + "\n");
+			for (int i = 0; i < ordenes.size(); i++) {
+				o = ordenes.get(i);
+				if (o.isDone()) {
+					bfwriter.write(" " + o.getOrderNumber() + "				" + o.getTechNumber() + "				" + o.getProfit() + "\n");
+					suma = suma + o.getProfit();
+				}
 			}
+			bfwriter.close();
+			System.out.println("Archivo Reporte Creado Correctamente");
 		} catch (IOException e){
-		    System.err.println("No se ha podido crear el archivo" + e);
-
-
+			e.printStackTrace();
+		} finally {
+			if (flwriter!=null){
+				try{
+					flwriter.close();
+				} catch (IOException e){
+					e.printStackTrace();
+				}
+			}
 		}
 
+		
 		/*File f= new File ("Reporte.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter("Reporte.txt"));
 		if(f.exists()) {
@@ -68,23 +84,6 @@ public class Report {
 		}
 	}
 
-    public void ganaciasTotales() {
-
-        Orden o;
-        int suma;
-
-        File archivo;
-        try {
-            archivo = new File("C:\\Reporte Ganancia.txt");
-            if (archivo.createNewFile()) {
-                System.out.println("Se ha creado el archivo");
-            }
-        } catch (IOException e) {
-            System.err.println("No se ha podido crear el archivo" + e);
-
-
-        }
-    }
 }
 
 

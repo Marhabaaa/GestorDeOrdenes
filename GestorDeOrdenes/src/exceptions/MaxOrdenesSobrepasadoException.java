@@ -6,3 +6,4 @@ public class MaxOrdenesSobrepasadoException extends Exception {
         super("Cantidad maxima de ordenes permitidas alcanzada.");
     }
 }
+

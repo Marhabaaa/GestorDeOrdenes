@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 
 public class ReporteOrdenesController {
 
@@ -30,6 +32,7 @@ public class ReporteOrdenesController {
 
     private SST sistema;
 
+
     @FXML
     private void showButtonAction() throws Exception {
         if(table.getSelectionModel().getSelectedItem() != null){
@@ -39,8 +42,13 @@ public class ReporteOrdenesController {
 
     @FXML
     private void deleteButtonAction() {
-        if(table.getSelectionModel().getSelectedItem() != null)
-            sistema.removeOrder(((Orden) table.getSelectionModel().getSelectedItem()).getOrderNumber());
+        if(table.getSelectionModel().getSelectedItem() != null) {
+            try {
+                sistema.removeOrder(((Orden) table.getSelectionModel().getSelectedItem()).getOrderNumber());
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         table.setItems(getItems());
         table.refresh();
     }
@@ -67,7 +75,7 @@ public class ReporteOrdenesController {
     }
 
 
-   private ObservableList<Orden> getItems() {
+    private ObservableList<Orden> getItems() {
         ListaOrdenes list = sistema.getListaOrdenes();
         ObservableList<Orden> ordenes = FXCollections.observableArrayList();
         int i = 0;

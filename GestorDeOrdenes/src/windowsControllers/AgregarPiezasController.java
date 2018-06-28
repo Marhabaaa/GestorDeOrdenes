@@ -49,8 +49,6 @@ public class AgregarPiezasController {
             tableB.setItems(getItems(sistema.getOrder(orderNumber).getPartsList()));
             tableA.refresh();
             tableB.refresh();
-
-
         }
     }
 
@@ -103,7 +101,6 @@ public class AgregarPiezasController {
         cantBColumn.setCellValueFactory(new PropertyValueFactory<Pieza, Integer>("cant"));
 
         tableA.setItems(getItems(sistema.getListaPiezas()));
-
     }
 
     public boolean getFlag() {

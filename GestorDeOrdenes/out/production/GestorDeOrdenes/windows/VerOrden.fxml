@@ -17,11 +17,11 @@
          </font>
       </Text>
       <TableView fx:id="tableA" layoutX="331.0" layoutY="98.0" prefHeight="157.0" prefWidth="269.0">
-        <columns>
-          <TableColumn fx:id="codAColumn" prefWidth="75.0" text="Cod." />
-          <TableColumn fx:id="descriptionAColumn" prefWidth="119.0" text="Descripción" />
+         <columns>
+            <TableColumn fx:id="codAColumn" prefWidth="75.0" text="Cod." />
+            <TableColumn fx:id="descriptionAColumn" prefWidth="119.0" text="Descripción" />
             <TableColumn fx:id="cantAColumn" prefWidth="74.0" text="Cant." />
-        </columns>
+         </columns>
       </TableView>
       <Text layoutX="336.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piezas Agregadas:" wrappingWidth="119.87597346305847">
          <font>
@@ -38,20 +38,20 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="9.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrega estimada:" wrappingWidth="119.87597257643938">
+      <Text layoutX="9.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de entrega estimada:" wrappingWidth="119.87597257643938">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="9.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Técnico asignado:" wrappingWidth="119.87597272056155">
+      <Text layoutX="9.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Técnico asignado:" wrappingWidth="119.87597272056155">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
       <Label fx:id="clientLabel" layoutX="129.0" layoutY="128.0" prefHeight="17.0" prefWidth="183.0" />
       <Label fx:id="totalLabel" layoutX="129.0" layoutY="148.0" prefHeight="17.0" prefWidth="183.0" />
-      <Label fx:id="dateLabel" layoutX="129.0" layoutY="168.0" prefHeight="17.0" prefWidth="183.0" />
-      <Label fx:id="techLabel" layoutX="129.0" layoutY="188.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="dateLabel" layoutX="129.0" layoutY="179.0" prefHeight="17.0" prefWidth="183.0" />
+      <Label fx:id="techLabel" layoutX="129.0" layoutY="206.0" prefHeight="17.0" prefWidth="183.0" />
       <Label fx:id="problemLabel" layoutX="157.0" layoutY="269.0" prefHeight="17.0" prefWidth="391.0" />
    </children>
 </AnchorPane>

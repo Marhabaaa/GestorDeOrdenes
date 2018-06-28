@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class ReporteStockController {
 
     @FXML private TableView table;
@@ -55,7 +57,7 @@ public class ReporteStockController {
     }
 
     @FXML
-    private void newPartButtonAction() throws Exception {
+    private void newPartButtonAction() {
         try {
             launchCrearPieza();
             table.setItems(getItems());
@@ -66,12 +68,17 @@ public class ReporteStockController {
     }
 
     @FXML
-    private void deleteButtonAction() throws Exception{
+    private void deleteButtonAction() {
         if(table.getSelectionModel().getSelectedItem() != null){
-            sistema.removePart(((Pieza) table.getSelectionModel().getSelectedItem()).getCode());
-            table.setItems(getItems());
-            table.refresh();
-            System.out.println("Se ha eliminado la pieza con exito");
+            try {
+                sistema.removePart(((Pieza) table.getSelectionModel().getSelectedItem()).getCode());
+                table.setItems(getItems());
+                table.refresh();
+                System.out.println("Se ha eliminado la pieza con exito");
+            }
+            catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
