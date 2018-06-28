@@ -50,3 +50,4 @@ public class ListaClientes implements Lista {
         return list.isEmpty();
     }
 }
+

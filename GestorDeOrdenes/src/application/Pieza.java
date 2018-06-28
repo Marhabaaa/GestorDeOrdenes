@@ -109,4 +109,3 @@ public class Pieza {
 		return aux;
 	}
 }
-

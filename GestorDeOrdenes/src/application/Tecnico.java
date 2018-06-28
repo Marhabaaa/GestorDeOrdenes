@@ -95,3 +95,4 @@ public class Tecnico extends Persona {
 		return delay;
 	}
 }
+

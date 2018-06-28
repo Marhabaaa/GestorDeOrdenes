@@ -56,3 +56,4 @@ public class SMap {
 		return map.size();
 	}
 }
+

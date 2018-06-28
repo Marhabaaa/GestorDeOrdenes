@@ -6,3 +6,4 @@ public class SinStockException extends Exception {
         super("No hay stock de la pieza seleccionada.");
     }
 }
+

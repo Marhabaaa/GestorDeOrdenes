@@ -6,3 +6,4 @@ public class TelefonoInvalidoException extends Exception{
         super("El formato de telefono ingresado no es valido.");
     }
 }
+

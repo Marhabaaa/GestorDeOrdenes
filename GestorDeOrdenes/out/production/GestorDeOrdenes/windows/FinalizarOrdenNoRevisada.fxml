@@ -23,3 +23,4 @@
       <Label fx:id="techLabel" layoutX="116.0" layoutY="133.0" prefHeight="25.0" prefWidth="116.0" />
    </children>
 </AnchorPane>
+

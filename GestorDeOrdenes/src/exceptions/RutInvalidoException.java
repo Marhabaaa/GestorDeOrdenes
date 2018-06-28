@@ -6,3 +6,4 @@ public class RutInvalidoException extends Exception {
         super("El formato de rut ingresado es invalido.");
     }
 }
+

@@ -47,3 +47,4 @@ public class SList implements Lista {
 		return list.isEmpty();
 	}
 }
+

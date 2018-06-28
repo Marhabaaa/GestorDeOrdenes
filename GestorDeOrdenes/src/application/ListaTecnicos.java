@@ -47,3 +47,4 @@ public class ListaTecnicos implements Lista {
         return list.isEmpty();
     }
 }
+

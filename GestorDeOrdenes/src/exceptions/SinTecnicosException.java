@@ -6,3 +6,4 @@ public class SinTecnicosException extends Exception {
         super("No hay tecnicos en el sistema.");
     }
 }
+

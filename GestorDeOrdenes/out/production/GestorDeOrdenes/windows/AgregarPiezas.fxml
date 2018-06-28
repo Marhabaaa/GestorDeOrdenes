@@ -19,18 +19,18 @@
       </Text>
       <Button fx:id="nextButton" layoutX="513.0" layoutY="322.0" mnemonicParsing="false" onAction="#nextButtonAction" text="Siguiente" />
       <TableView fx:id="tableA" layoutX="18.0" layoutY="85.0" prefHeight="184.0" prefWidth="280.0">
-        <columns>
-          <TableColumn fx:id="codAColumn" prefWidth="46.0" text="Cod." />
-          <TableColumn fx:id="descriptionAColumn" minWidth="0.0" prefWidth="157.0" text="Descripción" />
+         <columns>
+            <TableColumn fx:id="codAColumn" prefWidth="46.0" text="Cod." />
+            <TableColumn fx:id="descriptionAColumn" minWidth="0.0" prefWidth="157.0" text="Descripción" />
             <TableColumn fx:id="cantAColumn" prefWidth="76.0" text="Cant." />
-        </columns>
+         </columns>
       </TableView>
       <TableView fx:id="tableB" layoutX="322.0" layoutY="85.0" prefHeight="184.0" prefWidth="269.0">
-        <columns>
-          <TableColumn fx:id="codBColumn" prefWidth="75.0" text="Cod." />
-          <TableColumn fx:id="descriptionBColumn" prefWidth="119.0" text="Descripción" />
+         <columns>
+            <TableColumn fx:id="codBColumn" prefWidth="75.0" text="Cod." />
+            <TableColumn fx:id="descriptionBColumn" prefWidth="119.0" text="Descripción" />
             <TableColumn fx:id="cantBColumn" prefWidth="74.0" text="Cant." />
-        </columns>
+         </columns>
       </TableView>
       <Text layoutX="132.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock" wrappingWidth="38.87597346305847">
          <font>
@@ -44,3 +44,4 @@
       </Text>
    </children>
 </AnchorPane>
+

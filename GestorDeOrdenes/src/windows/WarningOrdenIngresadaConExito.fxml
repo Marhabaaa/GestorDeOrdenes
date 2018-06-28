@@ -10,3 +10,4 @@
       <Button fx:id="understoodButton" layoutX="78.0" layoutY="79.0" mnemonicParsing="false" onAction="#UnderstoodButtonAction" text="Entendido" />
    </children>
 </AnchorPane>
+

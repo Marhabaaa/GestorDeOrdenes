@@ -5,3 +5,4 @@ public class TieneOrdenesException extends Exception {
         super("Tecnico tiene trabajo pendiente.");
     }
 }
+
